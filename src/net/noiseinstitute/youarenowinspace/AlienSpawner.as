@@ -11,7 +11,7 @@ package net.noiseinstitute.youarenowinspace
 		private var time:uint = 0;
 
         private const COLOURS:Vector.<String> = Vector.<String>([
-                Alien.RED, Alien.GREEN, Alien.BROWN, Alien.BROWN]);
+                Alien.RED, Alien.GREEN, Alien.BROWN, Alien.GREY]);
 		
 		public function spawnAlien():void {
             var colour:String = COLOURS[Math.floor(Math.random() * COLOURS.length)];
