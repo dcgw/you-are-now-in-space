@@ -1,22 +1,22 @@
 package net.noiseinstitute.youarenowinspace.entities
 {
-	import net.flashpunk.Entity;
-	import net.flashpunk.FP;
-	import net.flashpunk.Graphic;
-	import net.flashpunk.Mask;
-	import net.flashpunk.graphics.Image;
-	import net.noiseinstitute.youarenowinspace.YANISEntity;
-	
-	public class Bullet extends YANISEntity {
+    import net.flashpunk.FP;
+    import net.flashpunk.graphics.Image;
+    import net.noiseinstitute.youarenowinspace.YANISEntity;
+
+    public class Bullet extends YANISEntity {
 		
 		[Embed(source = 'Bullet.png')]
 		private const BULLET_IMAGE:Class;
 
-		public function Bullet(x:Number=0, y:Number=0) {
-			this.x = x - 8;
-			this.y = y - 8;
+        private static const WIDTH:int = 5;
+        private static const HEIGHT:int = 10;
+
+        public function Bullet(x:Number=0, y:Number=0) {
+			this.x = x - WIDTH/2;
+			this.y = y - HEIGHT/2;
 			graphic = new Image(BULLET_IMAGE);
-			setHitbox(16,16);
+			setHitbox(WIDTH,HEIGHT);
 			type = "bullet";
 		}
 		

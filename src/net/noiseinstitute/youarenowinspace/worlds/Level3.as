@@ -1,5 +1,6 @@
-package net.noiseinstitute.youarenowinspace
+package net.noiseinstitute.youarenowinspace.worlds
 {
+    import net.noiseinstitute.youarenowinspace.*;
 	import net.flashpunk.Sfx;
 	import net.flashpunk.World;
 	import net.noiseinstitute.youarenowinspace.entities.Alien;

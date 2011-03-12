@@ -48,7 +48,7 @@ package net.noiseinstitute.youarenowinspace
 			var down:Boolean = Input.check(Key.DOWN);
 			var left:Boolean = Input.check(Key.LEFT);
 			var right:Boolean = Input.check(Key.RIGHT);
-			var shoot:Boolean = Input.pressed(Key.SPACE);
+			var shoot:Boolean = Input.pressed(Key.SPACE) || Input.pressed(Key.X);
 			
 			for each(var target:IControllable in _controlled) {
 				if(up && hasCmd(target, UP)) {
