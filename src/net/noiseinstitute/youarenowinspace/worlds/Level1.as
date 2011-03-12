@@ -1,17 +1,16 @@
-package net.noiseinstitute.youarenowinspace {
-    import flashx.textLayout.formats.FormatValue;
-    
+package net.noiseinstitute.youarenowinspace.worlds {
     import net.flashpunk.Entity;
     import net.flashpunk.FP;
     import net.flashpunk.World;
     import net.flashpunk.graphics.Text;
+    import net.noiseinstitute.youarenowinspace.*;
     import net.noiseinstitute.youarenowinspace.entities.Alien;
     import net.noiseinstitute.youarenowinspace.entities.KevinToms;
     import net.noiseinstitute.youarenowinspace.entities.Player;
 
     public class Level1 extends World {
 		
-		[Embed(source = 'data/Adore64.ttf', embedAsCFF="false", fontFamily = 'C64')]
+		[Embed(source = '../data/Adore64.ttf', embedAsCFF="false", fontFamily = 'C64')]
 		private const C64_FONT:Class;
 		
 		private var formation:AlienFormationController;
