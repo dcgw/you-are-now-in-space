@@ -1,7 +1,9 @@
 package net.noiseinstitute.youarenowinspace
 {
+	import net.flashpunk.FP;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import net.noiseinstitute.youarenowinspace.entities.Bullet;
 
 	public class Controller {
 		
@@ -33,7 +35,10 @@ package net.noiseinstitute.youarenowinspace
 				_controlled.x += 5;
 			}
 			if(Input.check(Key.SPACE)) {
-				// fire!
+				if(_controlled.hasElapsed(10)) {
+					_controlled.resetTime();
+					FP.world.add(new Bullet(_controlled.centerX, _controlled.centerY));
+				}
 			}
 		}
 	}

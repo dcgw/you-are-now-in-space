@@ -10,6 +10,8 @@ package net.noiseinstitute.youarenowinspace.entities
 
 		public function Player() {
 			graphic = new Image(PLAYER_IMAGE);
+			width = 64;
+			height = 64;
 		}
 	}
 }
