@@ -1,15 +1,14 @@
 package net.noiseinstitute.youarenowinspace
 {
-	import net.flashpunk.World;
-	import net.noiseinstitute.youarenowinspace.entities.Alien;
-	import net.noiseinstitute.youarenowinspace.entities.Player;
-	
-	public class Space extends World {
+    import net.flashpunk.World;
+    import net.noiseinstitute.youarenowinspace.entities.Player;
+
+    public class Level3 extends World {
 		
 		private var player:Player;
 		private var alienSpawner:AlienSpawner;
 		
-		public function Space() {
+		public function Level3() {
 			super();
 			
 			alienSpawner = new AlienSpawner();

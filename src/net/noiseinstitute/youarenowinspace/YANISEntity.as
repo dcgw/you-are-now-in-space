@@ -3,9 +3,12 @@ package net.noiseinstitute.youarenowinspace
 	import net.flashpunk.Entity;
 	import net.flashpunk.Graphic;
 	import net.flashpunk.Mask;
-	
-	public class YANISEntity extends Entity {
-		
+    import net.noiseinstitute.youarenowinspace.behaviours.IBehaviour;
+
+    public class YANISEntity extends Entity {
+
+        public var behaviour :IBehaviour;
+
 		private var _time:uint = 0;
 		
 		public function YANISEntity(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null) {
@@ -25,8 +28,11 @@ package net.noiseinstitute.youarenowinspace
 		}
 		
 		override public function update():void {
-			super.update();
-			_time++;
+            if (behaviour != null) {
+                behaviour.update();
+            }
+            super.update();
+            _time++;
 		}
 	}
 }
