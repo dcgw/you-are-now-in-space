@@ -8,13 +8,12 @@ package net.noiseinstitute.youarenowinspace
 
 	public class Controller {
 		
-		private var _controlled:ControllableEntity;
-		
 		private const SHOOT_INTERVAL:uint = 8;
 		[Embed(source = 'data/laser.mp3')]
 		private const LASER_SOUND:Class;
 		
 		private var shootSound:Sfx;
+		private var _controlled:ControllableEntity;
 		
 		public function Controller(entity:ControllableEntity) {
 			controlEntity(entity);
