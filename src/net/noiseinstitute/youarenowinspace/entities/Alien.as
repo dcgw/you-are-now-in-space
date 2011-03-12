@@ -2,9 +2,10 @@ package net.noiseinstitute.youarenowinspace.entities
 {
     import net.flashpunk.FP;
     import net.flashpunk.graphics.Spritemap;
+    import net.noiseinstitute.youarenowinspace.IControllable;
     import net.noiseinstitute.youarenowinspace.YANISEntity;
 
-    public class Alien extends YANISEntity {
+    public class Alien extends YANISEntity implements IControllable {
 		
         public static const WIDTH:uint = 24;
         public static const HEIGHT:uint = 17;
@@ -21,6 +22,7 @@ package net.noiseinstitute.youarenowinspace.entities
         public static const GREY:String = "grey";
 		
 		private var _dead:Boolean = false; 
+		private var _inFormation:Boolean = true; 
 
         private static const ASPLODE:String = "asplode";
 
@@ -46,6 +48,14 @@ package net.noiseinstitute.youarenowinspace.entities
 		public function get dead():Boolean {
 			return _dead;
 		}
+		
+		public function get inFormation():Boolean {
+			return _inFormation;
+		}
+		
+		public function breakFormation():void {
+			_inFormation = false;
+		}
 
 		override public function update():void {
             super.update();
@@ -64,6 +74,12 @@ package net.noiseinstitute.youarenowinspace.entities
                 _animation.callback = function():void {
 				    FP.world.remove(me);
                 }
+			}
+		}
+		
+		public function execute(cmd:int):void {
+			if(behaviour) {
+				behaviour.execute(cmd);
 			}
 		}
 	}

@@ -1,5 +1,7 @@
 package net.noiseinstitute.youarenowinspace
 {
+	import flash.utils.Dictionary;
+	
 	import net.flashpunk.FP;
 	import net.flashpunk.Sfx;
 	import net.flashpunk.utils.Input;
@@ -8,43 +10,61 @@ package net.noiseinstitute.youarenowinspace
 
 	public class Controller {
 		
-		private const SHOOT_INTERVAL:uint = 6;
+		public static const UP:int = 1;
+		public static const DOWN:int = 2;
+		public static const LEFT:int = 4;
+		public static const RIGHT:int = 8;
+		public static const SHOOT:int = 16;
 
-		[Embed(source = 'data/laser.mp3')]
-		private const LASER_SOUND:Class;
+		private var _controlled:Vector.<IControllable> = new Vector.<IControllable>();
+		private var _controls:Dictionary = new Dictionary();
 		
-		private var _controlled:ControllableEntity;
-		
-		public function Controller(entity:ControllableEntity) {
-			controlEntity(entity);
+		public function Controller() {
 		}
 		
-		public function controlEntity(entity:ControllableEntity):void {
-			if(_controlled != null) {
-				_controlled.releaseControl();
+		public function register(target:IControllable, cmds:int = -1):void {
+			if(cmds == -1) {
+				cmds = UP | DOWN | LEFT | RIGHT | SHOOT;
 			}
-			_controlled = entity;
-			_controlled.giveControl(this);
+			
+			_controlled[_controlled.length] = target;
+			_controls[target] = cmds;
+		}
+		
+		public function giveControl(target:IControllable, cmds:int):void {
+			_controls[target] |= cmds;
+		}
+		
+		public function releaseControl(target:IControllable, cmds:int):void {
+			_controls[target] &= ~cmds;
+		}
+		
+		private function hasCmd(target:IControllable, cmd:int):Boolean {
+			return (_controls[target] & cmd) == cmd;
 		}
 		
 		public function control():void {
-			if(Input.check(Key.UP)) {
-				_controlled.y -= 5;
-			}
-			if(Input.check(Key.DOWN)) {
-				_controlled.y += 5;
-			}
-			if(Input.check(Key.LEFT)) {
-				_controlled.x -= 5;
-			}
-			if(Input.check(Key.RIGHT)) {
-				_controlled.x += 5;
-			}
-			if(Input.pressed(Key.SPACE)) {
-				if(_controlled.hasElapsed(SHOOT_INTERVAL)) {
-					FP.world.add(new Bullet(_controlled.centerX, _controlled.centerY));
-                    new Sfx(LASER_SOUND).play();
-					_controlled.resetTime();
+			var up:Boolean = Input.check(Key.UP);
+			var down:Boolean = Input.check(Key.DOWN);
+			var left:Boolean = Input.check(Key.LEFT);
+			var right:Boolean = Input.check(Key.RIGHT);
+			var shoot:Boolean = Input.pressed(Key.SPACE);
+			
+			for each(var target:IControllable in _controlled) {
+				if(up && hasCmd(target, UP)) {
+					target.execute(UP);
+				}
+				if(down && hasCmd(target, DOWN)) {
+					target.execute(DOWN);
+				}
+				if(left && hasCmd(target, LEFT)) {
+					target.execute(LEFT);
+				}
+				if(right && hasCmd(target, RIGHT)) {
+					target.execute(RIGHT);
+				}
+				if(shoot && hasCmd(target, SHOOT)) {
+					target.execute(SHOOT);
 				}
 			}
 		}

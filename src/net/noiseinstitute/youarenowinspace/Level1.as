@@ -14,16 +14,22 @@ package net.noiseinstitute.youarenowinspace {
 		
 		private var formation:AlienFormationController;
 		private var winMsg:Entity;
+		private var ctrl:Controller;
+		private var player:Player;
+		private var handleBreakaway:Boolean = false;
 
 		public function Level1 () {
-            formation = new AlienFormationController();
+			ctrl = new Controller();
+
+			formation = new AlienFormationController();
             for each (var alien:Alien in formation.aliens) {
                 add(alien);
+				ctrl.register(alien, 0);
             }
 
-            var player:Player = new Player();
+            player = new Player();
             add(player);
-            var ctrl:Controller = new Controller(player);
+			ctrl.register(player);
 			
 			winMsg = new Entity();
 			Text.font = "C64";
@@ -36,10 +42,19 @@ package net.noiseinstitute.youarenowinspace {
 		
 		override public function update():void {
 			super.update();
+			ctrl.control();
 			formation.update();
 			
 			if(formation.allDead) {
 				winMsg.visible = true;
+			}
+			
+			if(formation.breakaway && !handleBreakaway) {
+				handleBreakaway = true;
+				ctrl.releaseControl(player, Controller.LEFT | Controller.RIGHT);
+				for each (var alien:Alien in formation.aliens) {
+					ctrl.giveControl(alien, Controller.LEFT | Controller.RIGHT);
+				}
 			}
 		}
     }

@@ -1,5 +1,6 @@
 package net.noiseinstitute.youarenowinspace {
     import net.flashpunk.FP;
+    import net.noiseinstitute.youarenowinspace.behaviours.BrokenFormationBehaviour;
     import net.noiseinstitute.youarenowinspace.entities.Alien;
 
     public class AlienFormationController {
@@ -9,6 +10,7 @@ package net.noiseinstitute.youarenowinspace {
                 [Alien.RED, Alien.BROWN, Alien.GREY, Alien.GREEN]);
 
         private var _aliens:Vector.<Vector.<Alien>> = new Vector.<Vector.<Alien>>();
+		
         public function get aliens():Vector.<Alien> {
             var value:Vector.<Alien> = new Vector.<Alien>();
             for each (var v:Vector.<Alien> in _aliens) {
@@ -23,6 +25,7 @@ package net.noiseinstitute.youarenowinspace {
 
         private static const LEFT_MARGIN:int = 22;
         private static const BOTTOM_MARGIN:int = 11;
+		private static const BREAKAWAY_MARGIN:int = 60;
 		private static const MOVE_AMOUNT:Number = 12;
 		
 		private var time:Number = 0;
@@ -31,6 +34,7 @@ package net.noiseinstitute.youarenowinspace {
 		private var directionLeft:Boolean = true;
 		private var moveUp:Boolean = false;
 		private var formationSize:Number;
+		private var _breakaway:Boolean = false;
 		
 		private var separationX:Number = 36;
 		private var separationY:Number = 24;
@@ -59,6 +63,10 @@ package net.noiseinstitute.youarenowinspace {
 			return formationSize == 0;
 		}
 		
+		public function get breakaway():Boolean {
+			return _breakaway;
+		}
+		
 		public function update():void {
 			if(allDead) {
 				return;
@@ -77,20 +85,28 @@ package net.noiseinstitute.youarenowinspace {
 				for each(var alien:Alien in aliens) {
 					if(!alien.dead) {
 						formationSize++;
-						if(alien.x < leftmost) {
-							leftmost = alien.x;
-						}
-						if(alien.x > rightmost) {
-							rightmost = alien.x;
-						}
-						if(alien.y < upmost) {
-							upmost = alien.y;
+
+						// If they're in formation
+						if(!alien.behaviour) {
+							if(alien.x < leftmost) {
+								leftmost = alien.x;
+							}
+							if(alien.x > rightmost) {
+								rightmost = alien.x;
+							}
+							if(alien.y < upmost) {
+								upmost = alien.y;
+							}
 						}
 					}
 				}
 				
 				// Update the movement interval
 				moveInterval = formationSize;
+				
+				if(upmost <= BREAKAWAY_MARGIN) {
+					_breakaway = true;
+				}
 				
 				// Update the size of the formation
 				formationX = leftmost;
@@ -119,8 +135,14 @@ package net.noiseinstitute.youarenowinspace {
 				formationY += moveAmtY;
 				
 				for each(var alien:Alien in aliens) {
-					alien.x += moveAmtX; 
-					alien.y += moveAmtY;
+					if(!alien.dead && !alien.behaviour) {
+						if(_breakaway && Math.random() > 0.8) {
+							alien.behaviour = new BrokenFormationBehaviour(alien);
+						}
+						
+						alien.x += moveAmtX; 
+						alien.y += moveAmtY;
+					}
 				}
 			}
 		}
