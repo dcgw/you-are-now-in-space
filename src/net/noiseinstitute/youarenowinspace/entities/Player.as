@@ -16,7 +16,7 @@ package net.noiseinstitute.youarenowinspace.entities
             height = HEIGHT;
             x = 160 - width/2;
 
-            var animation:Spritemap = new Spritemap(PLAYER_SPRITEMAP, 21, 24);
+            var animation:Spritemap = new Spritemap(PLAYER_SPRITEMAP, WIDTH, HEIGHT);
             graphic = animation;
             animation.add("spinning", [0,1,2,3,4,5,6], 0.25)
             animation.play("spinning");
