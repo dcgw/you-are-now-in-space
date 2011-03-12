@@ -32,16 +32,19 @@ package net.noiseinstitute.youarenowinspace.entities
             animation.add("green", [6,7,8,9,10,11], 0.25);
             animation.add("brown", [12,13,14,15,16,17], 0.25);
             animation.add("grey", [18,19,20,21,22,23], 0.25);
-            animation.play("red");
+			
+			var anims:Array = ["red", "green", "brown", "grey"];
+			var i:Number = Math.round(Math.random() * anims.length)
+            animation.play(anims[i]);
 
 			setHitbox(WIDTH,HEIGHT);
 
 			_pos = Math.random() * (Math.PI * 2);
 			
-			pathX = Math.random() * FP.screen.width;
-			pathY = Math.random() * FP.screen.height;
-			pathW = Math.random() * FP.screen.width / 2;
-			pathH = Math.random() * FP.screen.height / 2;
+			pathX = (Math.random() * FP.screen.width/2) + FP.screen.width/4;
+			pathY = (Math.random() * FP.screen.height/2) + FP.screen.height/4;
+			pathW = Math.random() * pathX - FP.screen.width/4;
+			pathH = Math.random() * pathY - FP.screen.height/4;
 		}
 
 		override public function update():void {
