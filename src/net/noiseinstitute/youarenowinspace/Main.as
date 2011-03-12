@@ -7,7 +7,7 @@ package net.noiseinstitute.youarenowinspace
 		
 		public function Main() {
 			super(800, 600, 60, false);
-			FP.world = new YANISWorld();
+			FP.world = new Space();
 		}
 		
 		override public function init():void {
