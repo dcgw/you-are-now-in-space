@@ -32,6 +32,9 @@ package net.noiseinstitute.youarenowinspace
 			if(Input.check(Key.RIGHT)) {
 				_controlled.x += 5;
 			}
+			if(Input.check(Key.SPACE)) {
+				// fire!
+			}
 		}
 	}
 }
