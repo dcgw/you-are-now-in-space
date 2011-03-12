@@ -24,7 +24,7 @@ package net.noiseinstitute.youarenowinspace.entities
 			y += 10;
 			
 			// If a bullet goes off screen, get rid of it
-			if(y <= -10) {
+			if(y >= FP.screen.height + height) {
 				FP.world.remove(this);				
 			}
 		}
