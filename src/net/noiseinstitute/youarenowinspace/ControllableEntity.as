@@ -2,7 +2,7 @@ package net.noiseinstitute.youarenowinspace
 {
 	import net.flashpunk.Entity;
 
-	public class ControllableEntity extends Entity {
+	public class ControllableEntity extends YANISEntity {
 		
 		private var _controller:Controller;
 		

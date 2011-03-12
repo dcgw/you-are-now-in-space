@@ -20,6 +20,8 @@ package net.noiseinstitute.youarenowinspace.entities
             graphic = animation;
             animation.add("spinning", [0,1,2,3,4,5,6], 0.25)
             animation.play("spinning");
+			width = 21;
+			height = 24;
 		}
 	}
 }
