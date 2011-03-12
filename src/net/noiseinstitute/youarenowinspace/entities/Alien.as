@@ -57,6 +57,7 @@ package net.noiseinstitute.youarenowinspace.entities
 				b.destroy();
 				
 				_dead = true;
+				collidable = false;
 
                 _animation.play(ASPLODE);
                 var me:Alien = this;

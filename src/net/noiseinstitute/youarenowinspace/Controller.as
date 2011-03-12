@@ -40,7 +40,7 @@ package net.noiseinstitute.youarenowinspace
 			if(Input.check(Key.RIGHT)) {
 				_controlled.x += 5;
 			}
-			if(Input.check(Key.SPACE)) {
+			if(Input.pressed(Key.SPACE)) {
 				if(_controlled.hasElapsed(SHOOT_INTERVAL)) {
 					FP.world.add(new Bullet(_controlled.centerX, _controlled.centerY));
                     new Sfx(LASER_SOUND).play();
