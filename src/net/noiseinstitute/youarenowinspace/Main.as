@@ -10,11 +10,7 @@ package net.noiseinstitute.youarenowinspace
 		public function Main() {
 			super(320, 240, 60, true);
             FP.screen.scale = 2;
-			FP.world = new Space();
-		}
-		
-		override public function init():void {
-			trace("FlashPunk has started successfully!");
+			FP.world = new Level1();
 		}
     } 
 } 
