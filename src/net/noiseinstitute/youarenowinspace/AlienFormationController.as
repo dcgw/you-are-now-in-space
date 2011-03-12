@@ -30,6 +30,7 @@ package net.noiseinstitute.youarenowinspace {
 		private var movePlaces:Number = 4;
 		private var directionLeft:Boolean = true;
 		private var moveUp:Boolean = false;
+		private var formationSize:Number;
 		
 		private var separationX:Number = 36;
 		private var separationY:Number = 24;
@@ -54,16 +55,24 @@ package net.noiseinstitute.youarenowinspace {
             }
         }
 		
+		public function get allDead():Boolean {
+			return formationSize == 0;
+		}
+		
 		public function update():void {
+			if(allDead) {
+				return;
+			}
+			
 			time++;
 			if(time >= moveInterval) {
 				time = 0;
 				
-				// Find where the aliens are
+				// Find where the aliens are and how many
 				var leftmost:Number = FP.screen.width;
 				var rightmost:Number = 0;
 				var upmost:Number = FP.screen.height;
-				var formationSize:Number = 0;
+				formationSize = 0;
 				
 				for each(var alien:Alien in aliens) {
 					if(!alien.dead) {
@@ -80,6 +89,7 @@ package net.noiseinstitute.youarenowinspace {
 					}
 				}
 				
+				// Update the movement interval
 				moveInterval = formationSize;
 				
 				// Update the size of the formation
@@ -88,7 +98,9 @@ package net.noiseinstitute.youarenowinspace {
 				formationW = rightmost + Alien.WIDTH - formationX;
 				
 				// Make a sound
-				soundController.makeSound();
+				if(!allDead) {
+					soundController.makeSound();	
+				}
 				
 				// Move the formation
 				if(formationX <= 0 || formationX >= FP.screen.width - formationW) {

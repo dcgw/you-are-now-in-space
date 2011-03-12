@@ -8,7 +8,7 @@ package net.noiseinstitute.youarenowinspace
 
 	public class Controller {
 		
-		private const SHOOT_INTERVAL:uint = 8;
+		private const SHOOT_INTERVAL:uint = 6;
 
 		[Embed(source = 'data/laser.mp3')]
 		private const LASER_SOUND:Class;
