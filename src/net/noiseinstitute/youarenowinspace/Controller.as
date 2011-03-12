@@ -1,6 +1,7 @@
 package net.noiseinstitute.youarenowinspace
 {
 	import net.flashpunk.FP;
+	import net.flashpunk.Sfx;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	import net.noiseinstitute.youarenowinspace.entities.Bullet;
@@ -9,8 +10,15 @@ package net.noiseinstitute.youarenowinspace
 		
 		private var _controlled:ControllableEntity;
 		
+		private const SHOOT_INTERVAL:uint = 8;
+		[Embed(source = 'data/laser.mp3')]
+		private const LASER_SOUND:Class;
+		
+		private var shootSound:Sfx;
+		
 		public function Controller(entity:ControllableEntity) {
 			controlEntity(entity);
+			shootSound = new Sfx(LASER_SOUND);
 		}
 		
 		public function controlEntity(entity:ControllableEntity):void {
@@ -35,9 +43,10 @@ package net.noiseinstitute.youarenowinspace
 				_controlled.x += 5;
 			}
 			if(Input.check(Key.SPACE)) {
-				if(_controlled.hasElapsed(10)) {
-					_controlled.resetTime();
+				if(_controlled.hasElapsed(SHOOT_INTERVAL)) {
 					FP.world.add(new Bullet(_controlled.centerX, _controlled.centerY));
+					shootSound.play();
+					_controlled.resetTime();
 				}
 			}
 		}
