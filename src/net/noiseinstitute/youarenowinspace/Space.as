@@ -4,11 +4,11 @@ package net.noiseinstitute.youarenowinspace
 	import net.noiseinstitute.youarenowinspace.entities.Alien;
 	import net.noiseinstitute.youarenowinspace.entities.Player;
 	
-	public class YANISWorld extends World {
+	public class Space extends World {
 		
 		private var player:Player;
 		
-		public function YANISWorld() {
+		public function Space() {
 			super();
 			add(new Alien());
 			player = new Player();
