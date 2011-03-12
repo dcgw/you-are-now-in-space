@@ -3,6 +3,9 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
     import flash.events.MouseEvent;
 
+    import flash.media.Sound;
+    import flash.media.SoundChannel;
+
     import net.flashpunk.Entity;
     import net.flashpunk.FP;
     import net.flashpunk.World;
@@ -15,8 +18,12 @@ package net.noiseinstitute.youarenowinspace.worlds {
         [Embed(source="Title.png")]
         private const TITLE_IMAGE:Class;
 
+        [Embed(source="Title.mp3")]
+        private const TITLE_MUSIC:Class;
+
         private var _spritemap:Spritemap = new Spritemap(TITLE_IMAGE, 320, 200);
         private var listening:Boolean = false;
+        private var music:SoundChannel = Sound(new TITLE_MUSIC()).play(0, int.MAX_VALUE);
 
         public function TitleWorld() {
             var entity:Entity = new Entity();
@@ -30,6 +37,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
         override public function update():void {
             super.update();
             if (Input.pressed(Key.X) || Input.pressed(Key.SPACE)) {
+                music.stop();
                 FP.world = new Level1();
 
                 if (listening) {
