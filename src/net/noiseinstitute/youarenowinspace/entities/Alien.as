@@ -5,9 +5,12 @@ package net.noiseinstitute.youarenowinspace.entities
     import net.noiseinstitute.youarenowinspace.YANISEntity;
 
     public class Alien extends YANISEntity {
-		
+
         private const WIDTH:uint = 24;
         private const HEIGHT:uint = 17;
+
+        private const FRAME_WIDTH:uint = WIDTH;
+        private const FRAME_HEIGHT:uint = 21;
 
 		[Embed(source = 'Alien.png')]
 		private const ALIEN_SPRITEMAP:Class;
@@ -17,18 +20,23 @@ package net.noiseinstitute.youarenowinspace.entities
         public static const BROWN:String = "brown";
         public static const GREY:String = "grey";
 
+        private static const ASPLODE:String = "asplode";
+
+        private var _animation:Spritemap = new Spritemap(ALIEN_SPRITEMAP, FRAME_WIDTH, FRAME_HEIGHT);
+
         public function Alien (colour:String = RED) {
             width = WIDTH;
             height = HEIGHT;
 
-            var animation:Spritemap = new Spritemap(ALIEN_SPRITEMAP, WIDTH, HEIGHT);
-            graphic = animation;
-            animation.add(RED, [0,1,2,3,4,5], 0.25);
-            animation.add(GREEN, [6,7,8,9,10,11], 0.25);
-            animation.add(BROWN, [12,13,14,15,16,17], 0.25);
-            animation.add(GREY, [18,19,20,21,22,23], 0.25);
+            graphic = _animation;
+            _animation.add(RED, [0,1,2,3,4,5], 0.25);
+            _animation.add(GREEN, [7,8,9,10,11,12], 0.25);
+            _animation.add(BROWN, [14,15,16,17,18,19], 0.25);
+            _animation.add(GREY, [21,22,23,24,25,26], 0.25);
+            _animation.add(ASPLODE, [28,29,30,31,32,33,34], 0.25);
+            _animation.originY = 2;
 			
-            animation.play(colour);
+            _animation.play(colour);
 
 			setHitbox(WIDTH,HEIGHT);
 		}
@@ -41,8 +49,12 @@ package net.noiseinstitute.youarenowinspace.entities
 			if(b) {
 				// Destroy the bullet
 				b.destroy();
-				
-				FP.world.remove(this);
+
+                _animation.play(ASPLODE);
+                var me:Alien = this;
+                _animation.callback = function():void {
+				    FP.world.remove(me);
+                }
 			}
 		}
 	}

@@ -9,12 +9,13 @@ package net.noiseinstitute.youarenowinspace
 		private const SPAWN_INTERVAL:uint = 40;
 		
 		private var time:uint = 0;
-		
-		public function AlienSpawner() {
-		}
+
+        private const COLOURS:Vector.<String> = Vector.<String>([
+                Alien.RED, Alien.GREEN, Alien.BROWN, Alien.BROWN]);
 		
 		public function spawnAlien():void {
-			var alien:Alien = new Alien();
+            var colour:String = COLOURS[Math.floor(Math.random() * COLOURS.length)];
+			var alien:Alien = new Alien(colour);
             alien.behaviour = new Level3AlienBehaviour(alien);
 			FP.world.add(alien);
 			time = 0;
