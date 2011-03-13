@@ -38,7 +38,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
             var musicChannel:SoundChannel = new MUSIC().play();
             musicChannel.addEventListener(Event.SOUND_COMPLETE, function(e:Event):void {
                 if (stage%2 == 0) {
-                    FP.world = new Level3();
+                    FP.world = new Level3(stage);
                 } else {
                     FP.world = new Level1(stage);
                 }
@@ -58,14 +58,6 @@ package net.noiseinstitute.youarenowinspace.worlds {
             stageSpritemap.add("one-glow", [9,14,2,14,9,8,15], 0.25);
             stageSpritemap.add("three-glow", [11,16,4,16,11,10,16], 0.25);
 
-            if (stage == 1) {
-                stageSpritemap.play("one-white");
-            } else if (stage == 2) {
-                stageSpritemap.play("three-white");
-            } else {
-                stageEntity.visible = false;
-            }
-
             getReadyEntity = new Entity();
             getReadyEntity.graphic = getReadySpritemap;
             getReadyEntity.x = (FP.screen.width - 320)/2 + 96;
@@ -75,6 +67,14 @@ package net.noiseinstitute.youarenowinspace.worlds {
             stageEntity.graphic = stageSpritemap;
             stageEntity.x = getReadyEntity.x;
             stageEntity.y = getReadyEntity.y + 16;
+
+            if (stage == 1) {
+                stageSpritemap.play("one-white");
+            } else if (stage == 2) {
+                stageSpritemap.play("three-white");
+            } else {
+                stageEntity.visible = false;
+            }
 
             add(getReadyEntity);
             add(stageEntity);

@@ -12,23 +12,38 @@ package net.noiseinstitute.youarenowinspace.behaviours {
         private var pathW:Number;
         private var pathH:Number;
 
-        public function Level3AlienBehaviour (alien:Alien) {
+        private var stage:int;
+
+        private var playX:int;
+        private var playY:int;
+        private var playWidth:int;
+        private var playHeight:int;
+
+        public function Level3AlienBehaviour (alien:Alien, stage:int, playX:int, playY:int, playWidth:int, playHeight:int) {
             this.alien = alien;
+
+            this.stage = stage;
+            this.playX = playX;
+            this.playY = playY;
+            this.playWidth = playWidth;
+            this.playHeight = playHeight;
+
+            // deliberately glitch the alien to the top-left in the first frame :)
+            alien.x = playX;
+            alien.y = playY;
+
             pos = Math.random() * (Math.PI * 2);
 
-            pathX = (Math.random() * FP.screen.width / 2) + FP.screen.width / 4;
-            pathY = (Math.random() * FP.screen.height / 2) + FP.screen.height / 4;
-            pathW = Math.random() * pathX - FP.screen.width / 4;
-            pathH = Math.random() * pathY - FP.screen.height / 4;
+            pathX = (Math.random() * playWidth / 2) + playWidth / 4;
+            pathY = (Math.random() * playHeight / 2) + playHeight / 4;
+            pathW = Math.random() * pathX - playWidth / 4;
+            pathH = Math.random() * pathY - playHeight / 4;
         }
 
         public function update ():void {
-            pos += 0.1;
-            alien.x = pathX + pathW * Math.cos(pos);
-            alien.y = pathY + pathH * Math.sin(pos);
-        }
-
-        public function execute (cmd:int):void {
+            pos += 0.02 * stage;
+            alien.x = playX + pathX + pathW * Math.cos(pos);
+            alien.y = playY + pathY + pathH * Math.sin(pos);
         }
     }
 }

@@ -9,6 +9,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
     import net.flashpunk.World;
     import net.flashpunk.graphics.Spritemap;
     import net.flashpunk.utils.Input;
+    import net.noiseinstitute.youarenowinspace.Main;
 
     public class TitleWorld extends World {
 
@@ -33,6 +34,8 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
         public function TitleWorld () {
             FP.screen.color = 0xff444444;
+
+            Main.score = 0;
 
             var titleImage:Entity = new Entity();
             _titleImageSpritemap.add("click", [0], 1);
