@@ -6,6 +6,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
     import net.noiseinstitute.youarenowinspace.*;
     import net.noiseinstitute.youarenowinspace.behaviours.PlayerDefaultBehaviour;
     import net.noiseinstitute.youarenowinspace.entities.Alien;
+    import net.noiseinstitute.youarenowinspace.entities.Border;
     import net.noiseinstitute.youarenowinspace.entities.KevinToms;
     import net.noiseinstitute.youarenowinspace.entities.Player;
 
@@ -20,8 +21,11 @@ package net.noiseinstitute.youarenowinspace.worlds {
         private var playerBehaviour:PlayerDefaultBehaviour;
 		private var handleBreakaway:Boolean = false;
         private var kevinToms:KevinToms;
+        private var border:Border;
 
 		public function Level1 () {
+            FP.screen.color = 0xff000000;
+
 			formation = new AlienFormationController();
             for each (var alien:Alien in formation.aliens) {
                 add(alien);
@@ -46,6 +50,11 @@ package net.noiseinstitute.youarenowinspace.worlds {
             kevinToms.y = 56;
             kevinToms.visible = false;
             add(kevinToms);
+
+            border = new Border();
+            add(border);
+            border.x = -(Border.WIDTH - FP.screen.width)/2;
+            border.y = -(Border.HEIGHT - FP.screen.height)/2;
 		}
 		
 		override public function update():void {
@@ -64,6 +73,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
 			
 			if(formation.breakaway && !handleBreakaway) {
 				handleBreakaway = true;
+                border.alert = true;
                 playerBehaviour.fixedX = true;
 			}
 		}
