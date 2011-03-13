@@ -58,7 +58,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
         override public function update():void {
             super.update();
-            if (Input.pressed(Key.X) || Input.pressed(Key.SPACE)) {
+            if (Input.pressed("fire")) {
                 music.stop();
                 FP.world = new Level1();
 
