@@ -60,9 +60,10 @@ package net.noiseinstitute.youarenowinspace.worlds {
             add(kevinToms);
 
             border = new Border();
-            add(border);
             border.x = -(Border.WIDTH - FP.screen.width) / 2;
             border.y = -(Border.HEIGHT - FP.screen.height) / 2;
+            border.layer = int.MIN_VALUE;
+            add(border);
         }
 
         override public function update ():void {
