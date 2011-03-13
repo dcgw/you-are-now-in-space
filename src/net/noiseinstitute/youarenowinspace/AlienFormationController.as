@@ -77,42 +77,41 @@ package net.noiseinstitute.youarenowinspace {
                 return;
             }
 
+            // Find where the aliens are and how many
+            var leftmost:Number = playX + playWidth;
+            var rightmost:Number = playX;
+            var upmost:Number = playY + playHeight;
+            formationSize = 0;
+            var nonBrokenFormationSize:int = 0;
+
+            var alien:Alien;
+            for each(alien in aliens) {
+                if (!alien.dead) {
+                    formationSize++;
+
+                    // If they're in formation
+                    if (!alien.behaviour) {
+                        nonBrokenFormationSize++;
+
+                        if (alien.x < leftmost) {
+                            leftmost = alien.x;
+                        }
+                        if (alien.x > rightmost) {
+                            rightmost = alien.x;
+                        }
+                        if (alien.y < upmost) {
+                            upmost = alien.y;
+                        }
+                    }
+                }
+            }
+
             time++;
             if (time >= moveInterval) {
                 time = 0;
 
-                // Find where the aliens are and how many
-                var leftmost:Number = playX + playWidth;
-                var rightmost:Number = playX;
-                var upmost:Number = playY + playHeight;
-                formationSize = 0;
-
-                var alien:Alien;
-                for each(alien in aliens) {
-                    if (!alien.dead) {
-                        formationSize++;
-
-                        // If they're in formation
-                        if (!alien.behaviour) {
-                            if (alien.x < leftmost) {
-                                leftmost = alien.x;
-                            }
-                            if (alien.x > rightmost) {
-                                rightmost = alien.x;
-                            }
-                            if (alien.y < upmost) {
-                                upmost = alien.y;
-                            }
-                        }
-                    }
-                }
-
                 // Update the movement interval
                 moveInterval = formationSize;
-
-                if (upmost <= playY + BREAKAWAY_MARGIN) {
-                    _breakaway = true;
-                }
 
                 // Update the size of the formation
                 formationX = leftmost;
@@ -142,12 +141,27 @@ package net.noiseinstitute.youarenowinspace {
 
                 for each(alien in aliens) {
                     if (!alien.dead && !alien.behaviour) {
-                        if (_breakaway && Math.random() > 0.8) {
-                            alien.behaviour = new BrokenFormationBehaviour(alien);
-                        }
-
                         alien.x += moveAmtX;
                         alien.y += moveAmtY;
+                    }
+                }
+
+                if (upmost <= playY + BREAKAWAY_MARGIN) {
+                    _breakaway = true;
+                }
+            }
+
+            if (_breakaway && nonBrokenFormationSize > 0) {
+                var selected:int = Math.floor(Math.random() * nonBrokenFormationSize);
+
+                var i:int = 0;
+                for each(alien in aliens) {
+                    if (!alien.dead && !alien.behaviour) {
+                        if (i == selected) {
+                            alien.behaviour = new BrokenFormationBehaviour(alien);
+                            break;
+                        }
+                        ++i;
                     }
                 }
             }
