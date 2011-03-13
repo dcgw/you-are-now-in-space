@@ -9,11 +9,11 @@ package net.noiseinstitute.youarenowinspace
     import net.noiseinstitute.youarenowinspace.worlds.TitleWorld;
 
 
-    [SWF(width="640", height="400", backgroundColor="#000000", frameRate="60")]
+    [SWF(width="768", height="576", backgroundColor="#000000", frameRate="60")]
 	public class Main extends Engine {
 		
 		public function Main() {
-			super(320, 200, 60, true);
+			super(384, 288, 60, true);
 
             Input.define("left", Key.LEFT);
             Input.define("right", Key.RIGHT);
