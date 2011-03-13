@@ -1,14 +1,12 @@
 package net.noiseinstitute.youarenowinspace.behaviours
 {
-	import net.flashpunk.FP;
-	import net.flashpunk.utils.Input;
-	import net.flashpunk.utils.Key;
-	import net.noiseinstitute.youarenowinspace.Controller;
-	import net.noiseinstitute.youarenowinspace.entities.Alien;
+    import net.flashpunk.FP;
+    import net.noiseinstitute.youarenowinspace.Controller;
+    import net.noiseinstitute.youarenowinspace.entities.Alien;
 
-	public class BrokenFormationBehaviour implements IBehaviour {
+    public class BrokenFormationBehaviour implements IBehaviour {
 		
-		private const SPEED:Number = 4;
+		private const SPEED:Number = 2;
 		
 		private var alien:Alien;
 		private var layer:Number;
@@ -19,7 +17,7 @@ package net.noiseinstitute.youarenowinspace.behaviours
 		}
 		
 		public function update():void {
-			alien.y -= SPEED;
+			alien.y -= SPEED * layer;
 
 			// Wrap
 			if (alien.y <= -Alien.HEIGHT) {
