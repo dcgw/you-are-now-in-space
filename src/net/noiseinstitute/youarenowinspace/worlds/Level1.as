@@ -41,6 +41,8 @@ package net.noiseinstitute.youarenowinspace.worlds {
         private var goalTime:int = 60;
 
         private var alertChannel:SoundChannel;
+        private var gotKevinTomsPoints:Boolean = false;
+        private var winText:Text;
 
         public function Level1 (stage:int) {
             this.stage = stage;
@@ -58,14 +60,13 @@ package net.noiseinstitute.youarenowinspace.worlds {
                 add(alien);
                 alien.onDie = function():void {
                     Main.score += scoreTime*stage / 5;
-                    trace(Main.score);
                 }
             }
 
             winMessage = new Entity();
             winMessage.x = playX + 80;
             winMessage.y = playY + 32;
-            var winText:Text = new Text("GOAL!", 0, 0, 320);
+            winText = new Text("GOAL!", 0, 0, 320);
             winText.font = "C64";
             winText.size = 16;
             winMessage.graphic = winText;
@@ -98,7 +99,12 @@ package net.noiseinstitute.youarenowinspace.worlds {
             }
 
             if (formation.allDead) {
-                Main.score += 2000 * stage;
+                if (!gotKevinTomsPoints) {
+                    var kevinTomsPoints:int = 2000 * stage;
+                    winText.text = "GOAL! " + kevinTomsPoints.toString(10);
+                    Main.score += kevinTomsPoints;
+                    gotKevinTomsPoints = true;
+                }
                 winMessage.visible = true;
                 kevinToms.visible = true;
                 if (FP.screen.color == 0xffb8c76f) {
