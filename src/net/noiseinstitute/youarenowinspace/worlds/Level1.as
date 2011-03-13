@@ -38,6 +38,8 @@ package net.noiseinstitute.youarenowinspace.worlds {
             }
 
             player = new Player();
+            player.x = (FP.screen.width - player.width)/2;
+            player.y = playY;
             player.behaviour = playerBehaviour = new PlayerDefaultBehaviour(player);
             add(player);
 

@@ -14,7 +14,6 @@ package net.noiseinstitute.youarenowinspace.entities {
         public function Player () {
             width = WIDTH;
             height = HEIGHT;
-            x = 160 - width / 2;
             behaviour = new PlayerDefaultBehaviour(this);
 
             var animation:Spritemap = new Spritemap(PLAYER_SPRITEMAP, WIDTH, HEIGHT);
