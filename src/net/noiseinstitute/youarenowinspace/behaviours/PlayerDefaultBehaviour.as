@@ -12,7 +12,7 @@ package net.noiseinstitute.youarenowinspace.behaviours {
 
         public var fixedX:Boolean = false;
 
-        private const SHOOT_INTERVAL:uint = 6;
+        private const SHOOT_INTERVAL:uint = 24;
         private const SPEED:uint = 5;
 
         private var player:Player;
@@ -25,7 +25,7 @@ package net.noiseinstitute.youarenowinspace.behaviours {
         public function update ():void {
             timer.update();
 
-            if (Input.check("fire") && timer.hasElapsed(SHOOT_INTERVAL)) {
+            if (Input.pressed("fire") && timer.hasElapsed(SHOOT_INTERVAL)) {
                 FP.world.add(new Bullet(player.centerX, player.centerY));
                 new Sfx(LASER_SOUND).play();
                 timer.resetTime();
