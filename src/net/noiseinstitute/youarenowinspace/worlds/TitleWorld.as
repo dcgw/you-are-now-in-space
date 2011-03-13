@@ -57,7 +57,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
             super.update();
             if (Input.pressed("fire")) {
                 music.stop();
-                FP.world = new GetReadyWorld();
+                FP.world = new GetReadyWorld(1);
 
                 if (listening) {
                     FP.stage.removeEventListener(MouseEvent.MOUSE_DOWN, onFocus);

@@ -16,8 +16,6 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
         public var earPain:SoundChannel = Sound(new EAR_PAIN()).play(0, int.MAX_VALUE);
 
-        private var _controller:Controller;
-
         public function Level3 () {
             super();
 
@@ -25,14 +23,11 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
             player = new Player();
             add(player);
-
-            _controller = new Controller(player);
         }
 
         override public function update ():void {
             super.update();
             alienSpawner.update();
-            _controller.control();
         }
     }
 }
