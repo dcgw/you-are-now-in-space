@@ -5,7 +5,7 @@ package net.noiseinstitute.youarenowinspace.behaviours {
 
     public class BrokenFormationBehaviour implements IBehaviour {
 
-        private const SPEED:Number = 1.5;
+        private const SPEED:Number = 1;
 
         private var alien:Alien;
         private var layer:Number;

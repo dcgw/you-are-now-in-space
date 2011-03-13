@@ -1,22 +1,26 @@
 package net.noiseinstitute.youarenowinspace.entities {
     import net.flashpunk.FP;
+    import net.flashpunk.Sfx;
     import net.flashpunk.graphics.Spritemap;
     import net.noiseinstitute.youarenowinspace.YANISEntity;
     import net.noiseinstitute.youarenowinspace.behaviours.PlayerDefaultBehaviour;
 
     public class Player extends YANISEntity {
 
-        private const WIDTH:uint = 21;
-        private const HEIGHT:uint = 24;
+        private static const WIDTH:uint = 21;
+        private static const HEIGHT:uint = 24;
 
-        private const ASPLODE_WIDTH:uint = 24;
-        private const ASPLODE_HEIGHT:uint = 21;
+        private static const ASPLODE_WIDTH:uint = 24;
+        private static const ASPLODE_HEIGHT:uint = 21;
 
         [Embed(source = 'Player.png')]
-        private const PLAYER_SPRITEMAP:Class;
+        private static const PLAYER_SPRITEMAP:Class;
 
         [Embed(source = 'Alien.png')]
-        private const ASPLODE_SPRITEMAP:Class;
+        private static const ASPLODE_SPRITEMAP:Class;
+
+        [Embed(source="PlayerSplode.mp3")]
+        private static const ASPLODE_SOUND:Class;
 
         private var dead:Boolean = false;
 
@@ -46,6 +50,8 @@ package net.noiseinstitute.youarenowinspace.entities {
                 animation.add("asploding", [28,29,30,31,32,33,34], 0.25);
                 animation.play("asploding");
                 graphic = animation;
+
+                new Sfx(ASPLODE_SOUND).play();
 
                 var me:Player = this;
                 animation.callback = function():void {

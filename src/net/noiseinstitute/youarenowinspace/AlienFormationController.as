@@ -1,11 +1,15 @@
 package net.noiseinstitute.youarenowinspace {
     import net.flashpunk.FP;
+    import net.flashpunk.Sfx;
     import net.noiseinstitute.youarenowinspace.behaviours.BrokenFormationBehaviour;
     import net.noiseinstitute.youarenowinspace.entities.Alien;
     import net.noiseinstitute.youarenowinspace.entities.AlienBullet;
     import net.noiseinstitute.youarenowinspace.entities.Player;
 
     public class AlienFormationController {
+
+        [Embed(source="AlienShot.mp3")]
+        private static const SHOT_SOUND:Class;
 
         private static const ALIENS_HORIZONTAL:uint = 8;
         private static const ALIEN_COLOURS:Vector.<String> = Vector.<String>(
@@ -178,16 +182,16 @@ package net.noiseinstitute.youarenowinspace {
                 }
             }
 
-            var shoot:Boolean = false;
+            var shooting:Boolean = false;
             if (--shootTimer <= 0) {
-                shoot = true;
+                shooting = true;
                 shootTimer = SHOOT_INTERVAL/stage;
             }
 
             var selected:int;
             var i:int;
 
-            if ((_breakaway || shoot) && nonBrokenFormationSize > 0) {
+            if ((_breakaway || shooting) && nonBrokenFormationSize > 0) {
                 selected = Math.floor(Math.random() * nonBrokenFormationSize);
 
                 i = 0;
@@ -196,13 +200,13 @@ package net.noiseinstitute.youarenowinspace {
                         if (i == selected) {
                             if (_breakaway) {
                                 alien.behaviour = new BrokenFormationBehaviour(alien);
-                            } else if (shoot) {
-                                var vx:Number = 0;
-                                var vy:Number = BULLET_MIN_SPEED + BULLET_SPEED_INCREMENT*(stage-1);
+                            } else if (shooting) {
+                                var vx1:Number = 0;
+                                var vy1:Number = BULLET_MIN_SPEED + BULLET_SPEED_INCREMENT*(stage-1);
                                 if (player.y < formationY) {
-                                    vy = -vy;
+                                    vy1 = -vy1;
                                 }
-                                FP.world.add(new AlienBullet(alien.centerX, alien.centerY, vx, vy));
+                                shoot(alien, vx1, vy1);
                             }
                             break;
                         }
@@ -211,7 +215,7 @@ package net.noiseinstitute.youarenowinspace {
                 }
             }
 
-            if (_breakaway && shoot && stage >= 5) {
+            if (_breakaway && shooting && stage >= 5) {
                 selected = Math.floor(Math.random() * formationSize);
 
                 i = 0;
@@ -223,14 +227,20 @@ package net.noiseinstitute.youarenowinspace {
                             var distance:Number = Math.sqrt(dx*dx + dy*dy);
                             var nx:Number = dx/distance;
                             var ny:Number = dy/distance;
-                            var vx:Number = nx * stage;
-                            var vy:Number = ny * stage;
-                            FP.world.add(new AlienBullet(alien.centerX, alien.centerY, vx, vy));
+                            var vx2:Number = nx * stage;
+                            var vy2:Number = ny * stage;
+                            shoot(alien, vx2, vy2);
                         }
                         ++i;
                     }
                 }
             }
+        }
+
+
+        private function shoot (alien:Alien, vx1:Number, vy1:Number):void {
+            new Sfx(SHOT_SOUND).play();
+            FP.world.add(new AlienBullet(alien.centerX, alien.centerY, vx1, vy1));
         }
     }
 }

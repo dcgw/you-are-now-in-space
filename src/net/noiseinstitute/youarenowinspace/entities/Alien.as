@@ -1,5 +1,6 @@
 package net.noiseinstitute.youarenowinspace.entities {
     import net.flashpunk.FP;
+    import net.flashpunk.Sfx;
     import net.flashpunk.graphics.Spritemap;
     import net.noiseinstitute.youarenowinspace.YANISEntity;
 
@@ -13,6 +14,9 @@ package net.noiseinstitute.youarenowinspace.entities {
 
         [Embed(source = 'Alien.png')]
         private const ALIEN_SPRITEMAP:Class;
+
+        [Embed(source="AlienSplode.mp3")]
+        private const SPLODE_SOUND:Class;
 
         public static const RED:String = "red";
         public static const GREEN:String = "green";
@@ -74,6 +78,8 @@ package net.noiseinstitute.youarenowinspace.entities {
                 _animation.callback = function():void {
                     FP.world.remove(me);
                 }
+
+                new Sfx(SPLODE_SOUND).play(0.75);
 
                 if (onDie != null) {
                     onDie();

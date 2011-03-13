@@ -125,7 +125,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
             if (formation.breakaway && !handleBreakaway) {
                 handleBreakaway = true;
-                alertChannel = Sound(new ALERT()).play(0, int.MAX_VALUE)
+                alertChannel = Sound(new ALERT()).play(0, int.MAX_VALUE);
                 border.alert = true;
                 playerBehaviour.fixedX = true;
             }
