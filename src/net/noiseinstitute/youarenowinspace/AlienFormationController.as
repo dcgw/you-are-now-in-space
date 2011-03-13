@@ -5,8 +5,8 @@ package net.noiseinstitute.youarenowinspace {
 
     public class AlienFormationController {
 
-        static const ALIENS_HORIZONTAL:uint = 8;
-        static const ALIEN_COLOURS:Vector.<String> = Vector.<String>(
+        private static const ALIENS_HORIZONTAL:uint = 8;
+        private static const ALIEN_COLOURS:Vector.<String> = Vector.<String>(
                 [Alien.RED, Alien.BROWN, Alien.GREY, Alien.GREEN]);
 
         private var _aliens:Vector.<Vector.<Alien>> = new Vector.<Vector.<Alien>>();

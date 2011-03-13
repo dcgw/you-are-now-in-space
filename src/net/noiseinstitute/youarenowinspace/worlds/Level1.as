@@ -4,6 +4,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
     import net.flashpunk.World;
     import net.flashpunk.graphics.Text;
     import net.noiseinstitute.youarenowinspace.*;
+    import net.noiseinstitute.youarenowinspace.behaviours.PlayerDefaultBehaviour;
     import net.noiseinstitute.youarenowinspace.entities.Alien;
     import net.noiseinstitute.youarenowinspace.entities.KevinToms;
     import net.noiseinstitute.youarenowinspace.entities.Player;
@@ -15,24 +16,21 @@ package net.noiseinstitute.youarenowinspace.worlds {
 		
 		private var formation:AlienFormationController;
 		private var winMsg:Entity;
-		private var ctrl:Controller;
 		private var player:Player;
+        private var playerBehaviour:PlayerDefaultBehaviour;
 		private var handleBreakaway:Boolean = false;
         private var kevinToms:KevinToms;
 
 		public function Level1 () {
-			ctrl = new Controller();
-
 			formation = new AlienFormationController();
             for each (var alien:Alien in formation.aliens) {
                 add(alien);
-				ctrl.register(alien, 0);
             }
 
             player = new Player();
+            player.behaviour = playerBehaviour = new PlayerDefaultBehaviour(player);
             add(player);
-			ctrl.register(player);
-			
+
 			winMsg = new Entity();
 			Text.font = "C64";
 			var txt:Text = new Text("GOAL!");
@@ -52,7 +50,6 @@ package net.noiseinstitute.youarenowinspace.worlds {
 		
 		override public function update():void {
 			super.update();
-			ctrl.control();
 			formation.update();
 			
 			if(formation.allDead) {
@@ -67,10 +64,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
 			
 			if(formation.breakaway && !handleBreakaway) {
 				handleBreakaway = true;
-				ctrl.releaseControl(player, Controller.LEFT | Controller.RIGHT);
-				for each (var alien:Alien in formation.aliens) {
-					ctrl.giveControl(alien, Controller.LEFT | Controller.RIGHT);
-				}
+                playerBehaviour.fixedX = true;
 			}
 		}
     }

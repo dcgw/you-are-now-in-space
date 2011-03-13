@@ -1,7 +1,11 @@
 package net.noiseinstitute.youarenowinspace
 {
-	import net.flashpunk.Engine;
+    import flashx.textLayout.operations.FlowOperation;
+
+    import net.flashpunk.Engine;
 	import net.flashpunk.FP;
+    import net.flashpunk.utils.Input;
+    import net.flashpunk.utils.Key;
     import net.noiseinstitute.youarenowinspace.worlds.TitleWorld;
 
 
@@ -10,6 +14,13 @@ package net.noiseinstitute.youarenowinspace
 		
 		public function Main() {
 			super(320, 200, 60, true);
+
+            Input.define("left", Key.LEFT);
+            Input.define("right", Key.RIGHT);
+            Input.define("up", Key.UP);
+            Input.define("down", Key.DOWN);
+            Input.define("fire", Key.X, Key.Z, Key.SPACE);
+
             FP.screen.scale = 2;
 			FP.world = new TitleWorld();
 		}

@@ -2,10 +2,9 @@ package net.noiseinstitute.youarenowinspace.entities
 {
     import net.flashpunk.FP;
     import net.flashpunk.graphics.Spritemap;
-    import net.noiseinstitute.youarenowinspace.IControllable;
     import net.noiseinstitute.youarenowinspace.YANISEntity;
 
-    public class Alien extends YANISEntity implements IControllable {
+    public class Alien extends YANISEntity {
 		
         public static const WIDTH:uint = 24;
         public static const HEIGHT:uint = 17;
@@ -74,12 +73,6 @@ package net.noiseinstitute.youarenowinspace.entities
                 _animation.callback = function():void {
 				    FP.world.remove(me);
                 }
-			}
-		}
-		
-		public function execute(cmd:int):void {
-			if(behaviour) {
-				behaviour.execute(cmd);
 			}
 		}
 	}
