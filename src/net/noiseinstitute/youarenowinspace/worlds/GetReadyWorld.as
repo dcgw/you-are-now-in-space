@@ -40,7 +40,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
                 if (stage%2 == 0) {
                     FP.world = new Level3();
                 } else {
-                    FP.world = new Level1();
+                    FP.world = new Level1(stage);
                 }
             });
 

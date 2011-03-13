@@ -8,6 +8,11 @@ package net.noiseinstitute.youarenowinspace {
         private static const ALIEN_COLOURS:Vector.<String> = Vector.<String>(
                 [Alien.RED, Alien.BROWN, Alien.GREY, Alien.GREEN]);
 
+        private static const LEFT_MARGIN:int = 22;
+        private static const BOTTOM_MARGIN:int = 11;
+        private static const BREAKAWAY_MARGIN:int = 80;
+        private static const MOVE_AMOUNT:Number = 6;
+
         private var _aliens:Vector.<Vector.<Alien>> = new Vector.<Vector.<Alien>>();
 
         public function get aliens ():Vector.<Alien> {
@@ -20,15 +25,13 @@ package net.noiseinstitute.youarenowinspace {
 
         private var soundController:SoundController;
 
-        private static const LEFT_MARGIN:int = 22;
-        private static const BOTTOM_MARGIN:int = 11;
-        private static const BREAKAWAY_MARGIN:int = 80;
-        private static const MOVE_AMOUNT:Number = 6;
-
+        private var stage:int;
         private var playX:int;
         private var playY:int;
         private var playWidth:int;
         private var playHeight:int;
+
+        private var moveAmount:Number;
 
         private var time:Number = 0;
         private var moveInterval:Number = 32;
@@ -44,11 +47,14 @@ package net.noiseinstitute.youarenowinspace {
         private var formationY:Number = BOTTOM_MARGIN;
         private var formationW:Number = separationX * ALIENS_HORIZONTAL - (separationX - Alien.WIDTH);
 
-        public function AlienFormationController (x:int, y:int, width:int, height:int) {
+        public function AlienFormationController (stage:int, x:int, y:int, width:int, height:int) {
+            this.stage = stage;
             playX = x;
             playY = y;
             playWidth = width;
             playHeight = height;
+
+            moveAmount = MOVE_AMOUNT+stage*2-1;
 
             soundController = new SoundController();
 
@@ -133,8 +139,8 @@ package net.noiseinstitute.youarenowinspace {
                     }
                 }
 
-                var moveAmtX:Number = moveUp ? 0 : (directionLeft ? -MOVE_AMOUNT : MOVE_AMOUNT);
-                var moveAmtY:Number = moveUp ? -MOVE_AMOUNT : 0;
+                var moveAmtX:Number = moveUp ? 0 : (directionLeft ? -moveAmount : moveAmount);
+                var moveAmtY:Number = moveUp ? -moveAmount : 0;
 
                 formationX += moveAmtX;
                 formationY += moveAmtY;
