@@ -1,5 +1,4 @@
 package net.noiseinstitute.youarenowinspace {
-    import net.flashpunk.FP;
     import net.noiseinstitute.youarenowinspace.behaviours.BrokenFormationBehaviour;
     import net.noiseinstitute.youarenowinspace.entities.Alien;
 
@@ -24,7 +23,12 @@ package net.noiseinstitute.youarenowinspace {
         private static const LEFT_MARGIN:int = 22;
         private static const BOTTOM_MARGIN:int = 11;
         private static const BREAKAWAY_MARGIN:int = 80;
-        private static const MOVE_AMOUNT:Number = 12;
+        private static const MOVE_AMOUNT:Number = 6;
+
+        private var playX:int;
+        private var playY:int;
+        private var playWidth:int;
+        private var playHeight:int;
 
         private var time:Number = 0;
         private var moveInterval:Number = 32;
@@ -40,7 +44,12 @@ package net.noiseinstitute.youarenowinspace {
         private var formationY:Number = BOTTOM_MARGIN;
         private var formationW:Number = separationX * ALIENS_HORIZONTAL - (separationX - Alien.WIDTH);
 
-        public function AlienFormationController () {
+        public function AlienFormationController (x:int, y:int, width:int, height:int) {
+            playX = x;
+            playY = y;
+            playWidth = width;
+            playHeight = height;
+
             soundController = new SoundController();
 
             var i:int = 0;
@@ -48,8 +57,8 @@ package net.noiseinstitute.youarenowinspace {
                 _aliens[i] = new Vector.<Alien>();
                 for (var j:int = 0; j < ALIENS_HORIZONTAL; ++j) {
                     _aliens[i][j] = new Alien(colour);
-                    _aliens[i][j].x = j * separationX + LEFT_MARGIN;
-                    _aliens[i][j].y = FP.height - _aliens[i][j].height - BOTTOM_MARGIN - i * separationY;
+                    _aliens[i][j].x = playX + j * separationX + LEFT_MARGIN;
+                    _aliens[i][j].y = playY + playHeight - _aliens[i][j].height - BOTTOM_MARGIN - i * separationY;
                 }
                 ++i;
             }
@@ -73,9 +82,9 @@ package net.noiseinstitute.youarenowinspace {
                 time = 0;
 
                 // Find where the aliens are and how many
-                var leftmost:Number = FP.screen.width;
-                var rightmost:Number = 0;
-                var upmost:Number = FP.screen.height;
+                var leftmost:Number = playX + playWidth;
+                var rightmost:Number = playX;
+                var upmost:Number = playY + playHeight;
                 formationSize = 0;
 
                 var alien:Alien;
@@ -101,7 +110,7 @@ package net.noiseinstitute.youarenowinspace {
                 // Update the movement interval
                 moveInterval = formationSize;
 
-                if (upmost <= BREAKAWAY_MARGIN) {
+                if (upmost <= playY + BREAKAWAY_MARGIN) {
                     _breakaway = true;
                 }
 
@@ -116,7 +125,7 @@ package net.noiseinstitute.youarenowinspace {
                 }
 
                 // Move the formation
-                if (formationX <= 0 || formationX >= FP.screen.width - formationW) {
+                if (formationX <= playX || formationX >= (playX + playWidth) - formationW) {
                     if (moveUp) {
                         moveUp = false;
                     } else {

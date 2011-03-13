@@ -13,7 +13,13 @@ package net.noiseinstitute.youarenowinspace.worlds {
     public class Level1 extends World {
 
         [Embed(source = '../data/Adore64.ttf', embedAsCFF="false", fontFamily = 'C64')]
-        private const C64_FONT:Class;
+        private static const C64_FONT:Class;
+
+        private static const PLAY_WIDTH:int = 320;
+        private static const PLAY_HEIGHT:int = 200;
+
+        private var playX:int = (FP.screen.width - PLAY_WIDTH)/2;
+        private var playY:int = (FP.screen.height - PLAY_HEIGHT)/2;
 
         private var formation:AlienFormationController;
         private var winMsg:Entity;
@@ -26,7 +32,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
         public function Level1 () {
             FP.screen.color = 0xff000000;
 
-            formation = new AlienFormationController();
+            formation = new AlienFormationController(playX, playY, PLAY_WIDTH, PLAY_HEIGHT);
             for each (var alien:Alien in formation.aliens) {
                 add(alien);
             }
@@ -38,16 +44,16 @@ package net.noiseinstitute.youarenowinspace.worlds {
             winMsg = new Entity();
             Text.font = "C64";
             var txt:Text = new Text("GOAL!");
-            txt.x = 80;
-            txt.y = 32;
+            txt.x = playX + 80;
+            txt.y = playY + 32;
             txt.size = 16;
             winMsg.graphic = txt;
             winMsg.visible = false;
             add(winMsg);
 
             kevinToms = new KevinToms();
-            kevinToms.x = 32;
-            kevinToms.y = 56;
+            kevinToms.x = playX + 32;
+            kevinToms.y = playY + 56;
             kevinToms.visible = false;
             add(kevinToms);
 
