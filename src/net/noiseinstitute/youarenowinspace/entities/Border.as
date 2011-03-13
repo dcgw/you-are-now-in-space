@@ -13,11 +13,11 @@ package net.noiseinstitute.youarenowinspace.entities {
 
         private var _alert:Boolean = false;
 
-        public function get alert():Boolean {
+        public function get alert ():Boolean {
             return _alert;
         }
 
-        public function set alert(value:Boolean):void {
+        public function set alert (value:Boolean):void {
             _alert = value;
             if (value) {
                 spritemap.play("alert");

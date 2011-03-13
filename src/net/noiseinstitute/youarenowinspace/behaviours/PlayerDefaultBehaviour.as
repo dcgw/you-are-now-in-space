@@ -18,7 +18,7 @@ package net.noiseinstitute.youarenowinspace.behaviours {
         private var player:Player;
         private var timer:ResettableTimer = new ResettableTimer();
 
-        public function PlayerDefaultBehaviour(player:Player) {
+        public function PlayerDefaultBehaviour (player:Player) {
             this.player = player;
         }
 

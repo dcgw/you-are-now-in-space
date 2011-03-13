@@ -1,8 +1,6 @@
 package net.noiseinstitute.youarenowinspace.worlds {
     import flash.events.Event;
-
     import flash.events.MouseEvent;
-
     import flash.media.Sound;
     import flash.media.SoundChannel;
 
@@ -11,7 +9,6 @@ package net.noiseinstitute.youarenowinspace.worlds {
     import net.flashpunk.World;
     import net.flashpunk.graphics.Spritemap;
     import net.flashpunk.utils.Input;
-    import net.flashpunk.utils.Key;
 
     public class TitleWorld extends World {
 
@@ -34,7 +31,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
         private var listening:Boolean = false;
         private var music:SoundChannel = Sound(new TITLE_MUSIC()).play(0, int.MAX_VALUE);
 
-        public function TitleWorld() {
+        public function TitleWorld () {
             FP.screen.color = 0xff444444;
 
             var titleImage:Entity = new Entity();
@@ -42,8 +39,8 @@ package net.noiseinstitute.youarenowinspace.worlds {
             _titleImageSpritemap.add("press", [1], 1);
             _titleImageSpritemap.play("click");
             titleImage.graphic = _titleImageSpritemap;
-            titleImage.x = (FP.screen.width - TITLE_IMAGE_WIDTH)/2;
-            titleImage.y = (FP.screen.height - TITLE_IMAGE_HEIGHT)/2;
+            titleImage.x = (FP.screen.width - TITLE_IMAGE_WIDTH) / 2;
+            titleImage.y = (FP.screen.height - TITLE_IMAGE_HEIGHT) / 2;
             add(titleImage);
 
             var title:Entity = new Entity();
@@ -56,7 +53,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
             add(title);
         }
 
-        override public function update():void {
+        override public function update ():void {
             super.update();
             if (Input.pressed("fire")) {
                 music.stop();
@@ -77,11 +74,11 @@ package net.noiseinstitute.youarenowinspace.worlds {
             }
         }
 
-        private function onFocus(e:Event):void {
+        private function onFocus (e:Event):void {
             _titleImageSpritemap.play("press");
         }
 
-        private function onBlur(e:Event):void {
+        private function onBlur (e:Event):void {
             _titleImageSpritemap.play("click");
         }
     }

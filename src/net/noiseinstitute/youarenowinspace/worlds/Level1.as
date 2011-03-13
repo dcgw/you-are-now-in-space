@@ -11,22 +11,22 @@ package net.noiseinstitute.youarenowinspace.worlds {
     import net.noiseinstitute.youarenowinspace.entities.Player;
 
     public class Level1 extends World {
-		
-		[Embed(source = '../data/Adore64.ttf', embedAsCFF="false", fontFamily = 'C64')]
-		private const C64_FONT:Class;
-		
-		private var formation:AlienFormationController;
-		private var winMsg:Entity;
-		private var player:Player;
+
+        [Embed(source = '../data/Adore64.ttf', embedAsCFF="false", fontFamily = 'C64')]
+        private const C64_FONT:Class;
+
+        private var formation:AlienFormationController;
+        private var winMsg:Entity;
+        private var player:Player;
         private var playerBehaviour:PlayerDefaultBehaviour;
-		private var handleBreakaway:Boolean = false;
+        private var handleBreakaway:Boolean = false;
         private var kevinToms:KevinToms;
         private var border:Border;
 
-		public function Level1 () {
+        public function Level1 () {
             FP.screen.color = 0xff000000;
 
-			formation = new AlienFormationController();
+            formation = new AlienFormationController();
             for each (var alien:Alien in formation.aliens) {
                 add(alien);
             }
@@ -35,15 +35,15 @@ package net.noiseinstitute.youarenowinspace.worlds {
             player.behaviour = playerBehaviour = new PlayerDefaultBehaviour(player);
             add(player);
 
-			winMsg = new Entity();
-			Text.font = "C64";
-			var txt:Text = new Text("GOAL!");
+            winMsg = new Entity();
+            Text.font = "C64";
+            var txt:Text = new Text("GOAL!");
             txt.x = 80;
             txt.y = 32;
-			txt.size = 16;
-			winMsg.graphic = txt;
-			winMsg.visible = false;
-			add(winMsg);
+            txt.size = 16;
+            winMsg.graphic = txt;
+            winMsg.visible = false;
+            add(winMsg);
 
             kevinToms = new KevinToms();
             kevinToms.x = 32;
@@ -53,29 +53,29 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
             border = new Border();
             add(border);
-            border.x = -(Border.WIDTH - FP.screen.width)/2;
-            border.y = -(Border.HEIGHT - FP.screen.height)/2;
-		}
-		
-		override public function update():void {
-			super.update();
-			formation.update();
-			
-			if(formation.allDead) {
-				winMsg.visible = true;
+            border.x = -(Border.WIDTH - FP.screen.width) / 2;
+            border.y = -(Border.HEIGHT - FP.screen.height) / 2;
+        }
+
+        override public function update ():void {
+            super.update();
+            formation.update();
+
+            if (formation.allDead) {
+                winMsg.visible = true;
                 kevinToms.visible = true;
                 if (FP.screen.color == 0xffb8c76f) {
                     FP.screen.color = 0xff000000;
                 } else {
                     FP.screen.color = 0xffb8c76f;
                 }
-			}
-			
-			if(formation.breakaway && !handleBreakaway) {
-				handleBreakaway = true;
+            }
+
+            if (formation.breakaway && !handleBreakaway) {
+                handleBreakaway = true;
                 border.alert = true;
                 playerBehaviour.fixedX = true;
-			}
-		}
+            }
+        }
     }
 }

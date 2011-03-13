@@ -1,5 +1,4 @@
-package net.noiseinstitute.youarenowinspace.entities
-{
+package net.noiseinstitute.youarenowinspace.entities {
     import net.flashpunk.graphics.Spritemap;
     import net.noiseinstitute.youarenowinspace.YANISEntity;
     import net.noiseinstitute.youarenowinspace.behaviours.PlayerDefaultBehaviour;
@@ -9,19 +8,19 @@ package net.noiseinstitute.youarenowinspace.entities
         private const WIDTH:uint = 21;
         private const HEIGHT:uint = 24;
 
-		[Embed(source = 'Player.png')]
-		private const PLAYER_SPRITEMAP:Class;
+        [Embed(source = 'Player.png')]
+        private const PLAYER_SPRITEMAP:Class;
 
-		public function Player() {
+        public function Player () {
             width = WIDTH;
             height = HEIGHT;
-            x = 160 - width/2;
+            x = 160 - width / 2;
             behaviour = new PlayerDefaultBehaviour(this);
 
             var animation:Spritemap = new Spritemap(PLAYER_SPRITEMAP, WIDTH, HEIGHT);
             graphic = animation;
             animation.add("spinning", [0,1,2,3,4,5,6], 0.25);
             animation.play("spinning");
-		}
-	}
+        }
+    }
 }

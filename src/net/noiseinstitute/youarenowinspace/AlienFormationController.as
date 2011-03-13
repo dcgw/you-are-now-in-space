@@ -10,8 +10,8 @@ package net.noiseinstitute.youarenowinspace {
                 [Alien.RED, Alien.BROWN, Alien.GREY, Alien.GREEN]);
 
         private var _aliens:Vector.<Vector.<Alien>> = new Vector.<Vector.<Alien>>();
-		
-        public function get aliens():Vector.<Alien> {
+
+        public function get aliens ():Vector.<Alien> {
             var value:Vector.<Alien> = new Vector.<Alien>();
             for each (var v:Vector.<Alien> in _aliens) {
                 value = value.concat(v);
@@ -23,30 +23,30 @@ package net.noiseinstitute.youarenowinspace {
 
         private static const LEFT_MARGIN:int = 22;
         private static const BOTTOM_MARGIN:int = 11;
-		private static const BREAKAWAY_MARGIN:int = 80;
-		private static const MOVE_AMOUNT:Number = 12;
-		
-		private var time:Number = 0;
-		private var moveInterval:Number= 32;
-        private var directionLeft:Boolean = true;
-		private var moveUp:Boolean = false;
-		private var formationSize:Number;
-		private var _breakaway:Boolean = false;
-		
-		private var separationX:Number = 36;
-		private var separationY:Number = 24;
+        private static const BREAKAWAY_MARGIN:int = 80;
+        private static const MOVE_AMOUNT:Number = 12;
 
-		private var formationX:Number = LEFT_MARGIN;
-		private var formationY:Number = BOTTOM_MARGIN;
-		private var formationW:Number = separationX * ALIENS_HORIZONTAL - (separationX - Alien.WIDTH);
+        private var time:Number = 0;
+        private var moveInterval:Number = 32;
+        private var directionLeft:Boolean = true;
+        private var moveUp:Boolean = false;
+        private var formationSize:Number;
+        private var _breakaway:Boolean = false;
+
+        private var separationX:Number = 36;
+        private var separationY:Number = 24;
+
+        private var formationX:Number = LEFT_MARGIN;
+        private var formationY:Number = BOTTOM_MARGIN;
+        private var formationW:Number = separationX * ALIENS_HORIZONTAL - (separationX - Alien.WIDTH);
 
         public function AlienFormationController () {
-			soundController = new SoundController();
-			
+            soundController = new SoundController();
+
             var i:int = 0;
             for each (var colour:String in ALIEN_COLOURS) {
                 _aliens[i] = new Vector.<Alien>();
-                for (var j:int=0; j<ALIENS_HORIZONTAL; ++j) {
+                for (var j:int = 0; j < ALIENS_HORIZONTAL; ++j) {
                     _aliens[i][j] = new Alien(colour);
                     _aliens[i][j].x = j * separationX + LEFT_MARGIN;
                     _aliens[i][j].y = FP.height - _aliens[i][j].height - BOTTOM_MARGIN - i * separationY;
@@ -54,94 +54,94 @@ package net.noiseinstitute.youarenowinspace {
                 ++i;
             }
         }
-		
-		public function get allDead():Boolean {
-			return formationSize == 0;
-		}
-		
-		public function get breakaway():Boolean {
-			return _breakaway;
-		}
-		
-		public function update():void {
-			if(allDead) {
-				return;
-			}
 
-			time++;
-			if(time >= moveInterval) {
-				time = 0;
+        public function get allDead ():Boolean {
+            return formationSize == 0;
+        }
 
-				// Find where the aliens are and how many
-				var leftmost:Number = FP.screen.width;
-				var rightmost:Number = 0;
-				var upmost:Number = FP.screen.height;
-				formationSize = 0;
+        public function get breakaway ():Boolean {
+            return _breakaway;
+        }
 
-                 var alien:Alien;
-				for each(alien in aliens) {
-					if(!alien.dead) {
-						formationSize++;
+        public function update ():void {
+            if (allDead) {
+                return;
+            }
 
-						// If they're in formation
-						if(!alien.behaviour) {
-							if(alien.x < leftmost) {
-								leftmost = alien.x;
-							}
-							if(alien.x > rightmost) {
-								rightmost = alien.x;
-							}
-							if(alien.y < upmost) {
-								upmost = alien.y;
-							}
-						}
-					}
-				}
+            time++;
+            if (time >= moveInterval) {
+                time = 0;
 
-				// Update the movement interval
-				moveInterval = formationSize;
+                // Find where the aliens are and how many
+                var leftmost:Number = FP.screen.width;
+                var rightmost:Number = 0;
+                var upmost:Number = FP.screen.height;
+                formationSize = 0;
 
-				if(upmost <= BREAKAWAY_MARGIN) {
-					_breakaway = true;
-				}
+                var alien:Alien;
+                for each(alien in aliens) {
+                    if (!alien.dead) {
+                        formationSize++;
 
-				// Update the size of the formation
-				formationX = leftmost;
-				formationY = upmost;
-				formationW = rightmost + Alien.WIDTH - formationX;
+                        // If they're in formation
+                        if (!alien.behaviour) {
+                            if (alien.x < leftmost) {
+                                leftmost = alien.x;
+                            }
+                            if (alien.x > rightmost) {
+                                rightmost = alien.x;
+                            }
+                            if (alien.y < upmost) {
+                                upmost = alien.y;
+                            }
+                        }
+                    }
+                }
 
-				// Make a sound
-				if(!allDead) {
-					soundController.makeSound();
-				}
+                // Update the movement interval
+                moveInterval = formationSize;
 
-				// Move the formation
-				if(formationX <= 0 || formationX >= FP.screen.width - formationW) {
-					if(moveUp) {
-						moveUp = false;
-					} else {
-						directionLeft = !directionLeft;
-						moveUp = true;
-					}
-				}
+                if (upmost <= BREAKAWAY_MARGIN) {
+                    _breakaway = true;
+                }
 
-				var moveAmtX:Number = moveUp ? 0 : (directionLeft ? -MOVE_AMOUNT : MOVE_AMOUNT);
-				var moveAmtY:Number = moveUp ? -MOVE_AMOUNT : 0;
+                // Update the size of the formation
+                formationX = leftmost;
+                formationY = upmost;
+                formationW = rightmost + Alien.WIDTH - formationX;
 
-				formationX += moveAmtX;
-				formationY += moveAmtY;
+                // Make a sound
+                if (!allDead) {
+                    soundController.makeSound();
+                }
 
-				for each(alien in aliens) {
-					if(!alien.dead && !alien.behaviour) {
-						if(_breakaway && Math.random() > 0.8) {
-							alien.behaviour = new BrokenFormationBehaviour(alien);
-						}
+                // Move the formation
+                if (formationX <= 0 || formationX >= FP.screen.width - formationW) {
+                    if (moveUp) {
+                        moveUp = false;
+                    } else {
+                        directionLeft = !directionLeft;
+                        moveUp = true;
+                    }
+                }
 
-						alien.x += moveAmtX;
-						alien.y += moveAmtY;
-					}
-				}
-			}
-		}
+                var moveAmtX:Number = moveUp ? 0 : (directionLeft ? -MOVE_AMOUNT : MOVE_AMOUNT);
+                var moveAmtY:Number = moveUp ? -MOVE_AMOUNT : 0;
+
+                formationX += moveAmtX;
+                formationY += moveAmtY;
+
+                for each(alien in aliens) {
+                    if (!alien.dead && !alien.behaviour) {
+                        if (_breakaway && Math.random() > 0.8) {
+                            alien.behaviour = new BrokenFormationBehaviour(alien);
+                        }
+
+                        alien.x += moveAmtX;
+                        alien.y += moveAmtY;
+                    }
+                }
+            }
+        }
     }
 }

@@ -16,10 +16,10 @@ package net.noiseinstitute.youarenowinspace.behaviours {
             this.alien = alien;
             pos = Math.random() * (Math.PI * 2);
 
-            pathX = (Math.random() * FP.screen.width/2) + FP.screen.width/4;
-            pathY = (Math.random() * FP.screen.height/2) + FP.screen.height/4;
-            pathW = Math.random() * pathX - FP.screen.width/4;
-            pathH = Math.random() * pathY - FP.screen.height/4;
+            pathX = (Math.random() * FP.screen.width / 2) + FP.screen.width / 4;
+            pathY = (Math.random() * FP.screen.height / 2) + FP.screen.height / 4;
+            pathW = Math.random() * pathX - FP.screen.width / 4;
+            pathH = Math.random() * pathY - FP.screen.height / 4;
         }
 
         public function update ():void {
