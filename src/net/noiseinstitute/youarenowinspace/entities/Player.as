@@ -55,6 +55,22 @@ package net.noiseinstitute.youarenowinspace.entities {
                     }
                 }
             }
+
+            if (x < 0) {
+                x = 0;
+            }
+
+            if (x+width > FP.screen.width) {
+                x = FP.screen.width - width;
+            }
+
+            if (y < 0) {
+                y = 0;
+            }
+
+            if (y+height > FP.screen.height) {
+                y = FP.screen.height - height;
+            }
         }
     }
 }
