@@ -25,7 +25,7 @@ package net.noiseinstitute.youarenowinspace {
 
         private static const LEFT_MARGIN:int = 22;
         private static const BOTTOM_MARGIN:int = 11;
-		private static const BREAKAWAY_MARGIN:int = 60;
+		private static const BREAKAWAY_MARGIN:int = 80;
 		private static const MOVE_AMOUNT:Number = 12;
 		
 		private var time:Number = 0;
