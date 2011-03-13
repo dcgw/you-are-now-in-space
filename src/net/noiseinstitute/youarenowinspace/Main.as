@@ -5,7 +5,7 @@ package net.noiseinstitute.youarenowinspace
     import net.noiseinstitute.youarenowinspace.worlds.TitleWorld;
 
 
-    [SWF(width="640", height="480", backgroundColor="#000000", frameRate="60")]
+    [SWF(width="640", height="400", backgroundColor="#000000", frameRate="60")]
 	public class Main extends Engine {
 		
 		public function Main() {
