@@ -22,7 +22,8 @@ package net.noiseinstitute.youarenowinspace.worlds {
         private var playY:int = (FP.screen.height - PLAY_HEIGHT)/2;
 
         private var formation:AlienFormationController;
-        private var winMsg:Entity;
+        private var scoreText:Text;
+        private var winMessage:Entity;
         private var player:Player;
         private var playerBehaviour:PlayerDefaultBehaviour;
         private var handleBreakaway:Boolean = false;
@@ -53,15 +54,15 @@ package net.noiseinstitute.youarenowinspace.worlds {
             player.behaviour = playerBehaviour = new PlayerDefaultBehaviour(player);
             add(player);
 
-            winMsg = new Entity();
-            Text.font = "C64";
-            var txt:Text = new Text("GOAL!");
-            txt.x = playX + 80;
-            txt.y = playY + 32;
-            txt.size = 16;
-            winMsg.graphic = txt;
-            winMsg.visible = false;
-            add(winMsg);
+            winMessage = new Entity();
+            winMessage.x = playX + 80;
+            winMessage.y = playY + 32;
+            var winText:Text = new Text("GOAL!", 0, 0, 320);
+            winText.font = "C64";
+            winText.size = 16;
+            winMessage.graphic = winText;
+            winMessage.visible = false;
+            add(winMessage);
 
             kevinToms = new KevinToms();
             kevinToms.x = playX + 32;
@@ -72,20 +73,32 @@ package net.noiseinstitute.youarenowinspace.worlds {
             border = new Border();
             border.x = -(Border.WIDTH - FP.screen.width) / 2;
             border.y = -(Border.HEIGHT - FP.screen.height) / 2;
-            border.layer = int.MIN_VALUE;
+            border.layer = -1;
             add(border);
+
+            var scoreMessage = new Entity();
+            scoreMessage.x = playX;
+            scoreMessage.y = playY + PLAY_HEIGHT + 8;
+            scoreText = new Text("0", 0, 0, 320);
+            scoreText.font = "C64";
+            scoreText.size = 16;
+            scoreMessage.graphic = scoreText;
+            scoreMessage.layer = -2;
+            add(scoreMessage);
         }
 
         override public function update ():void {
             super.update();
             formation.update();
 
+            scoreText.text = Main.score.toString(10);
+
             if (--scoreTime <= 0) {
                 finish();
             }
 
             if (formation.allDead) {
-                winMsg.visible = true;
+                winMessage.visible = true;
                 kevinToms.visible = true;
                 if (FP.screen.color == 0xffb8c76f) {
                     FP.screen.color = 0xff000000;
