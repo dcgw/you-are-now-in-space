@@ -40,7 +40,7 @@ package net.noiseinstitute.youarenowinspace {
         private var time:Number = 0;
         private var moveInterval:Number = 32;
         private var directionLeft:Boolean = true;
-        private var moveUp:Boolean = false;
+        private var moveVertically:Boolean = false;
         private var formationSize:Number;
         private var _breakaway:Boolean = false;
 
@@ -140,16 +140,28 @@ package net.noiseinstitute.youarenowinspace {
 
                 // Move the formation
                 if (formationX <= playX || formationX >= (playX + playWidth) - formationW) {
-                    if (moveUp) {
-                        moveUp = false;
+                    if (moveVertically) {
+                        moveVertically = false;
                     } else {
                         directionLeft = !directionLeft;
-                        moveUp = true;
+                        moveVertically = true;
                     }
                 }
 
-                var moveAmtX:Number = moveUp ? 0 : (directionLeft ? -MOVE_AMOUNT : MOVE_AMOUNT);
-                var moveAmtY:Number = moveUp ? -MOVE_AMOUNT : 0;
+                var moveAmtX:Number = 0;
+                var moveAmtY:Number = 0;
+
+                if (moveVertically) {
+                    if (player.y < formationY) {
+                        moveAmtY = -MOVE_AMOUNT;
+                    } else {
+                        moveAmtY = MOVE_AMOUNT;
+                    }
+                } else {
+                    moveAmtX = directionLeft
+                            ? -MOVE_AMOUNT
+                            : MOVE_AMOUNT;
+                }
 
                 formationX += moveAmtX;
                 formationY += moveAmtY;
@@ -185,8 +197,12 @@ package net.noiseinstitute.youarenowinspace {
                             if (_breakaway) {
                                 alien.behaviour = new BrokenFormationBehaviour(alien);
                             } else if (shoot) {
-                                FP.world.add(new AlienBullet(alien.centerX, alien.centerY, 0,
-                                        -(BULLET_MIN_SPEED + BULLET_SPEED_INCREMENT*(stage-1))));
+                                var vx:Number = 0;
+                                var vy:Number = BULLET_MIN_SPEED + BULLET_SPEED_INCREMENT*(stage-1);
+                                if (player.y < formationY) {
+                                    vy = -vy;
+                                }
+                                FP.world.add(new AlienBullet(alien.centerX, alien.centerY, vx, vy));
                             }
                             break;
                         }
