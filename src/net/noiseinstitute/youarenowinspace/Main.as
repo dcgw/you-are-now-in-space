@@ -8,6 +8,8 @@ package net.noiseinstitute.youarenowinspace {
     [SWF(width="768", height="576", backgroundColor="#000000", frameRate="60")]
     public class Main extends Engine {
 
+        public static var score:uint = 0;
+
         public function Main () {
             super(384, 288, 60, true);
 

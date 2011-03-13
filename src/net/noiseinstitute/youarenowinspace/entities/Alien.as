@@ -25,6 +25,7 @@ package net.noiseinstitute.youarenowinspace.entities {
         private static const ASPLODE:String = "asplode";
 
         private var _animation:Spritemap = new Spritemap(ALIEN_SPRITEMAP, FRAME_WIDTH, FRAME_HEIGHT);
+        public var onDie:Function;
 
         public function Alien (colour:String = RED) {
             width = WIDTH;
@@ -71,6 +72,10 @@ package net.noiseinstitute.youarenowinspace.entities {
                 var me:Alien = this;
                 _animation.callback = function():void {
                     FP.world.remove(me);
+                }
+
+                if (onDie) {
+                    onDie();
                 }
             }
         }

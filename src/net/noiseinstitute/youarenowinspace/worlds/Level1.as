@@ -18,8 +18,6 @@ package net.noiseinstitute.youarenowinspace.worlds {
         private static const PLAY_WIDTH:int = 320;
         private static const PLAY_HEIGHT:int = 200;
 
-        private const MAX_GOAL_TIME:int = 60;
-
         private var playX:int = (FP.screen.width - PLAY_WIDTH)/2;
         private var playY:int = (FP.screen.height - PLAY_HEIGHT)/2;
 
@@ -31,7 +29,9 @@ package net.noiseinstitute.youarenowinspace.worlds {
         private var kevinToms:KevinToms;
         private var border:Border;
         private var stage:int;
-        private var goalTime:int=0;
+
+        private var scoreTime:int = 1200;
+        private var goalTime:int = 60;
 
         public function Level1 (stage:int) {
             this.stage = stage;
@@ -41,6 +41,10 @@ package net.noiseinstitute.youarenowinspace.worlds {
             formation = new AlienFormationController(stage, playX, playY, PLAY_WIDTH, PLAY_HEIGHT);
             for each (var alien:Alien in formation.aliens) {
                 add(alien);
+                alien.onDie = function():void {
+                    Main.score += scoreTime*stage / 5;
+                    trace(Main.score);
+                }
             }
 
             player = new Player();
@@ -76,6 +80,10 @@ package net.noiseinstitute.youarenowinspace.worlds {
             super.update();
             formation.update();
 
+            if (--scoreTime <= 0) {
+                finish();
+            }
+
             if (formation.allDead) {
                 winMsg.visible = true;
                 kevinToms.visible = true;
@@ -85,8 +93,8 @@ package net.noiseinstitute.youarenowinspace.worlds {
                     FP.screen.color = 0xffb8c76f;
                 }
 
-                if (++goalTime > MAX_GOAL_TIME) {
-                    FP.world = new GetReadyWorld(stage+1);
+                if (--goalTime <= 0) {
+                    finish();
                 }
             }
 
@@ -95,6 +103,10 @@ package net.noiseinstitute.youarenowinspace.worlds {
                 border.alert = true;
                 playerBehaviour.fixedX = true;
             }
+        }
+
+        private function finish ():void {
+            FP.world = new GetReadyWorld(stage+1);
         }
     }
 }
