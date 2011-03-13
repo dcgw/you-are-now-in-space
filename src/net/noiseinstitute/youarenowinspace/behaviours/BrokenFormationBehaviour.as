@@ -20,8 +20,16 @@ package net.noiseinstitute.youarenowinspace.behaviours
 		
 		public function update():void {
 			alien.y -= SPEED;
-			if(alien.y <= -Alien.HEIGHT) {
-				alien.y = FP.screen.height;
+
+			// Wrap
+			if (alien.y <= -Alien.HEIGHT) {
+				alien.y += FP.screen.height;
+			}
+			if (alien.x <= -Alien.WIDTH) {
+				alien.x += FP.screen.width;
+			}
+			if (alien.x >= FP.screen.width) {
+				alien.x -= FP.screen.width;
 			}
 		}
 		
