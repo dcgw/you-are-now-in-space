@@ -201,12 +201,13 @@ package net.noiseinstitute.youarenowinspace {
                             if (_breakaway) {
                                 alien.behaviour = new BrokenFormationBehaviour(alien);
                             } else if (shooting) {
-                                var vx1:Number = 0;
-                                var vy1:Number = BULLET_MIN_SPEED + BULLET_SPEED_INCREMENT*(stage-1);
-                                if (player.y < formationY) {
-                                    vy1 = -vy1;
+                                if (stage >= 5 && (
+                                        player.x > playX + playWidth ||
+                                        player.x - player.width < playX)) {
+                                    shootTowardsPlayer(alien);
+                                } else {
+                                    shootVertically(alien);
                                 }
-                                shoot(alien, vx1, vy1);
                             }
                             break;
                         }
@@ -222,19 +223,32 @@ package net.noiseinstitute.youarenowinspace {
                 for each(alien in aliens) {
                     if (!alien.dead) {
                         if (i == selected) {
-                            var dx:Number = player.centerX - alien.centerX;
-                            var dy:Number = player.centerY - alien.centerY;
-                            var distance:Number = Math.sqrt(dx*dx + dy*dy);
-                            var nx:Number = dx/distance;
-                            var ny:Number = dy/distance;
-                            var vx2:Number = nx * stage;
-                            var vy2:Number = ny * stage;
-                            shoot(alien, vx2, vy2);
+                            shootTowardsPlayer(alien);
                         }
                         ++i;
                     }
                 }
             }
+        }
+
+        private function shootTowardsPlayer (alien:Alien):void {
+            var dx:Number = player.centerX - alien.centerX;
+            var dy:Number = player.centerY - alien.centerY;
+            var distance:Number = Math.sqrt(dx * dx + dy * dy);
+            var nx:Number = dx / distance;
+            var ny:Number = dy / distance;
+            var vx:Number = nx * stage;
+            var vy:Number = ny * stage;
+            shoot(alien, vx, vy);
+        }
+
+        private function shootVertically (alien:Alien):void {
+            var vx:Number = 0;
+            var vy:Number = BULLET_MIN_SPEED + BULLET_SPEED_INCREMENT * (stage - 1);
+            if (player.y < formationY) {
+                vy = -vy;
+            }
+            shoot(alien, vx, vy);
         }
 
 
