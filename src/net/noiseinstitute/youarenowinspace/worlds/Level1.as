@@ -1,4 +1,7 @@
 package net.noiseinstitute.youarenowinspace.worlds {
+    import flash.media.Sound;
+    import flash.media.SoundChannel;
+
     import net.flashpunk.Entity;
     import net.flashpunk.FP;
     import net.flashpunk.World;
@@ -14,6 +17,9 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
         [Embed(source = '../data/Adore64.ttf', embedAsCFF="false", fontFamily = 'C64')]
         private static const C64_FONT:Class;
+
+        [Embed(source="Alert.mp3")]
+        private static var ALERT:Class;
 
         private static const PLAY_WIDTH:int = 320;
         private static const PLAY_HEIGHT:int = 200;
@@ -33,6 +39,8 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
         private var scoreTime:int = 1200;
         private var goalTime:int = 60;
+
+        private var alertChannel:SoundChannel;
 
         public function Level1 (stage:int) {
             this.stage = stage;
@@ -113,12 +121,16 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
             if (formation.breakaway && !handleBreakaway) {
                 handleBreakaway = true;
+                alertChannel = Sound(new ALERT()).play(0, int.MAX_VALUE)
                 border.alert = true;
                 playerBehaviour.fixedX = true;
             }
         }
 
         private function finish ():void {
+            if (alertChannel) {
+                alertChannel.stop();
+            }
             FP.world = new GetReadyWorld(stage+1);
         }
     }

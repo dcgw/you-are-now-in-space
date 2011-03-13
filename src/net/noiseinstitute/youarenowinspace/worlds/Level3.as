@@ -11,10 +11,10 @@ package net.noiseinstitute.youarenowinspace.worlds {
         private var player:Player;
         private var alienSpawner:AlienSpawner;
 
-        [Embed(source="Level3.mp3")]
-        private static var EAR_PAIN:Class;
+        [Embed(source="Alert.mp3")]
+        private static var ALERT:Class;
 
-        public var earPain:SoundChannel = Sound(new EAR_PAIN()).play(0, int.MAX_VALUE);
+        public var alertChannel:SoundChannel = Sound(new ALERT()).play(0, int.MAX_VALUE);
 
         public function Level3 () {
             super();
