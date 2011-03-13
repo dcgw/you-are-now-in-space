@@ -16,22 +16,44 @@ package net.noiseinstitute.youarenowinspace.worlds {
     public class TitleWorld extends World {
 
         [Embed(source="Title.png")]
+        private const TITLE:Class;
+
+        [Embed(source="TitleImage.png")]
         private const TITLE_IMAGE:Class;
 
         [Embed(source="Title.mp3")]
         private const TITLE_MUSIC:Class;
 
-        private var _spritemap:Spritemap = new Spritemap(TITLE_IMAGE, 320, 200);
+        private static const TITLE_WIDTH:int = 176;
+        private static const TITLE_HEIGHT:int = 32;
+
+        private static const TITLE_IMAGE_WIDTH:int = 320;
+        private static const TITLE_IMAGE_HEIGHT:int = 200;
+
+        private var _titleImageSpritemap:Spritemap = new Spritemap(TITLE_IMAGE, TITLE_IMAGE_WIDTH, TITLE_IMAGE_HEIGHT);
         private var listening:Boolean = false;
         private var music:SoundChannel = Sound(new TITLE_MUSIC()).play(0, int.MAX_VALUE);
 
         public function TitleWorld() {
-            var entity:Entity = new Entity();
-            _spritemap.add("click", [0], 1);
-            _spritemap.add("press", [1], 1);
-            _spritemap.play("click");
-            entity.graphic = _spritemap;
-            add(entity);
+            FP.screen.color = 0xff444444;
+
+            var titleImage:Entity = new Entity();
+            _titleImageSpritemap.add("click", [0], 1);
+            _titleImageSpritemap.add("press", [1], 1);
+            _titleImageSpritemap.play("click");
+            titleImage.graphic = _titleImageSpritemap;
+            titleImage.x = (FP.screen.width - TITLE_IMAGE_WIDTH)/2;
+            titleImage.y = (FP.screen.height - TITLE_IMAGE_HEIGHT)/2;
+            add(titleImage);
+
+            var title:Entity = new Entity();
+            var titleSpritemap:Spritemap = new Spritemap(TITLE, TITLE_WIDTH, TITLE_HEIGHT);
+            titleSpritemap.add("glowing", [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16], 0.25);
+            titleSpritemap.play("glowing");
+            title.graphic = titleSpritemap;
+            title.x = titleImage.x + 8;
+            title.y = titleImage.y + 8;
+            add(title);
         }
 
         override public function update():void {
@@ -56,11 +78,11 @@ package net.noiseinstitute.youarenowinspace.worlds {
         }
 
         private function onFocus(e:Event):void {
-            _spritemap.play("press");
+            _titleImageSpritemap.play("press");
         }
 
         private function onBlur(e:Event):void {
-            _spritemap.play("click");
+            _titleImageSpritemap.play("click");
         }
     }
 }
