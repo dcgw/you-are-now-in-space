@@ -41,6 +41,7 @@ package net.noiseinstitute.youarenowinspace.entities {
 
             _animation.play(colour);
 
+            type="deadly";
             setHitbox(WIDTH, HEIGHT);
         }
 

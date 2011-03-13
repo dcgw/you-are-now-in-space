@@ -25,6 +25,9 @@ package net.noiseinstitute.youarenowinspace.entities {
 
             width = WIDTH;
             height = HEIGHT;
+
+            type = "deadly";
+            setHitbox(WIDTH, HEIGHT);
         }
         
         override public function update():void {
