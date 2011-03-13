@@ -10,6 +10,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
     import net.flashpunk.graphics.Spritemap;
     import net.flashpunk.utils.Input;
     import net.noiseinstitute.youarenowinspace.Main;
+    import net.noiseinstitute.youarenowinspace.entities.Score;
 
     public class TitleWorld extends World {
 
@@ -35,8 +36,6 @@ package net.noiseinstitute.youarenowinspace.worlds {
         public function TitleWorld () {
             FP.screen.color = 0xff444444;
 
-            Main.score = 0;
-
             var titleImage:Entity = new Entity();
             _titleImageSpritemap.add("click", [0], 1);
             _titleImageSpritemap.add("press", [1], 1);
@@ -54,11 +53,16 @@ package net.noiseinstitute.youarenowinspace.worlds {
             title.x = titleImage.x + 8;
             title.y = titleImage.y + 8;
             add(title);
+
+            add(new Score());
         }
 
         override public function update ():void {
             super.update();
             if (Input.pressed("fire")) {
+                Main.lives = 4;
+                Main.score = 0;
+
                 music.stop();
                 FP.world = new GetReadyWorld(1);
 

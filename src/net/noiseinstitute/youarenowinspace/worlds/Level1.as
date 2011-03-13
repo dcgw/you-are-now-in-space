@@ -55,6 +55,11 @@ package net.noiseinstitute.youarenowinspace.worlds {
             player.behaviour = playerBehaviour = new PlayerDefaultBehaviour(player);
             add(player);
 
+            var me:Level1 = this;
+            player.onDie = function():void {
+                finish(new Intermission(me.stage));
+            }
+
             formation = new AlienFormationController(stage, playX, playY, PLAY_WIDTH, PLAY_HEIGHT, player);
             for each (var alien:Alien in formation.aliens) {
                 add(alien);
@@ -126,11 +131,14 @@ package net.noiseinstitute.youarenowinspace.worlds {
             }
         }
 
-        private function finish ():void {
+        private function finish (world:World=null):void {
+            if (world == null) {
+                world = new GetReadyWorld(stage+1);
+            }
             if (alertChannel) {
                 alertChannel.stop();
             }
-            FP.world = new GetReadyWorld(stage+1);
+            FP.world = world;
         }
     }
 }

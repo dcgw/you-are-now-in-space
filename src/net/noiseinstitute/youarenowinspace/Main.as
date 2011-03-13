@@ -9,6 +9,7 @@ package net.noiseinstitute.youarenowinspace {
     public class Main extends Engine {
 
         public static var score:uint = 0;
+        public static var lives:int = 4;
 
         public function Main () {
             super(384, 288, 60, true);

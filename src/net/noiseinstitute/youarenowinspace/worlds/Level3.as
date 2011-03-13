@@ -1,4 +1,6 @@
 package net.noiseinstitute.youarenowinspace.worlds {
+    import avmplus.finish;
+
     import flash.media.Sound;
     import flash.media.SoundChannel;
 
@@ -43,6 +45,11 @@ package net.noiseinstitute.youarenowinspace.worlds {
             player.y = playY;
             add(player);
 
+            var me:Level3 = this;
+            player.onDie = function():void {
+                me.finish(new Intermission(stage));
+            };
+
             var border:Border = new Border();
             border.x = -(Border.WIDTH - FP.screen.width) / 2;
             border.y = -(Border.HEIGHT - FP.screen.height) / 2;
@@ -60,9 +67,17 @@ package net.noiseinstitute.youarenowinspace.worlds {
             alienSpawner.update();
 
             if (--time <= 0) {
-                alertChannel.stop();
-                FP.world = new GetReadyWorld(stage+1);
+                finish();
+
             }
+        }
+
+        private function finish (world:World = null):void {
+            if (world == null) {
+                world = new GetReadyWorld(stage + 1)
+            }
+            alertChannel.stop();
+            FP.world = world;
         }
     }
 }
