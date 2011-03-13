@@ -27,5 +27,8 @@ package net.noiseinstitute.youarenowinspace.behaviours {
             alien.x = pathX + pathW * Math.cos(pos);
             alien.y = pathY + pathH * Math.sin(pos);
         }
+
+        public function execute (cmd:int):void {
+        }
     }
 }

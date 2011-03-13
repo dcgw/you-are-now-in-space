@@ -1,14 +1,11 @@
 package net.noiseinstitute.youarenowinspace
 {
-	import flash.utils.Dictionary;
-	
-	import net.flashpunk.FP;
-	import net.flashpunk.Sfx;
-	import net.flashpunk.utils.Input;
-	import net.flashpunk.utils.Key;
-	import net.noiseinstitute.youarenowinspace.entities.Bullet;
+    import flash.utils.Dictionary;
 
-	public class Controller {
+    import net.flashpunk.utils.Input;
+    import net.flashpunk.utils.Key;
+
+    public class Controller {
 		
 		public static const UP:int = 1;
 		public static const DOWN:int = 2;
@@ -19,7 +16,10 @@ package net.noiseinstitute.youarenowinspace
 		private var _controlled:Vector.<IControllable> = new Vector.<IControllable>();
 		private var _controls:Dictionary = new Dictionary();
 		
-		public function Controller() {
+		public function Controller(target:IControllable=null) {
+            if (target) {
+                register(target, UP|DOWN|LEFT|RIGHT|SHOOT);
+            }
 		}
 		
 		public function register(target:IControllable, cmds:int = -1):void {
