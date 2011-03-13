@@ -12,6 +12,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
     import net.noiseinstitute.youarenowinspace.entities.Border;
     import net.noiseinstitute.youarenowinspace.entities.KevinToms;
     import net.noiseinstitute.youarenowinspace.entities.Player;
+    import net.noiseinstitute.youarenowinspace.entities.Score;
 
     public class Level1 extends World {
 
@@ -28,7 +29,6 @@ package net.noiseinstitute.youarenowinspace.worlds {
         private var playY:int = (FP.screen.height - PLAY_HEIGHT)/2;
 
         private var formation:AlienFormationController;
-        private var scoreText:Text;
         private var winMessage:Entity;
         private var player:Player;
         private var playerBehaviour:PlayerDefaultBehaviour;
@@ -84,22 +84,14 @@ package net.noiseinstitute.youarenowinspace.worlds {
             border.layer = -1;
             add(border);
 
-            var scoreMessage = new Entity();
-            scoreMessage.x = playX;
-            scoreMessage.y = playY + PLAY_HEIGHT + 8;
-            scoreText = new Text("0", 0, 0, 320);
-            scoreText.font = "C64";
-            scoreText.size = 16;
-            scoreMessage.graphic = scoreText;
-            scoreMessage.layer = -2;
-            add(scoreMessage);
+            var score = new Score();
+            score.layer = -2;
+            add(score);
         }
 
         override public function update ():void {
             super.update();
             formation.update();
-
-            scoreText.text = Main.score.toString(10);
 
             if (--scoreTime <= 0) {
                 finish();
