@@ -1,6 +1,9 @@
 package net.noiseinstitute.youarenowinspace {
+    import net.flashpunk.FP;
     import net.noiseinstitute.youarenowinspace.behaviours.BrokenFormationBehaviour;
     import net.noiseinstitute.youarenowinspace.entities.Alien;
+    import net.noiseinstitute.youarenowinspace.entities.AlienBullet;
+    import net.noiseinstitute.youarenowinspace.entities.Player;
 
     public class AlienFormationController {
 
@@ -10,8 +13,11 @@ package net.noiseinstitute.youarenowinspace {
 
         private static const LEFT_MARGIN:int = 22;
         private static const BOTTOM_MARGIN:int = 11;
-        private static const BREAKAWAY_MARGIN:int = 80;
+        private static const BREAKAWAY_MARGIN:int = 60;
         private static const MOVE_AMOUNT:Number = 6;
+        private static const SHOOT_INTERVAL:int = 180;
+        private static const BULLET_MIN_SPEED:int = 2;
+        private static const BULLET_SPEED_INCREMENT:Number = 0.5;
 
         private var _aliens:Vector.<Vector.<Alien>> = new Vector.<Vector.<Alien>>();
 
@@ -31,8 +37,6 @@ package net.noiseinstitute.youarenowinspace {
         private var playWidth:int;
         private var playHeight:int;
 
-        private var moveAmount:Number;
-
         private var time:Number = 0;
         private var moveInterval:Number = 32;
         private var directionLeft:Boolean = true;
@@ -47,14 +51,19 @@ package net.noiseinstitute.youarenowinspace {
         private var formationY:Number = BOTTOM_MARGIN;
         private var formationW:Number = separationX * ALIENS_HORIZONTAL - (separationX - Alien.WIDTH);
 
-        public function AlienFormationController (stage:int, x:int, y:int, width:int, height:int) {
+        private var shootTimer:int;
+        private var player:Player;
+
+        public function AlienFormationController (stage:int, x:int, y:int, width:int, height:int, player:Player) {
             this.stage = stage;
             playX = x;
             playY = y;
             playWidth = width;
             playHeight = height;
 
-            moveAmount = MOVE_AMOUNT+stage*2-1;
+            this.player = player;
+
+            shootTimer = SHOOT_INTERVAL/stage;
 
             soundController = new SoundController();
 
@@ -117,7 +126,7 @@ package net.noiseinstitute.youarenowinspace {
                 time = 0;
 
                 // Update the movement interval
-                moveInterval = formationSize;
+                moveInterval = formationSize - (stage-1)*4;
 
                 // Update the size of the formation
                 formationX = leftmost;
@@ -139,8 +148,8 @@ package net.noiseinstitute.youarenowinspace {
                     }
                 }
 
-                var moveAmtX:Number = moveUp ? 0 : (directionLeft ? -moveAmount : moveAmount);
-                var moveAmtY:Number = moveUp ? -moveAmount : 0;
+                var moveAmtX:Number = moveUp ? 0 : (directionLeft ? -MOVE_AMOUNT : MOVE_AMOUNT);
+                var moveAmtY:Number = moveUp ? -MOVE_AMOUNT : 0;
 
                 formationX += moveAmtX;
                 formationY += moveAmtY;
@@ -157,15 +166,50 @@ package net.noiseinstitute.youarenowinspace {
                 }
             }
 
-            if (_breakaway && nonBrokenFormationSize > 0) {
-                var selected:int = Math.floor(Math.random() * nonBrokenFormationSize);
+            var shoot:Boolean = false;
+            if (--shootTimer <= 0) {
+                shoot = true;
+                shootTimer = SHOOT_INTERVAL/stage;
+            }
 
-                var i:int = 0;
+            var selected:int;
+            var i:int;
+
+            if ((_breakaway || shoot) && nonBrokenFormationSize > 0) {
+                selected = Math.floor(Math.random() * nonBrokenFormationSize);
+
+                i = 0;
                 for each(alien in aliens) {
                     if (!alien.dead && !alien.behaviour) {
                         if (i == selected) {
-                            alien.behaviour = new BrokenFormationBehaviour(alien);
+                            if (_breakaway) {
+                                alien.behaviour = new BrokenFormationBehaviour(alien);
+                            } else if (shoot) {
+                                FP.world.add(new AlienBullet(alien.centerX, alien.centerY, 0,
+                                        -(BULLET_MIN_SPEED + BULLET_SPEED_INCREMENT*(stage-1))));
+                            }
                             break;
+                        }
+                        ++i;
+                    }
+                }
+            }
+
+            if (_breakaway && shoot && stage >= 5) {
+                selected = Math.floor(Math.random() * formationSize);
+
+                i = 0;
+                for each(alien in aliens) {
+                    if (!alien.dead) {
+                        if (i == selected) {
+                            var dx:Number = player.centerX - alien.centerX;
+                            var dy:Number = player.centerY - alien.centerY;
+                            var distance:Number = Math.sqrt(dx*dx + dy*dy);
+                            var nx:Number = dx/distance;
+                            var ny:Number = dy/distance;
+                            var vx:Number = nx * stage;
+                            var vy:Number = ny * stage;
+                            FP.world.add(new AlienBullet(alien.centerX, alien.centerY, vx, vy));
                         }
                         ++i;
                     }

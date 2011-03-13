@@ -74,7 +74,7 @@ package net.noiseinstitute.youarenowinspace.entities {
                     FP.world.remove(me);
                 }
 
-                if (onDie) {
+                if (onDie != null) {
                     onDie();
                 }
             }

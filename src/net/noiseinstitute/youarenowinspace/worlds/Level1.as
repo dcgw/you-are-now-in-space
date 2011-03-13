@@ -47,7 +47,13 @@ package net.noiseinstitute.youarenowinspace.worlds {
             
             FP.screen.color = 0xff000000;
 
-            formation = new AlienFormationController(stage, playX, playY, PLAY_WIDTH, PLAY_HEIGHT);
+            player = new Player();
+            player.x = (FP.screen.width - player.width)/2;
+            player.y = playY;
+            player.behaviour = playerBehaviour = new PlayerDefaultBehaviour(player);
+            add(player);
+
+            formation = new AlienFormationController(stage, playX, playY, PLAY_WIDTH, PLAY_HEIGHT, player);
             for each (var alien:Alien in formation.aliens) {
                 add(alien);
                 alien.onDie = function():void {
@@ -55,12 +61,6 @@ package net.noiseinstitute.youarenowinspace.worlds {
                     trace(Main.score);
                 }
             }
-
-            player = new Player();
-            player.x = (FP.screen.width - player.width)/2;
-            player.y = playY;
-            player.behaviour = playerBehaviour = new PlayerDefaultBehaviour(player);
-            add(player);
 
             winMessage = new Entity();
             winMessage.x = playX + 80;
@@ -84,7 +84,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
             border.layer = -1;
             add(border);
 
-            var score = new Score();
+            var score:Score = new Score();
             score.layer = -2;
             add(score);
         }
@@ -98,6 +98,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
             }
 
             if (formation.allDead) {
+                Main.score += 2000 * stage;
                 winMessage.visible = true;
                 kevinToms.visible = true;
                 if (FP.screen.color == 0xffb8c76f) {

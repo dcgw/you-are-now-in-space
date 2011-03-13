@@ -50,7 +50,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
             border.alert = true;
             add(border);
 
-            var score = new Score();
+            var score:Score = new Score();
             score.layer = -2;
             add(score);
         }
