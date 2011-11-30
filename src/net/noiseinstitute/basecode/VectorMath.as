@@ -109,5 +109,15 @@ package net.noiseinstitute.basecode {
             v.x = Trig.sin(angle)*magnitude;
             v.y = -Trig.cos(angle)*magnitude;
         }
+        
+        public static function set(p:Point, x:Number, y:Number):void {
+            p.x = x;
+            p.y = y;
+        }
+        
+        public static function copyTo(p:Point, q:Point):void {
+            p.x = q.x;
+            p.y = q.y;
+        }
     }
 }
