@@ -16,5 +16,11 @@ package net.noiseinstitute.basecode {
         public static function wrapAngle(n:Number):Number {
             return wrap(n, -180, 180);
         }
+
+        public static function clip(n:Number, min:Number, max:Number):Number {
+            if (n > max) return max;
+            if (n < min) return min;
+            return n;
+        }
     }
 }
