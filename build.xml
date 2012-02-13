@@ -11,6 +11,7 @@
   <property name="lib.dir" location="lib"/>
   <property name="build.dir" location="build"/>
   
+  <property name="lib.flextasks" location="${lib.dir}/flexTasks.jar"/>
   <property name="lib.flashpunk.dir" location="${lib.dir}/flashpunk"/>
   
   
@@ -37,8 +38,7 @@
   </fail>
   
   
-  <taskdef resource="flexTasks.tasks"
-      classpath="${FLEX_HOME}/lib/flexTasks.jar"/>
+  <taskdef resource="flexTasks.tasks" classpath="${lib.flextasks}"/>
   
   
   <target name="clean">
