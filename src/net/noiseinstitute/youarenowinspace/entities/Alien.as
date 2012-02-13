@@ -64,25 +64,27 @@ package net.noiseinstitute.youarenowinspace.entities {
         override public function update ():void {
             super.update();
 
-            // Have we been shot?
-            var b:Bullet = collide("bullet", x, y) as Bullet;
-            if (b) {
-                // Destroy the bullet
-                b.destroy();
+            if (!_dead) {
+                // Have we been shot?
+                var b:Bullet = collide("bullet", x, y) as Bullet;
+                if (b) {
+                    // Destroy the bullet
+                    b.destroy();
 
-                _dead = true;
-                collidable = false;
+                    _dead = true;
+                    collidable = false;
 
-                _animation.play(ASPLODE);
-                var me:Alien = this;
-                _animation.callback = function():void {
-                    FP.world.remove(me);
-                }
+                    _animation.play(ASPLODE);
+                    var me:Alien = this;
+                    _animation.callback = function():void {
+                        FP.world.remove(me);
+                    }
 
-                new Sfx(SPLODE_SOUND).play(0.75);
+                    new Sfx(SPLODE_SOUND).play(0.75);
 
-                if (onDie != null) {
-                    onDie();
+                    if (onDie != null) {
+                        onDie();
+                    }
                 }
             }
         }
