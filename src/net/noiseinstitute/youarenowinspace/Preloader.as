@@ -81,11 +81,6 @@ package net.noiseinstitute.youarenowinspace {
 
         private function onEnterFrame(e:Event):void {
             if (hasLoaded()) {
-                graphics.clear();
-                graphics.beginFill(PROGRESS_BAR_BACKGROUND_COLOUR);
-                graphics.drawRect(0, 0, stage.stageWidth, stage.stageHeight);
-                graphics.endFill();
-
                 start();
             } else {
                 colourBars.lock();
