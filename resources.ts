@@ -1,9 +1,7 @@
-import sword from './images/sword.png';
 import {Dictionary} from "dictionary-types";
 import {Texture} from "excalibur";
+import sword from "./images/sword.png";
 
-let Resources: Dictionary<Texture> = {
+export const resources: Dictionary<Texture> = {
     Sword: new Texture(sword)
 };
-
-export { Resources }

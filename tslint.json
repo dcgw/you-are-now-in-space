@@ -1,0 +1,6 @@
+{
+  "extends": "@softwareventures/tslint-rules",
+  "rules": {
+    "no-floating-promises": false
+  }
+}
