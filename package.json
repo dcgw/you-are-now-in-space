@@ -1,16 +1,28 @@
 {
-  "name": "excalibur-webpack",
-  "version": "1.0.0",
   "private": true,
-  "description": "a webpack starter for excaliburjs projects",
-  "main": "index.js",
+  "name": "@dcgw/you-are-now-in-space",
+  "version": "0.0.0-development",
+  "description": "A game for Mini Ludum Dare 25",
+  "contributors": [
+    {
+      "name": "Daniel Cassidy",
+      "email": "mail@danielcassidy.me.uk",
+      "url": "https://www.danielcassidy.me.uk/"
+    },
+    {
+      "name": "George Weller",
+      "email": "george.weller@gmail.com"
+    }
+  ],
+  "license": "UNLICENSED",
+  "bugs": "https://github.com/dcgw/you-are-now-in-space-ts/issues",
+  "homepage": "https://github.com/dcgw/you-are-now-in-space-ts",
+  "repository": "github:dcgw/you-are-now-in-space-ts",
   "scripts": {
     "test": "tslint --project .",
     "build": "webpack --env.production",
     "start": "webpack-dev-server --open"
   },
-  "author": "Excalibur.js Team",
-  "license": "BSD-2-Clause",
   "devDependencies": {
     "@softwareventures/tslint-rules": "0.6.4",
     "@softwareventures/webpack-config": "0.9.0",
