@@ -1,6 +1,6 @@
 import * as ex from "excalibur";
 
-export class Player extends ex.Actor {
+export default class Player extends ex.Actor {
     constructor() {
         super();
         this.setWidth(25);

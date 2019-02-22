@@ -1,8 +1,8 @@
 import domready = require("domready");
 import * as ex from "excalibur";
-import {Player} from "./actors/player/player";
-import {resources} from "./resources";
-import {LevelOne} from "./scenes/level-one/level-one";
+import Player from "./actors/player/player";
+import resources from "./resources";
+import LevelOne from "./scenes/level-one/level-one";
 
 class Game extends ex.Engine {
     constructor() {
