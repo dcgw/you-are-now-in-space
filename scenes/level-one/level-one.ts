@@ -1,6 +1,6 @@
-import * as ex from "excalibur";
+import {Scene} from "excalibur";
 
-export default class LevelOne extends ex.Scene {
+export default class LevelOne extends Scene {
     public onInitialize(engine: ex.Engine): void {
     }
 

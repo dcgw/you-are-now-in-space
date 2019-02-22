@@ -1,12 +1,12 @@
 import domready = require("domready");
-import * as ex from "excalibur";
+import {DisplayMode, Engine, Loader} from "excalibur";
 import Player from "./actors/player/player";
 import resources from "./resources";
 import LevelOne from "./scenes/level-one/level-one";
 
-class Game extends ex.Engine {
+class Game extends Engine {
     constructor() {
-        super({width: 800, height: 600, displayMode: ex.DisplayMode.FullScreen});
+        super({width: 800, height: 600, displayMode: DisplayMode.FullScreen});
     }
 }
 
@@ -21,7 +21,7 @@ domready(() => {
     game.add("levelOne", levelOne);
 
 
-    const loader = new ex.Loader();
+    const loader = new Loader();
     for (const key of Object.keys(resources)) {
         loader.addResource(resources[key]);
     }
