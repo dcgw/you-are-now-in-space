@@ -1,8 +1,5 @@
+/dist
 /package-lock.json
-
-# Generated files
-bundle.js
-index.js
 
 # Logs
 logs
