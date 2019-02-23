@@ -8,10 +8,12 @@ const TITLE_WIDTH = 176;
 const TITLE_HEIGHT = 32;
 
 export default class Title extends Scene {
+    private titleImage: Actor;
+
     constructor(private engine: Engine) {
         super(engine);
 
-        const titleImage = new Actor({
+        this.titleImage = new Actor({
             x: (engine.canvasWidth - TITLE_IMAGE_WIDTH) * .5,
             y: (engine.canvasHeight - TITLE_IMAGE_HEIGHT) * .5,
             width: TITLE_IMAGE_WIDTH,
@@ -25,13 +27,13 @@ export default class Title extends Scene {
             rows: 1,
             columns: 2
         });
-        titleImage.addDrawing("click", titleImageSpriteSheet.getSprite(0));
-        titleImage.addDrawing("press", titleImageSpriteSheet.getSprite(1));
-        this.add(titleImage);
+        this.titleImage.addDrawing("click", titleImageSpriteSheet.getSprite(0));
+        this.titleImage.addDrawing("press", titleImageSpriteSheet.getSprite(1));
+        this.add(this.titleImage);
 
         const title = new Actor({
-            x: titleImage.x + 8,
-            y: titleImage.y + 8,
+            x: this.titleImage.x + 8,
+            y: this.titleImage.y + 8,
             width: TITLE_WIDTH,
             height: TITLE_HEIGHT,
             anchor: Vector.Zero
@@ -49,5 +51,16 @@ export default class Title extends Scene {
 
     public onActivate(): void {
         this.engine.backgroundColor = Color.fromHex("444444");
+        this.engine.input.pointers.primary.on("up", this.onClick);
+        window.addEventListener("blur", this.onBlur, true);
     }
+
+    public onDeactivate(): void {
+        this.engine.input.pointers.primary.off("up", this.onClick);
+        window.removeEventListener("blur", this.onBlur, true);
+    }
+
+    private onClick = () => this.titleImage.setDrawing("press");
+
+    private onBlur = () => this.titleImage.setDrawing("click");
 }

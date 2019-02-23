@@ -8,7 +8,8 @@ domready(() => {
     const engine = new Engine({
         width: 384,
         height: 288,
-        displayMode: DisplayMode.FullScreen
+        displayMode: DisplayMode.FullScreen,
+        suppressPlayButton: true
     });
 
     const loader = new Loader();
