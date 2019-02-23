@@ -39,7 +39,9 @@ domready(() => {
 
     const loader = new Loader();
     for (const key of Object.keys(resources)) {
-        loader.addResource((resources as Dictionary<Texture | Sound>)[key]);
+        const resource = (resources as Dictionary<Texture | Sound>)[key];
+        resource.bustCache = false;
+        loader.addResource(resource);
     }
 
     engine.start(loader)
