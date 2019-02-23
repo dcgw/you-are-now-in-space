@@ -1,4 +1,5 @@
 import {Actor, Color, Engine, Scene, SpriteSheet, Vector} from "excalibur";
+import {HEIGHT, WIDTH} from "../..";
 import resources from "../../resources";
 
 const TITLE_IMAGE_WIDTH = 320;
@@ -14,8 +15,8 @@ export default class Title extends Scene {
         super(engine);
 
         this.titleImage = new Actor({
-            x: (engine.canvasWidth - TITLE_IMAGE_WIDTH) * .5,
-            y: (engine.canvasHeight - TITLE_IMAGE_HEIGHT) * .5,
+            x: (WIDTH - TITLE_IMAGE_WIDTH) * .5,
+            y: (HEIGHT - TITLE_IMAGE_HEIGHT) * .5,
             width: TITLE_IMAGE_WIDTH,
             height: TITLE_IMAGE_HEIGHT,
             anchor: Vector.Zero,
