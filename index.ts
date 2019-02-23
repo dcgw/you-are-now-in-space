@@ -1,8 +1,8 @@
-import domready = require("domready");
-import {DisplayMode, Engine, Loader} from "excalibur";
-import Player from "./actors/player/player";
+import {Dictionary} from "dictionary-types";
+import {DisplayMode, Engine, Loader, Sound, Texture} from "excalibur";
 import resources from "./resources";
-import LevelOne from "./scenes/level-one/level-one";
+import Title from "./scenes/title";
+import domready = require("domready");
 
 domready(() => {
     const engine = new Engine({
@@ -10,21 +10,16 @@ domready(() => {
         height: 288,
         displayMode: DisplayMode.FullScreen
     });
-    const levelOne = new LevelOne(engine);
-    const player = new Player();
-    player.addDrawing(resources.Sword);
-
-    levelOne.add(player);
-
-    engine.add("levelOne", levelOne);
-
 
     const loader = new Loader();
     for (const key of Object.keys(resources)) {
-        loader.addResource(resources[key]);
+        loader.addResource((resources as Dictionary<Texture | Sound>)[key]);
     }
 
     engine.start(loader)
-        .then(() => engine.goToScene("levelOne"),
+        .then(() => {
+                engine.add("title", new Title(engine));
+                engine.goToScene("title");
+            },
             reason => console.error("", reason));
 });

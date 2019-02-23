@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@softwareventures/tslint-rules": "0.6.4",
-    "@softwareventures/webpack-config": "0.9.0",
+    "@softwareventures/webpack-config": "../webpack-config",
     "@types/node": "11.9.4",
     "cz-conventional-changelog": "2.1.0",
     "ts-loader": "5.3.3",
@@ -36,7 +36,7 @@
     "webpack-dev-server": "3.2.0"
   },
   "dependencies": {
-    "@types/domready": "^1.0.0",
+    "@types/domready": "1.0.0",
     "dictionary-types": "^1.0.0",
     "domready": "^1.0.8",
     "excalibur": "0.21.0",

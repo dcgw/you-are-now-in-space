@@ -15,10 +15,8 @@
     tslib "^1.9.3"
     tslint-eslint-rules "^5.4.0"
 
-"@softwareventures/webpack-config@0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.9.0.tgz#70b3b00db3ad18821f54c7959e5693616e76dae8"
-  integrity sha512-ou3rqNy8sqHsRe0x0kNOe6XrwSouQcjQ2YkPshrxY76yQhQDV9pgaqdxyUsD6F4V5+zCARzp1MdM288xuXBPKQ==
+"@softwareventures/webpack-config@../webpack-config":
+  version "0.0.0-development"
   dependencies:
     "@softwareventures/tsconfig" "^1.0.0"
     clean-webpack-plugin "^1.0.0"
@@ -33,7 +31,7 @@
     style-loader "^0.23.1"
     uglifyjs-webpack-plugin "^2.1.1"
 
-"@types/domready@^1.0.0":
+"@types/domready@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/domready/-/domready-1.0.0.tgz#26b8de42e279b0e4e68d56ad06fde3fd2a2c9af2"
   integrity sha512-z6KzANiu6UaHOi1NaZHcYZfKTeHC0C9Lhb0brTrej1AMHSqIjyRgR+vlc93pJOxmY2JXtPbyIZAuYiRFs9iKBg==
