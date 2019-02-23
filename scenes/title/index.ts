@@ -60,7 +60,15 @@ export default class Title extends Scene {
         window.removeEventListener("blur", this.onBlur, true);
     }
 
-    private onClick = () => this.titleImage.setDrawing("press");
+    private onClick = () => {
+        if (!resources.titleMusic.isPlaying()) {
+            resources.titleMusic.loop = true;
+            resources.titleMusic.play()
+                .then(() => void 0,
+                    reason => console.error("", reason));
+        }
+        this.titleImage.setDrawing("press");
+    }
 
     private onBlur = () => this.titleImage.setDrawing("click");
 }
