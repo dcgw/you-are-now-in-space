@@ -25,7 +25,7 @@ export default class Title extends Scene {
             rows: 1,
             columns: 2
         });
-        titleImage.addDrawing(titleImageSpriteSheet.getSprite(0));
+        titleImage.addDrawing("click", titleImageSpriteSheet.getSprite(0));
         titleImage.addDrawing("press", titleImageSpriteSheet.getSprite(1));
         this.add(titleImage);
 
@@ -44,7 +44,6 @@ export default class Title extends Scene {
                 rows: 17,
                 columns: 1
             }).getAnimationForAll(engine, 4 * 1000 / 60));
-        title.setDrawing("glowing");
         this.add(title);
     }
 
