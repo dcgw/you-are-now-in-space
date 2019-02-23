@@ -28,5 +28,5 @@ domready(() => {
 
     game.start(loader)
         .then(() => game.goToScene("levelOne"))
-        .error(reason => console.error("", reason)); // tslint:disable-line:
+        .error(reason => console.error("", reason));
 });
