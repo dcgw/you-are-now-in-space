@@ -27,6 +27,6 @@ domready(() => {
     }
 
     game.start(loader)
-        .then(() => game.goToScene("levelOne"))
-        .error(reason => console.error("", reason));
+        .then(() => game.goToScene("levelOne"),
+            reason => console.error("", reason));
 });
