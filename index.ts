@@ -6,7 +6,7 @@ import LevelOne from "./scenes/level-one/level-one";
 
 class Game extends Engine {
     constructor() {
-        super({width: 800, height: 600, displayMode: DisplayMode.FullScreen});
+        super({width: 384, height: 288, displayMode: DisplayMode.FullScreen});
     }
 }
 
