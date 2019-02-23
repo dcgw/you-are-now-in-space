@@ -2,6 +2,7 @@ import {Dictionary} from "dictionary-types";
 import domready = require("domready");
 import {DisplayMode, Engine, Loader, Sound, Texture} from "excalibur";
 import resources from "./resources";
+import GetReady from "./scenes/get-ready";
 import Title from "./scenes/title";
 
 export const WIDTH = 384;
@@ -47,6 +48,7 @@ domready(() => {
     engine.start(loader)
         .then(() => {
             engine.add("title", new Title(engine));
+            engine.add("get-ready", new GetReady(engine, 1));
             engine.goToScene("title");
         }, reason => console.error("", reason));
 });

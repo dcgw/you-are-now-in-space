@@ -1,4 +1,4 @@
-import {Actor, Color, Engine, Scene, SpriteSheet, Vector} from "excalibur";
+import {Actor, Color, Engine, Input, Scene, SpriteSheet, Vector} from "excalibur";
 import {HEIGHT, WIDTH} from "../..";
 import resources from "../../resources";
 
@@ -53,11 +53,14 @@ export default class Title extends Scene {
     public onActivate(): void {
         this.engine.backgroundColor = Color.fromHex("444444");
         this.engine.input.pointers.primary.on("up", this.onClick);
+        this.engine.input.keyboard.on("press", this.onKeyPress);
         window.addEventListener("blur", this.onBlur, true);
     }
 
     public onDeactivate(): void {
+        resources.titleMusic.stop();
         this.engine.input.pointers.primary.off("up", this.onClick);
+        this.engine.input.keyboard.off("press", this.onKeyPress as any);
         window.removeEventListener("blur", this.onBlur, true);
     }
 
@@ -69,6 +72,12 @@ export default class Title extends Scene {
                     reason => console.error("", reason));
         }
         this.titleImage.setDrawing("press");
+    }
+
+    private onKeyPress = (event?: Input.KeyEvent) => {
+        if (event != null && event.key === Input.Keys.X) {
+            this.engine.goToScene("get-ready");
+        }
     }
 
     private onBlur = () => this.titleImage.setDrawing("click");
