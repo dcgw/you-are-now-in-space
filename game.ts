@@ -32,6 +32,7 @@ export default class Game {
         }
 
         this.engine.input.pointers.primary.on("up", this.onClick);
+        this.engine.input.keyboard.on("press", this.onClick);
         window.addEventListener("blur", this.onBlur);
 
         this.reset();
