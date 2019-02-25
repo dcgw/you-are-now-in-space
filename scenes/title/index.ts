@@ -52,26 +52,27 @@ export default class Title extends Scene {
 
     public onActivate(): void {
         this.game.engine.backgroundColor = Color.fromHex("444444");
-        this.game.engine.input.pointers.primary.on("up", this.onClick);
         this.game.engine.input.keyboard.on("press", this.onKeyPress);
-        window.addEventListener("blur", this.onBlur, true);
     }
 
     public onDeactivate(): void {
         resources.titleMusic.stop();
-        this.game.engine.input.pointers.primary.off("up", this.onClick);
         this.game.engine.input.keyboard.off("press", this.onKeyPress as any);
-        window.removeEventListener("blur", this.onBlur, true);
     }
 
-    private onClick = () => {
-        if (!resources.titleMusic.isPlaying()) {
-            resources.titleMusic.loop = true;
-            resources.titleMusic.play()
-                .then(() => void 0,
-                    reason => console.error("", reason));
+
+    public update(): void {
+        if (this.game.active) {
+            if (!resources.titleMusic.isPlaying()) {
+                resources.titleMusic.loop = true;
+                resources.titleMusic.play()
+                    .then(() => void 0,
+                        reason => console.error("", reason));
+            }
+            this.titleImage.setDrawing("press");
+        } else {
+            this.titleImage.setDrawing("click");
         }
-        this.titleImage.setDrawing("press");
     }
 
     private readonly onKeyPress = (event?: Input.KeyEvent) => {
@@ -79,6 +80,4 @@ export default class Title extends Scene {
             this.game.engine.goToScene("get-ready");
         }
     }
-
-    private readonly onBlur = () => this.titleImage.setDrawing("click");
 }
