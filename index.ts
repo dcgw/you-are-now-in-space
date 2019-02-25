@@ -1,5 +1,5 @@
 import domready = require("domready");
-import {Game} from "./game";
+import Game from "./game";
 
 domready(() => {
     const game = new Game();

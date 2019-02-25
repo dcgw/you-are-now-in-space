@@ -4,7 +4,7 @@ import resources from "./resources";
 import GetReady from "./scenes/get-ready";
 import Title from "./scenes/title";
 
-export class Game {
+export default class Game {
     public readonly width = 384;
     public readonly height = 288;
 

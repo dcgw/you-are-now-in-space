@@ -1,5 +1,5 @@
 import {Actor, Scene, SpriteSheet, Timer, Vector} from "excalibur";
-import {Game} from "../../game";
+import Game from "../../game";
 import resources from "../../resources";
 
 const spriteSheetWidth = 104;

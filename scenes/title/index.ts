@@ -1,5 +1,5 @@
 import {Actor, Color, Input, Scene, SpriteSheet, Vector} from "excalibur";
-import {Game} from "../../game";
+import Game from "../../game";
 import resources from "../../resources";
 
 const TITLE_IMAGE_WIDTH = 320;
