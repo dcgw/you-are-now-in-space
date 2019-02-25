@@ -9,9 +9,9 @@ const TITLE_WIDTH = 176;
 const TITLE_HEIGHT = 32;
 
 export default class Title extends Scene {
-    private titleImage: Actor;
+    private readonly titleImage: Actor;
 
-    constructor(private engine: Engine) {
+    constructor(private readonly engine: Engine) {
         super(engine);
 
         this.titleImage = new Actor({
@@ -74,11 +74,11 @@ export default class Title extends Scene {
         this.titleImage.setDrawing("press");
     }
 
-    private onKeyPress = (event?: Input.KeyEvent) => {
+    private readonly onKeyPress = (event?: Input.KeyEvent) => {
         if (event != null && event.key === Input.Keys.X) {
             this.engine.goToScene("get-ready");
         }
     }
 
-    private onBlur = () => this.titleImage.setDrawing("click");
+    private readonly onBlur = () => this.titleImage.setDrawing("click");
 }

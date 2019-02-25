@@ -14,7 +14,7 @@ const spriteSheet = new SpriteSheet({
 });
 
 export default class GetReady extends Scene {
-    private getReady = new Actor({
+    private readonly getReady = new Actor({
         x: (WIDTH - 320) * .5 + 96,
         y: (HEIGHT - 200) * .5 + 64,
         width: spriteSheetWidth,
@@ -22,7 +22,7 @@ export default class GetReady extends Scene {
         anchor: Vector.Zero
     });
 
-    private stageText = new Actor({
+    private readonly stageText = new Actor({
         x: this.getReady.x,
         y: this.getReady.y + 16,
         width: spriteSheetWidth,
@@ -30,7 +30,7 @@ export default class GetReady extends Scene {
         anchor: Vector.Zero
     });
 
-    constructor(private engine: Engine, private stage: number) {
+    constructor(private readonly engine: Engine, private readonly stage: number) {
         super(engine);
 
         this.getReady.addDrawing("white", spriteSheet.getSprite(0));
