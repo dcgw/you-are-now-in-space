@@ -1,5 +1,5 @@
-import {Actor, Engine, Scene, SpriteSheet, Timer, Vector} from "excalibur";
-import {HEIGHT, WIDTH} from "../../index";
+import {Actor, Scene, SpriteSheet, Timer, Vector} from "excalibur";
+import {Game} from "../../game";
 import resources from "../../resources";
 
 const spriteSheetWidth = 104;
@@ -15,8 +15,8 @@ const spriteSheet = new SpriteSheet({
 
 export default class GetReady extends Scene {
     private readonly getReady = new Actor({
-        x: (WIDTH - 320) * .5 + 96,
-        y: (HEIGHT - 200) * .5 + 64,
+        x: (this.game.width - 320) * .5 + 96,
+        y: (this.game.height - 200) * .5 + 64,
         width: spriteSheetWidth,
         height: spriteSheetHeight,
         anchor: Vector.Zero
@@ -30,12 +30,12 @@ export default class GetReady extends Scene {
         anchor: Vector.Zero
     });
 
-    constructor(private readonly engine: Engine, private readonly stage: number) {
-        super(engine);
+    constructor(private readonly game: Game, private readonly stage: number) {
+        super(game.engine);
 
         this.getReady.addDrawing("white", spriteSheet.getSprite(0));
         this.getReady.addDrawing("fail", spriteSheet.getSprite(1));
-        this.getReady.addDrawing("glow", spriteSheet.getAnimationByIndices(engine,
+        this.getReady.addDrawing("glow", spriteSheet.getAnimationByIndices(game.engine,
             [13, 6, 7, 12, 0, 12, 7, 6], 4 * 1000 / 60));
         this.add(this.getReady);
 
@@ -43,16 +43,16 @@ export default class GetReady extends Scene {
         this.stageText.addDrawing("three-white", spriteSheet.getSprite(4));
         this.stageText.addDrawing("one-fail", spriteSheet.getSprite(3));
         this.stageText.addDrawing("three-fail", spriteSheet.getSprite(5));
-        this.stageText.addDrawing("one-glow", spriteSheet.getAnimationByIndices(engine,
+        this.stageText.addDrawing("one-glow", spriteSheet.getAnimationByIndices(game.engine,
             [9, 14, 2, 14, 9, 8, 15], 4 * 1000 / 60));
-        this.stageText.addDrawing("three-glow", spriteSheet.getAnimationByIndices(engine,
+        this.stageText.addDrawing("three-glow", spriteSheet.getAnimationByIndices(game.engine,
             [11, 16, 4, 16, 11, 10, 16], 4 * 1000 / 60));
         this.add(this.stageText);
     }
 
     public onActivate(): void {
         resources.getReadyMusic.play()
-            .then(() => this.engine.goToScene("title"),
+            .then(() => this.game.engine.goToScene("title"),
                 reason => console.error("", reason));
 
         if (this.stage === 1) {

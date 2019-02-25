@@ -1,5 +1,5 @@
-import {Actor, Color, Engine, Input, Scene, SpriteSheet, Vector} from "excalibur";
-import {HEIGHT, WIDTH} from "../..";
+import {Actor, Color, Input, Scene, SpriteSheet, Vector} from "excalibur";
+import {Game} from "../../game";
 import resources from "../../resources";
 
 const TITLE_IMAGE_WIDTH = 320;
@@ -11,12 +11,12 @@ const TITLE_HEIGHT = 32;
 export default class Title extends Scene {
     private readonly titleImage: Actor;
 
-    constructor(private readonly engine: Engine) {
-        super(engine);
+    constructor(private readonly game: Game) {
+        super(game.engine);
 
         this.titleImage = new Actor({
-            x: (WIDTH - TITLE_IMAGE_WIDTH) * .5,
-            y: (HEIGHT - TITLE_IMAGE_HEIGHT) * .5,
+            x: (game.width - TITLE_IMAGE_WIDTH) * .5,
+            y: (game.height - TITLE_IMAGE_HEIGHT) * .5,
             width: TITLE_IMAGE_WIDTH,
             height: TITLE_IMAGE_HEIGHT,
             anchor: Vector.Zero,
@@ -46,21 +46,21 @@ export default class Title extends Scene {
                 spHeight: TITLE_HEIGHT,
                 rows: 17,
                 columns: 1
-            }).getAnimationForAll(engine, 4 * 1000 / 60));
+            }).getAnimationForAll(game.engine, 4 * 1000 / 60));
         this.add(title);
     }
 
     public onActivate(): void {
-        this.engine.backgroundColor = Color.fromHex("444444");
-        this.engine.input.pointers.primary.on("up", this.onClick);
-        this.engine.input.keyboard.on("press", this.onKeyPress);
+        this.game.engine.backgroundColor = Color.fromHex("444444");
+        this.game.engine.input.pointers.primary.on("up", this.onClick);
+        this.game.engine.input.keyboard.on("press", this.onKeyPress);
         window.addEventListener("blur", this.onBlur, true);
     }
 
     public onDeactivate(): void {
         resources.titleMusic.stop();
-        this.engine.input.pointers.primary.off("up", this.onClick);
-        this.engine.input.keyboard.off("press", this.onKeyPress as any);
+        this.game.engine.input.pointers.primary.off("up", this.onClick);
+        this.game.engine.input.keyboard.off("press", this.onKeyPress as any);
         window.removeEventListener("blur", this.onBlur, true);
     }
 
@@ -76,7 +76,7 @@ export default class Title extends Scene {
 
     private readonly onKeyPress = (event?: Input.KeyEvent) => {
         if (event != null && event.key === Input.Keys.X) {
-            this.engine.goToScene("get-ready");
+            this.game.engine.goToScene("get-ready");
         }
     }
 
