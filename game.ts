@@ -9,6 +9,7 @@ export default class Game {
     public readonly height = 288;
 
     public active = false;
+    public stage = 1;
 
     public readonly engine = new Engine({
         width: this.width,
@@ -33,12 +34,18 @@ export default class Game {
         this.engine.input.pointers.primary.on("up", this.onClick);
         window.addEventListener("blur", this.onBlur);
 
+        this.reset();
+
         this.engine.start(loader)
             .then(() => {
                 this.engine.add("title", new Title(this));
-                this.engine.add("get-ready", new GetReady(this, 1));
+                this.engine.add("get-ready", new GetReady(this));
                 this.engine.goToScene("title");
             }, reason => console.error("", reason));
+    }
+
+    public reset(): void {
+        this.stage = 1;
     }
 
     private readonly onClick = () => this.active = true;

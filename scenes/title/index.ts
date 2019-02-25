@@ -77,6 +77,7 @@ export default class Title extends Scene {
 
     private readonly onKeyPress = (event?: Input.KeyEvent) => {
         if (event != null && event.key === Input.Keys.X) {
+            this.game.reset();
             this.game.engine.goToScene("get-ready");
         }
     }

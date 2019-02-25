@@ -30,7 +30,7 @@ export default class GetReady extends Scene {
         anchor: Vector.Zero
     });
 
-    constructor(private readonly game: Game, private readonly stage: number) {
+    constructor(private readonly game: Game) {
         super(game.engine);
 
         this.getReady.addDrawing("white", spriteSheet.getSprite(0));
@@ -55,9 +55,9 @@ export default class GetReady extends Scene {
             .then(() => this.game.engine.goToScene("title"),
                 reason => console.error("", reason));
 
-        if (this.stage === 1) {
+        if (this.game.stage === 1) {
             this.stageText.setDrawing("one-white");
-        } else if (this.stage === 2) {
+        } else if (this.game.stage === 2) {
             this.stageText.setDrawing("three-white");
         } else {
             this.stageText.visible = false;
@@ -65,18 +65,18 @@ export default class GetReady extends Scene {
 
         this.add(new Timer(() => {
             this.getReady.setDrawing("glow");
-            if (this.stage === 1) {
+            if (this.game.stage === 1) {
                 this.stageText.setDrawing("one-glow");
-            } else if (this.stage === 2) {
+            } else if (this.game.stage === 2) {
                 this.stageText.setDrawing("three-glow");
             }
         }, 2 * 1000 / 60));
 
         this.add(new Timer(() => {
             this.getReady.setDrawing("fail");
-            if (this.stage === 1) {
+            if (this.game.stage === 1) {
                 this.stageText.setDrawing("one-fail");
-            } else if (this.stage === 2) {
+            } else if (this.game.stage === 2) {
                 this.stageText.setDrawing("three-fail");
             }
         }, 180 * 1000 / 60));
