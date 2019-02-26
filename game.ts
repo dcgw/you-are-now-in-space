@@ -10,6 +10,7 @@ export default class Game {
 
     public active = false;
     public stage = 1;
+    public score = 0;
 
     public readonly engine = new Engine({
         width: this.width,
@@ -47,6 +48,7 @@ export default class Game {
 
     public reset(): void {
         this.stage = 1;
+        this.score = 0;
     }
 
     private readonly onClick = () => this.active = true;

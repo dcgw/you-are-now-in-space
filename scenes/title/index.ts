@@ -1,4 +1,5 @@
 import {Actor, Color, Input, Scene, SpriteSheet, Vector} from "excalibur";
+import Score from "../../actors/score";
 import Game from "../../game";
 import resources from "../../resources";
 
@@ -48,6 +49,8 @@ export default class Title extends Scene {
                 columns: 1
             }).getAnimationForAll(game.engine, 4 * 1000 / 60));
         this.add(title);
+
+        this.add(new Score(game));
     }
 
     public onActivate(): void {

@@ -1,4 +1,5 @@
 import {Sound, Texture} from "excalibur";
+import score from "./actors/score.png";
 import getReadyMusicMp3 from "./scenes/get-ready/get-ready.mp3";
 import getReadyMusicOgg from "./scenes/get-ready/get-ready.ogg";
 import getReady from "./scenes/get-ready/get-ready.png";
@@ -10,6 +11,7 @@ import title from "./scenes/title/title.png";
 const resources = {
     getReady: new Texture(getReady),
     getReadyMusic: new Sound(getReadyMusicOgg, getReadyMusicMp3),
+    score: new Texture(score),
     title: new Texture(title),
     titleBackground: new Texture(titleBackground),
     titleMusic: new Sound(titleMusicOgg, titleMusicMp3)
