@@ -17,7 +17,7 @@ export default class Score extends Actor {
     constructor(private readonly game: Game) {
         super({
             x: (game.width - game.playWidth) * .5,
-            y: (game.height - game.playHeight) * .5 + 200 + 12,
+            y: (game.height - game.playHeight) * .5 + 200 + 10,
             width: game.playWidth,
             height,
             anchor: Vector.Zero
