@@ -13,10 +13,10 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
     public class GetReadyWorld extends World {
 
-        [Embed(source="GetReady.mp3")]
+        [Embed(source="get-ready.mp3")]
         private static const MUSIC:Class;
 
-        [Embed(source="GetReady.png")]
+        [Embed(source="get-ready.png")]
         private static const SPRITEMAP:Class;
 
         private static const SPRITEMAP_WIDTH:int = 104;
@@ -34,7 +34,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
         public function GetReadyWorld (stage:int) {
             this.stage = stage;
-            
+
             var musicChannel:SoundChannel = new MUSIC().play();
             musicChannel.addEventListener(Event.SOUND_COMPLETE, function(e:Event):void {
                 if (stage%2 == 0) {

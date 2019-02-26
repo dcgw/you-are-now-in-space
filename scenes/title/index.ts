@@ -22,7 +22,7 @@ export default class Title extends Scene {
             anchor: Vector.Zero,
         });
         const titleImageSpriteSheet = new SpriteSheet({
-            image: resources.titleImage,
+            image: resources.titleBackground,
             spWidth: TITLE_IMAGE_WIDTH,
             spHeight: TITLE_IMAGE_HEIGHT,
             rows: 1,

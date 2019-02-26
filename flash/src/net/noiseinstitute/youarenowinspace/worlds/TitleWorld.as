@@ -14,13 +14,13 @@ package net.noiseinstitute.youarenowinspace.worlds {
 
     public class TitleWorld extends World {
 
-        [Embed(source="Title.png")]
+        [Embed(source="title.png")]
         private const TITLE:Class;
 
-        [Embed(source="TitleImage.png")]
+        [Embed(source="background.png")]
         private const TITLE_IMAGE:Class;
 
-        [Embed(source="Title.mp3")]
+        [Embed(source="title.mp3")]
         private const TITLE_MUSIC:Class;
 
         private static const TITLE_WIDTH:int = 176;
