@@ -16,8 +16,8 @@ const spriteSheet = new SpriteSheet({
 
 export default class GetReady extends Scene {
     private readonly getReady = new Actor({
-        x: (this.game.width - 320) * .5 + 96,
-        y: (this.game.height - 200) * .5 + 64,
+        x: (this.game.width - this.game.playWidth) * .5 + 96,
+        y: (this.game.height - this.game.playHeight) * .5 + 64,
         width: spriteSheetWidth,
         height: spriteSheetHeight,
         anchor: Vector.Zero

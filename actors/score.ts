@@ -16,9 +16,9 @@ const spriteSheet = new SpriteSheet({
 export default class Score extends Actor {
     constructor(private readonly game: Game) {
         super({
-            x: (game.width - 320) * .5,
-            y: (game.height - 200) * .5 + 200 + 12,
-            width: 320,
+            x: (game.width - game.playWidth) * .5,
+            y: (game.height - game.playHeight) * .5 + 200 + 12,
+            width: game.playWidth,
             height,
             anchor: Vector.Zero
         });

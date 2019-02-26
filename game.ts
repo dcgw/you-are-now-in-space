@@ -8,6 +8,9 @@ export default class Game {
     public readonly width = 384;
     public readonly height = 288;
 
+    public readonly playWidth = 320;
+    public readonly playHeight = 200;
+
     public active = false;
     public stage = 1;
     public score = 0;
