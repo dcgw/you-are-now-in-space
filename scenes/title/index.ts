@@ -2,11 +2,11 @@ import {Actor, Color, Input, Scene, SpriteSheet, Vector} from "excalibur";
 import Game from "../../game";
 import resources from "../../resources";
 
-const TITLE_IMAGE_WIDTH = 320;
-const TITLE_IMAGE_HEIGHT = 200;
+const backgroundImageWidth = 320;
+const backgroundImageHeight = 200;
 
-const TITLE_WIDTH = 176;
-const TITLE_HEIGHT = 32;
+const titleWidth = 176;
+const titleHeight = 32;
 
 export default class Title extends Scene {
     private readonly titleImage: Actor;
@@ -15,16 +15,16 @@ export default class Title extends Scene {
         super(game.engine);
 
         this.titleImage = new Actor({
-            x: (game.width - TITLE_IMAGE_WIDTH) * .5,
-            y: (game.height - TITLE_IMAGE_HEIGHT) * .5,
-            width: TITLE_IMAGE_WIDTH,
-            height: TITLE_IMAGE_HEIGHT,
+            x: (game.width - backgroundImageWidth) * .5,
+            y: (game.height - backgroundImageHeight) * .5,
+            width: backgroundImageWidth,
+            height: backgroundImageHeight,
             anchor: Vector.Zero,
         });
         const titleImageSpriteSheet = new SpriteSheet({
             image: resources.titleBackground,
-            spWidth: TITLE_IMAGE_WIDTH,
-            spHeight: TITLE_IMAGE_HEIGHT,
+            spWidth: backgroundImageWidth,
+            spHeight: backgroundImageHeight,
             rows: 1,
             columns: 2
         });
@@ -35,15 +35,15 @@ export default class Title extends Scene {
         const title = new Actor({
             x: this.titleImage.x + 8,
             y: this.titleImage.y + 8,
-            width: TITLE_WIDTH,
-            height: TITLE_HEIGHT,
+            width: titleWidth,
+            height: titleHeight,
             anchor: Vector.Zero
         });
         title.addDrawing("glowing",
             new SpriteSheet({
                 image: resources.title,
-                spWidth: TITLE_WIDTH,
-                spHeight: TITLE_HEIGHT,
+                spWidth: titleWidth,
+                spHeight: titleHeight,
                 rows: 17,
                 columns: 1
             }).getAnimationForAll(game.engine, 4 * 1000 / 60));
