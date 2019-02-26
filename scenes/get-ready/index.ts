@@ -55,7 +55,7 @@ export default class GetReady extends Scene {
 
     public onActivate(): void {
         resources.getReadyMusic.play()
-            .then(() => this.game.engine.goToScene("title"),
+            .then(() => this.game.engine.goToScene("level-1"),
                 reason => console.error("", reason));
 
         if (this.game.stage === 1) {

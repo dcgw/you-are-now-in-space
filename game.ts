@@ -2,6 +2,7 @@ import {Dictionary} from "dictionary-types";
 import {DisplayMode, Engine, Loader, Sound, Texture} from "excalibur";
 import resources from "./resources";
 import GetReady from "./scenes/get-ready";
+import Level1 from "./scenes/level-1";
 import Title from "./scenes/title";
 
 export default class Game {
@@ -45,6 +46,7 @@ export default class Game {
             .then(() => {
                 this.engine.add("title", new Title(this));
                 this.engine.add("get-ready", new GetReady(this));
+                this.engine.add("level-1", new Level1(this));
                 this.engine.goToScene("title");
             }, reason => console.error("", reason));
     }
