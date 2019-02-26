@@ -30,15 +30,15 @@
     "cz-conventional-changelog": "2.1.0",
     "ts-loader": "5.3.3",
     "tslint": "5.12.1",
-    "typescript": "^3.3.3333",
+    "typescript": "3.3.3333",
     "webpack": "4.29.5",
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.2.0"
   },
   "dependencies": {
     "@types/domready": "1.0.0",
-    "dictionary-types": "^1.0.0",
-    "domready": "^1.0.8",
+    "dictionary-types": "1.0.0",
+    "domready": "1.0.8",
     "excalibur": "0.21.0",
     "object-visit": "1.0.1"
   },
