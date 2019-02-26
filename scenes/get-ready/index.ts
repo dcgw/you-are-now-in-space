@@ -1,6 +1,7 @@
 import {Actor, Scene, SpriteSheet, Timer, Vector} from "excalibur";
 import Game from "../../game";
 import resources from "../../resources";
+import Score from "../../actors/score";
 
 const spriteSheetWidth = 104;
 const spriteSheetHeight = 8;
@@ -48,6 +49,8 @@ export default class GetReady extends Scene {
         this.stageText.addDrawing("three-glow", spriteSheet.getAnimationByIndices(game.engine,
             [11, 16, 4, 16, 11, 10, 16], 4 * 1000 / 60));
         this.add(this.stageText);
+
+        this.add(new Score(game));
     }
 
     public onActivate(): void {
