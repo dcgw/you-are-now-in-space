@@ -15,10 +15,10 @@
     tslib "^1.9.3"
     tslint-eslint-rules "^5.4.0"
 
-"@softwareventures/webpack-config@0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.10.1.tgz#845d86b74ac9602963dd93d271aea56fb38854d4"
-  integrity sha512-CBIInQZzL10QnVCtCdq95amdldLXc31hyMGPudneK3Pf49j8JWDfgq1mZBQWQvlsCW8MykyOe7w36qi5Wo8yHQ==
+"@softwareventures/webpack-config@0.11.0":
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.11.0.tgz#8fdf37d7bf6a4beef0b3fb2141b9217a4866b868"
+  integrity sha512-UHGnwBzq4AQ9Q+2dwoddxrFFsEZq23dPtGP0clCmyUoHR0JNzxq08I9bXutIWJSZ2Ea5PsTcUqwC/mNkrxRs/g==
   dependencies:
     "@softwareventures/tsconfig" "^1.0.0"
     clean-webpack-plugin "^1.0.0"
