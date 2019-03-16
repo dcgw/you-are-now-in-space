@@ -1,11 +1,13 @@
 import {Actor, Engine, Input, SpriteSheet, Vector} from "excalibur";
 import Game from "../game";
 import resources from "../resources";
+import Bullet from "./bullet";
 
 const width = 21;
 const height = 24;
 
 const speed = 5 * 60 / 1000;
+const shotInterval = 24 / 60 * 1000;
 
 const spriteSheet = new SpriteSheet({
     image: resources.player,
@@ -25,6 +27,7 @@ const asplodeSpriteSheet = new SpriteSheet({
 
 export default class Player extends Actor {
     private fixedX = false;
+    private shotCoolDown = 0;
 
     constructor(private game: Game) {
         super({
@@ -41,6 +44,14 @@ export default class Player extends Actor {
 
     public update(engine: Engine, delta: number): void {
         super.update(engine, delta);
+
+        if (engine.input.keyboard.isHeld(Input.Keys.X) && this.shotCoolDown <= 0) {
+            this.scene.add(new Bullet(this.x + width * 0.5, this.y + height * 0.5));
+            resources.laser.play();
+            this.shotCoolDown = shotInterval;
+        } else {
+            this.shotCoolDown -= delta;
+        }
 
         if (engine.input.keyboard.isHeld(Input.Keys.Left) && !this.fixedX) {
             this.x -= speed * delta;
