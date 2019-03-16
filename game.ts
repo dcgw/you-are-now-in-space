@@ -12,6 +12,9 @@ export default class Game {
     public readonly playWidth = 320;
     public readonly playHeight = 200;
 
+    public readonly playLeft = (this.width - this.playWidth) * 0.5;
+    public readonly playTop = (this.height - this.playHeight) * 0.5;
+
     public active = false;
     public stage = 1;
     public score = 0;
