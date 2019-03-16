@@ -1,5 +1,6 @@
 import {Sound, Texture} from "excalibur";
 import alien from "./actors/alien.png";
+import bullet from "./actors/bullet.png";
 import laserMp3 from "./actors/laser.mp3";
 import laserOgg from "./actors/laser.ogg";
 import playerSplodeMp3 from "./actors/player-splode.mp3";
@@ -16,6 +17,7 @@ import title from "./scenes/title/title.png";
 
 const resources = {
     alien: new Texture(alien),
+    bullet: new Texture(bullet),
     getReady: new Texture(getReady),
     getReadyMusic: new Sound(getReadyMusicOgg, getReadyMusicMp3),
     laser: new Sound(laserOgg, laserMp3),
