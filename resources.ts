@@ -1,6 +1,7 @@
 import {Sound, Texture} from "excalibur";
 import playerSplodeMp3 from "./actors/player-splode.mp3";
 import playerSplodeOgg from "./actors/player-splode.ogg";
+import player from "./actors/player.png";
 import score from "./actors/score.png";
 import getReadyMusicMp3 from "./scenes/get-ready/get-ready.mp3";
 import getReadyMusicOgg from "./scenes/get-ready/get-ready.ogg";
@@ -13,6 +14,7 @@ import title from "./scenes/title/title.png";
 const resources = {
     getReady: new Texture(getReady),
     getReadyMusic: new Sound(getReadyMusicOgg, getReadyMusicMp3),
+    player: new Texture(player),
     playerSplode: new Sound(playerSplodeMp3, playerSplodeOgg),
     score: new Texture(score),
     title: new Texture(title),
