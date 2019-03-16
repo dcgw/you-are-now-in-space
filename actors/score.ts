@@ -24,6 +24,10 @@ export default class Score extends Actor {
         });
     }
 
+    public onInitialize(): void {
+        this.z = 1;
+    }
+
     public draw(context: CanvasRenderingContext2D): void {
         this.game.score.toFixed(0)
             .split("")
