@@ -28,7 +28,7 @@
     "@softwareventures/webpack-config": "0.14.6",
     "@types/node": "11.13.7",
     "cz-conventional-changelog": "2.1.0",
-    "ts-loader": "5.4.3",
+    "ts-loader": "5.4.4",
     "tslint": "5.16.0",
     "typescript": "3.4.5",
     "webpack": "4.30.0",
