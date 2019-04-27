@@ -1,6 +1,6 @@
 import {Color, Scene} from "excalibur";
 import Border from "../../hud/border";
-import Player from "../../actors/player";
+import Player from "../../player/player";
 import Score from "../../hud/score";
 import Game from "../../game";
 
