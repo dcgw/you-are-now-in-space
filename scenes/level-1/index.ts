@@ -1,8 +1,8 @@
 import {Color, Scene} from "excalibur";
-import Border from "../../hud/border";
-import Player from "../../player/player";
-import Score from "../../hud/score";
 import Game from "../../game";
+import Border from "../../hud/border";
+import Score from "../../hud/score";
+import Player from "../../player/player";
 
 export default class Level1 extends Scene {
     constructor(private readonly game: Game) {

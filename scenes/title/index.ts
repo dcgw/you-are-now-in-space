@@ -1,6 +1,6 @@
 import {Actor, Color, Input, Scene, SpriteSheet, Vector} from "excalibur";
-import Score from "../../hud/score";
 import Game from "../../game";
+import Score from "../../hud/score";
 import resources from "../../resources";
 
 const backgroundImageWidth = 320;
