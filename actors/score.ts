@@ -25,7 +25,7 @@ export default class Score extends Actor {
     }
 
     public onInitialize(): void {
-        this.z = 1;
+        this.z = 2;
     }
 
     public draw(context: CanvasRenderingContext2D): void {

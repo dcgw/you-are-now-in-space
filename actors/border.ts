@@ -29,6 +29,10 @@ export default class Border extends Actor {
             4 * 1000 / 60));
     }
 
+    public onInitialize(): void {
+        this.z = 1;
+    }
+
     public enableAlert(): void {
         this.setDrawing("alert");
     }
