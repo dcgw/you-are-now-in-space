@@ -1,5 +1,5 @@
 import {Actor, Scene, SpriteSheet, Timer, Vector} from "excalibur";
-import Score from "../../actors/score";
+import Score from "../../hud/score";
 import Game from "../../game";
 import resources from "../../resources";
 
