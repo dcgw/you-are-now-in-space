@@ -3,6 +3,7 @@ import alienBullet from "./actors/alien-bullet.png";
 import alienSplodeMp3 from "./actors/alien-splode.mp3";
 import alienSplodeOgg from "./actors/alien-splode.ogg";
 import alien from "./actors/alien.png";
+import border from "./actors/border.png";
 import bullet from "./actors/bullet.png";
 import laserMp3 from "./actors/laser.mp3";
 import laserOgg from "./actors/laser.ogg";
@@ -30,6 +31,7 @@ const resources = {
     alien: new Texture(alien),
     alienBullet: new Texture(alienBullet),
     alienSplode: new Sound(alienSplodeOgg, alienSplodeMp3),
+    border: new Texture(border),
     bullet: new Texture(bullet),
     getReady: new Texture(getReady),
     getReadyMusic: new Sound(getReadyMusicOgg, getReadyMusicMp3),
