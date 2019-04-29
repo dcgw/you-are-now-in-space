@@ -1,5 +1,7 @@
 import {Sound, Texture} from "excalibur";
 import alienBullet from "./aliens/alien-bullet.png";
+import alienShotMp3 from "./aliens/alien-shot.mp3";
+import alienShotOgg from "./aliens/alien-shot.ogg";
 import alienSplodeMp3 from "./aliens/alien-splode.mp3";
 import alienSplodeOgg from "./aliens/alien-splode.ogg";
 import alien from "./aliens/alien.png";
@@ -30,6 +32,7 @@ import title from "./scenes/title/title.png";
 const resources = {
     alien: new Texture(alien),
     alienBullet: new Texture(alienBullet),
+    alienShot: new Sound(alienShotOgg, alienShotMp3),
     alienSplode: new Sound(alienSplodeOgg, alienSplodeMp3),
     border: new Texture(border),
     bullet: new Texture(bullet),
