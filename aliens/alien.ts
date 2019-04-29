@@ -32,7 +32,7 @@ export default class Alien extends Actor {
         this.addDrawing("brown", spriteSheet.getAnimationBetween(game.engine,
             14, 19, 4 * 1000 / 60));
         this.addDrawing("grey", spriteSheet.getAnimationBetween(game.engine, 21, 26, 4 * 1000 / 60));
-        this.addDrawing("asplode", spriteSheet.getAnimationBetween(game.engine, 28, 33, 4 * 1000 / 60));
+        this.addDrawing("asplode", spriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60));
 
         this.setDrawing(colour);
     }
