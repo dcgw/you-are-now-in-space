@@ -2,8 +2,8 @@ import {Actor, SpriteSheet, Vector} from "excalibur";
 import Game from "../game";
 import resources from "../resources";
 
-const width = 24;
-const height = 17;
+export const width = 24;
+export const height = 17;
 
 const spriteWidth = width;
 const spriteHeight = 21;
