@@ -1,6 +1,7 @@
-import {Actor, SpriteSheet, Vector} from "excalibur";
+import {Actor, Engine, SpriteSheet, Vector} from "excalibur";
 import Game from "../game";
 import resources from "../resources";
+import {Behaviour} from "./behaviours";
 
 export const width = 24;
 export const height = 17;
@@ -21,6 +22,8 @@ const anchor = new Vector(0, 2);
 export type AlienColour = "red" | "green" | "brown" | "grey";
 
 export default class Alien extends Actor {
+    public behaviour: Behaviour | null = null;
+
     constructor(game: Game, colour: AlienColour) {
         super({width, height, anchor});
 
@@ -32,5 +35,13 @@ export default class Alien extends Actor {
         this.addDrawing("asplode", spriteSheet.getAnimationBetween(game.engine, 28, 33, 4 * 1000 / 60));
 
         this.setDrawing(colour);
+    }
+
+    public update(engine: Engine, delta: number): void {
+        super.update(engine, delta);
+
+        if (this.behaviour != null) {
+            this.behaviour.update(delta);
+        }
     }
 }
