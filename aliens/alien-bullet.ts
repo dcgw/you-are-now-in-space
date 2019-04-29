@@ -5,9 +5,18 @@ import resources from "../resources";
 const width = 5;
 const height = 5;
 
+const anchor = new Vector(0.5, 0.5);
+
 export default class AlienBullet extends Actor {
-    constructor(private game: Game, x: number, y: number, vx: number, vy: number) {
-        super({x, y, width, height, vel: new Vector(vx, vy)});
+    constructor(private game: Game, position: Vector, velocity: Vector) {
+        super({
+            x: position.x,
+            y: position.y,
+            width,
+            height,
+            anchor,
+            vel: velocity,
+        });
         this.addDrawing(resources.alienBullet);
     }
 
