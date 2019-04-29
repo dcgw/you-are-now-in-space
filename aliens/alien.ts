@@ -18,8 +18,10 @@ const spriteSheet = new SpriteSheet({
 
 const anchor = new Vector(0, 2);
 
+export type AlienColour = "red" | "green" | "brown" | "grey";
+
 export default class Alien extends Actor {
-    constructor(game: Game, colour: "red" | "green" | "brown" | "grey") {
+    constructor(game: Game, colour: AlienColour) {
         super({width, height, anchor});
 
         this.addDrawing("red", spriteSheet.getAnimationBetween(game.engine, 0, 5, 4 * 1000 / 60));
