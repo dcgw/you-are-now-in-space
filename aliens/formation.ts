@@ -219,7 +219,8 @@ class SoundController {
     private position = 0;
 
     public play(): void {
-        this.sounds[this.position].play();
+        this.sounds[this.position].play()
+            .then(undefined, reason => console.error("", reason));
         this.position = (this.position + 1) % this.sounds.length;
     }
 }
