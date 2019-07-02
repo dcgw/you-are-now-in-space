@@ -18,6 +18,22 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@softwareventures/array@0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-0.14.1.tgz#bc0e5d01e42ec4d959dfc8c1ad873afd5174f5f3"
+  integrity sha512-z8pcSvS0B7siGe87mr6Y12670emHiMgD9OFEoXIoaWMeP2m/jhX3hKYSi44uVnm7FbaERreI4+t0paA4fMdSYA==
+  dependencies:
+    "@softwareventures/ordered" "^0.2.0"
+    dictionary-types "^1.0.0"
+    tslib "^1.9.3"
+
+"@softwareventures/ordered@^0.2.0":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@softwareventures/ordered/-/ordered-0.2.1.tgz#97a83745270659d13b9fa4c669fb878f763d9dbe"
+  integrity sha512-58nhr1sepVe/T9fAbmQlV+Gg+WCceT0cPWIq5PpjIKuKz5t8ywclfiQrfDi1FC10nJCa3t6k5QhgzbVupU7qbw==
+  dependencies:
+    tslib "^1.9.3"
+
 "@softwareventures/tsconfig@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@softwareventures/tsconfig/-/tsconfig-1.0.0.tgz#987228780994db57e92332b4f595a81956fe7920"
@@ -31,17 +47,20 @@
     tslib "^1.9.3"
     tslint-eslint-rules "^5.4.0"
 
-"@softwareventures/webpack-config@0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.16.0.tgz#1d58bb9f13f1d5c3156263daee95eafa82dd7800"
-  integrity sha512-Wl7/BurR+o8+5lm177s2WWC3Y5lACRyxKoPZbu4/ZAZYq+6XzAsgxXfeBe7N3OShozwDE4nXGM3K1faEVFSx8A==
+"@softwareventures/webpack-config@0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.17.0.tgz#c4b06e5af748f882746a7e5c9b3f10290f9ddc6e"
+  integrity sha512-CaK/bak9XRys0C56xfk6O3FR3sfXJofARB2oPOmJ9DK64pM+j3n/1cIcvUeLS9W0qvtDDg0lsRP9FBszewjvbg==
   dependencies:
+    "@softwareventures/array" "0.14.1"
     "@softwareventures/tsconfig" "^1.0.0"
     clean-webpack-plugin "^3.0.0"
     css-loader "^2.1.0"
     cssnano "^4.1.10"
+    dictionary-types "1.0.0"
     file-loader "^4.0.0"
     html-webpack-plugin "^3.2.0"
+    json-typescript "1.1.2"
     less "^3.9.0"
     less-loader "^5.0.0"
     mini-css-extract-plugin "^0.7.0"
@@ -1528,7 +1547,7 @@ detect-node@^2.0.4:
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.0.4.tgz#014ee8f8f669c5c58023da64b8179c083a28c46c"
   integrity sha512-ZIzRpLJrOj7jjP2miAtgqIfmzbxa4ZOr5jJc601zklsfEx9oTzmmj2nVpIPRpNlRTIh8lc1kyViIY7BWSGNmKw==
 
-dictionary-types@1.0.0:
+dictionary-types@1.0.0, dictionary-types@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/dictionary-types/-/dictionary-types-1.0.0.tgz#c74738702a2253dce2f2761f5e0a44f203f994fb"
   integrity sha512-WBoXmEOlpph7MeUNAaHzf704J15wpTgic6xlnak47uuibcmOKEdYBwmVRR4mHtNz+K2MGLvxE2m1LojdqwpTPA==
@@ -2945,6 +2964,11 @@ json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
+
+json-typescript@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/json-typescript/-/json-typescript-1.1.2.tgz#033f8309856ef9054cc3384db2ce81d4e0ad4d00"
+  integrity sha512-Np07MUsYMKbB0nNlw/MMIRjUK7ehO48LA4FsrzrhCfTUxMKbvOBAo0sc0b4nQ80ge9d32sModCunCgoyUojgUA==
 
 json3@^3.3.2:
   version "3.3.2"
