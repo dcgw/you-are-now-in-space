@@ -71,10 +71,10 @@
     tslib "^1.9.3"
     tslint-eslint-rules "^5.4.0"
 
-"@softwareventures/webpack-config@0.17.3":
-  version "0.17.3"
-  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.17.3.tgz#3d88a4bbf6e8a6800bef7ef0a1a370ced801f36b"
-  integrity sha512-eCQTLKf39Ics1Od91sXfvYm4+L6goIGua1MRns1dji3KwG4WTjKfM4boWRNOowHIqM+jqiqeUwLPqJXrgNHPWg==
+"@softwareventures/webpack-config@0.17.4":
+  version "0.17.4"
+  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.17.4.tgz#a95861f38865dad424db3beefda3a515452e2cf7"
+  integrity sha512-YVw2xaaMxnzWjGvgiAP7s0jESqXx+LOrKhdRwLp0sM8qy991Ccrbu/FSeAacCFq7+MWUsiy49wmOIO9f1LmAqg==
   dependencies:
     "@softwareventures/array" "0.14.1"
     "@softwareventures/tsconfig" "^1.0.0"
@@ -87,7 +87,7 @@
     json-typescript "1.1.2"
     less "^3.9.0"
     less-loader "^5.0.0"
-    mini-css-extract-plugin "^0.7.0"
+    mini-css-extract-plugin "^0.8.0"
     postcss-loader "^3.0.0"
     snyk "^1.189.0"
     style-loader "^0.23.1"
@@ -3902,10 +3902,10 @@ mimic-fn@^1.0.0:
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
   integrity sha512-jf84uxzwiuiIVKiOLpfYk7N46TSy8ubTonmneY9vrpHNAnp0QBt2BxWV9dO3/j+BoVAb+a5G6YDPW3M5HOdMWQ==
 
-mini-css-extract-plugin@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.7.0.tgz#5ba8290fbb4179a43dd27cca444ba150bee743a0"
-  integrity sha512-RQIw6+7utTYn8DBGsf/LpRgZCJMpZt+kuawJ/fju0KiOL6nAaTBNmCJwS7HtwSCXfS47gCkmtBFS7HdsquhdxQ==
+mini-css-extract-plugin@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-0.8.0.tgz#81d41ec4fe58c713a96ad7c723cdb2d0bd4d70e1"
+  integrity sha512-MNpRGbNA52q6U92i0qbVpQNsgk7LExy41MdAlG84FeytfDOtRIf/mCHdEgG8rpTKOaNKiqUnZdlptF469hxqOw==
   dependencies:
     loader-utils "^1.1.0"
     normalize-url "1.9.1"
