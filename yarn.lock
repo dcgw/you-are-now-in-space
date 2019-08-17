@@ -76,10 +76,10 @@
     tslib "^1.9.3"
     tslint-eslint-rules "^5.4.0"
 
-"@softwareventures/webpack-config@0.17.9":
-  version "0.17.9"
-  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.17.9.tgz#6fe3436a4f938cbe5aa05b39bd8e8567110125d3"
-  integrity sha512-WQBkdVzjAxkUzv21jPegq2MSzffebIcbUMRT9duhRT0lDpWh4jwKMelKI9lp1365qwaxVUPHbW6W9lBlRpM19w==
+"@softwareventures/webpack-config@0.17.10":
+  version "0.17.10"
+  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.17.10.tgz#d11a16774debfb7393da39a446614c2b41594c00"
+  integrity sha512-EvSnoPYI3ZZGV/m2hl9AMcTPFIlCc62oFxZU7Abxh0b0TUuO3P5oDXL2UD3wSZIxYS/HeeI0HDZRHzBO8NGc0A==
   dependencies:
     "@softwareventures/array" "0.14.1"
     "@softwareventures/tsconfig" "^1.0.0"
