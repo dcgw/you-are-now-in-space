@@ -47,10 +47,10 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@softwareventures/array@0.14.1":
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-0.14.1.tgz#bc0e5d01e42ec4d959dfc8c1ad873afd5174f5f3"
-  integrity sha512-z8pcSvS0B7siGe87mr6Y12670emHiMgD9OFEoXIoaWMeP2m/jhX3hKYSi44uVnm7FbaERreI4+t0paA4fMdSYA==
+"@softwareventures/array@0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-0.15.0.tgz#ea36f1bc43003bfcf781bd6d9e2ed2c94cc08f0c"
+  integrity sha512-y1twRQuiZ+CRaQixPvCUkOKf53xAEs55fPkUtZIOOwMgxVjYk1XGZ3b/J9IXEgOgwgHgzvWqounTNlW8iNooOg==
   dependencies:
     "@softwareventures/ordered" "^0.2.0"
     dictionary-types "^1.0.0"
@@ -76,12 +76,12 @@
     tslib "^1.9.3"
     tslint-eslint-rules "^5.4.0"
 
-"@softwareventures/webpack-config@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.18.0.tgz#e74e5fcf797bff801d6f0fd9fb0062a0c7f9bd90"
-  integrity sha512-/AXB7bOTXmY8f8Bn2DHA+63XAMEf9BDODuj02ZcSB8pMs2CKsQFjTCxy+LU/HSn72y0mKlGIOgqogdmOpxy2nw==
+"@softwareventures/webpack-config@0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@softwareventures/webpack-config/-/webpack-config-0.18.1.tgz#dee71cdefa530fe9aa1026917c5d43ca459b251a"
+  integrity sha512-l64AmRqgYZGwAHg86ed+b30+OHLNuX1C2UznIBEyrSAp5s4H836KksFNAtq9q91gZPOV4L+o26gHNTsRAiej4g==
   dependencies:
-    "@softwareventures/array" "0.14.1"
+    "@softwareventures/array" "0.15.0"
     "@softwareventures/tsconfig" "^1.0.0"
     clean-webpack-plugin "^3.0.0"
     css-loader "^2.1.0"
