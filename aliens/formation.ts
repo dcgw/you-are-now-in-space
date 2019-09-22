@@ -47,12 +47,6 @@ export default class Formation extends Actor {
                 this.aliens.push(alien);
             }
         }
-
-        this.reset();
-    }
-
-    public getAliens(): ReadonlyArray<Alien> {
-        return this.aliens;
     }
 
     public reset(): void {
@@ -64,6 +58,9 @@ export default class Formation extends Actor {
         this.moveVertically = false;
         this.breakaway = false;
 
+        this.scene.removeGroup("formation");
+        const group = this.scene.createGroup("formation");
+
         for (let i = 0; i < colours.length; ++i) {
             for (let j = 0; j < columns; ++j) {
                 const alien = this.aliens[i * columns + j];
@@ -71,6 +68,7 @@ export default class Formation extends Actor {
                 alien.x = this.game.playLeft + j * separationX + leftMargin;
                 alien.y = this.game.playTop + this.game.playHeight - alienHeight
                     - bottomMargin - i * separationY + offsetY;
+                group.add(alien);
             }
         }
     }

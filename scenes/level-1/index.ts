@@ -21,10 +21,6 @@ export default class Level1 extends Scene {
 
         this.formation = new Formation(game, player);
         this.add(this.formation);
-
-        for (const alien of this.formation.getAliens()) {
-            this.add(alien);
-        }
     }
 
     public onActivate(): void {
