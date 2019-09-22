@@ -18,7 +18,7 @@ const spriteSheet = new SpriteSheet({
     columns: 7
 });
 
-const anchor = new Vector(0, 2);
+const anchor = Vector.Zero;
 
 export type AlienColour = "red" | "green" | "brown" | "grey";
 

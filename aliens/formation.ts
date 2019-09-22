@@ -14,7 +14,8 @@ const leftMargin = 22;
 const bottomMargin = 11;
 const separationX = 36;
 const separationY = 24;
-const breakawayMargin = 60;
+const offsetY = -2;
+const breakawayMargin = 60 + offsetY;
 const moveAmount = 6;
 const shootInterval = 180 / 60 * 1000;
 const bulletMinSpeed = 2 * 60;
@@ -70,7 +71,7 @@ export default class Formation extends Actor {
                 const alien = this.aliens[i * columns + j];
                 alien.reset();
                 alien.x = this.game.playLeft + j * separationX + leftMargin;
-                alien.y = this.game.playTop + this.game.playHeight - alienHeight - bottomMargin - i * separationY;
+                alien.y = this.game.playTop + this.game.playHeight - alienHeight - bottomMargin - i * separationY + offsetY;
             }
         }
     }
