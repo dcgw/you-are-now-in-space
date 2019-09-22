@@ -29,7 +29,7 @@ const asplodeSpriteSheet = new SpriteSheet({
 export default class Player extends Actor {
     private fixedX = false;
     private shotCoolDown = 0;
-    private readonly explodingAnimation: Animation | null;
+    private readonly explodingAnimation: Animation;
 
     constructor(private game: Game) {
         super({
@@ -98,7 +98,7 @@ export default class Player extends Actor {
             this.scene.remove(collider);
         }
 
-        if (this.explodingAnimation && this.explodingAnimation.isDone()) {
+        if (this.explodingAnimation.isDone()) {
             this.kill();
         }
     }
