@@ -24,7 +24,7 @@ export type AlienColour = "red" | "green" | "brown" | "grey";
 
 export default class Alien extends Actor {
     public behaviour: Behaviour | null = null;
-    private explodingAnimation: Animation | null;
+    private readonly explodingAnimation: Animation | null;
 
     constructor(game: Game, colour: AlienColour) {
         super({width, height, anchor});
