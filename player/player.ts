@@ -99,7 +99,7 @@ export default class Player extends Actor {
         }
 
         if (this.explodingAnimation && this.explodingAnimation.isDone()) {
-            this.scene.remove(this);
+            this.kill();
         }
     }
 }
