@@ -50,10 +50,14 @@ export default class Alien extends Actor {
         if (this.behaviour != null) {
             this.behaviour.update(delta);
         }
-        const collidingActors = this.scene.actors.filter(a => a instanceof Bullet && a.collides(this));
-        if (collidingActors.length > 0) {
+
+        const collider = this.scene.actors
+            .find(a => a instanceof Bullet
+                && a.collides(this));
+
+        if (collider) {
             this.scene.remove(this);
-            collidingActors.forEach(a => this.scene.remove(a));
+            this.scene.remove(collider);
         }
     }
 }
