@@ -1,4 +1,4 @@
-import {Actor, CollisionType, Engine, SpriteSheet, Vector} from "excalibur";
+import {Actor, CollisionType, Engine, SpriteSheet, Vector, Animation} from "excalibur";
 import Game from "../game";
 import Bullet from "../player/bullet";
 import resources from "../resources";
@@ -24,6 +24,7 @@ export type AlienColour = "red" | "green" | "brown" | "grey";
 
 export default class Alien extends Actor {
     public behaviour: Behaviour | null = null;
+    private explodingAnimation: Animation | null;
 
     constructor(game: Game, colour: AlienColour) {
         super({width, height, anchor});
@@ -33,7 +34,10 @@ export default class Alien extends Actor {
         this.addDrawing("brown", spriteSheet.getAnimationBetween(game.engine,
             14, 19, 4 * 1000 / 60));
         this.addDrawing("grey", spriteSheet.getAnimationBetween(game.engine, 21, 26, 4 * 1000 / 60));
-        this.addDrawing("asplode", spriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60));
+
+        this.explodingAnimation = spriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60);
+        this.explodingAnimation.loop = false;
+        this.addDrawing("asplode", this.explodingAnimation);
 
         this.setDrawing(colour);
         this.collisionType = CollisionType.Fixed;
@@ -56,8 +60,12 @@ export default class Alien extends Actor {
                 && a.collides(this));
 
         if (collider) {
-            this.scene.remove(this);
+            this.setDrawing("asplode");
             this.scene.remove(collider);
+        }
+
+        if (this.explodingAnimation && this.explodingAnimation.isDone()) {
+            this.scene.remove(this);
         }
     }
 }
