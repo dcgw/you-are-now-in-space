@@ -14,7 +14,7 @@ const spriteSheet = new SpriteSheet({
     image: resources.alien,
     spWidth: spriteWidth,
     spHeight: spriteHeight,
-    rows: 4,
+    rows: 5,
     columns: 7
 });
 
