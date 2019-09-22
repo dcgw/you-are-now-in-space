@@ -1,4 +1,5 @@
-import {Actor, Engine, Input, SpriteSheet, Vector} from "excalibur";
+import {Actor, Animation, Engine, Input, SpriteSheet, Vector} from "excalibur";
+import AlienBullet from "../aliens/alien-bullet";
 import Game from "../game";
 import resources from "../resources";
 import Bullet from "./bullet";
@@ -21,13 +22,14 @@ const asplodeSpriteSheet = new SpriteSheet({
     image: resources.alien,
     spWidth: width,
     spHeight: height,
-    rows: 4,
+    rows: 5,
     columns: 7
 });
 
 export default class Player extends Actor {
     private fixedX = false;
     private shotCoolDown = 0;
+    private readonly explodingAnimation: Animation | null;
 
     constructor(private game: Game) {
         super({
@@ -39,7 +41,9 @@ export default class Player extends Actor {
         });
 
         this.addDrawing("spinning", spriteSheet.getAnimationForAll(game.engine, 4 * 1000 / 60));
-        this.addDrawing("asploding", asplodeSpriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60));
+        this.explodingAnimation = asplodeSpriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60);
+        this.explodingAnimation.loop = false;
+        this.addDrawing("asploding", this.explodingAnimation);
     }
 
     public update(engine: Engine, delta: number): void {
@@ -84,6 +88,19 @@ export default class Player extends Actor {
 
         if (this.y + height > this.game.height) {
             this.y = this.game.height - height;
+        }
+
+        const collider = this.scene.actors
+            .find(a => a instanceof AlienBullet
+                && a.collides(this));
+
+        if (collider) {
+            this.setDrawing("asploding");
+            this.scene.remove(collider);
+        }
+
+        if (this.explodingAnimation && this.explodingAnimation.isDone()) {
+            this.scene.remove(this);
         }
     }
 }
