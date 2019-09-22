@@ -1,5 +1,6 @@
-import {Actor, Engine, SpriteSheet, Vector} from "excalibur";
+import {Actor, CollisionType, Engine, SpriteSheet, Vector} from "excalibur";
 import Game from "../game";
+import Bullet from "../player/bullet";
 import resources from "../resources";
 import {Behaviour} from "./behaviours";
 
@@ -35,6 +36,7 @@ export default class Alien extends Actor {
         this.addDrawing("asplode", spriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60));
 
         this.setDrawing(colour);
+        this.collisionType = CollisionType.Fixed;
     }
 
     public reset(): void {
@@ -46,6 +48,11 @@ export default class Alien extends Actor {
 
         if (this.behaviour != null) {
             this.behaviour.update(delta);
+        }
+        const collidingActors = this.scene.actors.filter(a => a instanceof Bullet && a.collides(this));
+        if (collidingActors.length > 0) {
+            this.scene.remove(this);
+            collidingActors.forEach(a => this.scene.remove(a));
         }
     }
 }
