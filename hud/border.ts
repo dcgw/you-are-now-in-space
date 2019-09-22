@@ -16,8 +16,7 @@ const spriteSheet = new SpriteSheet({
 export default class Border extends Actor {
     constructor(game: Game) {
         super({
-            x: 0,
-            y: 0,
+            pos: Vector.Zero,
             width,
             height,
             anchor: Vector.Zero

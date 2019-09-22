@@ -33,8 +33,7 @@ export default class Player extends Actor {
 
     constructor(private game: Game) {
         super({
-            x: (game.width - width) * 0.5,
-            y: game.playTop,
+            pos: new Vector((game.width - width) * 0.5, game.playTop),
             width,
             height,
             anchor: Vector.Zero
@@ -50,7 +49,7 @@ export default class Player extends Actor {
         super.update(engine, delta);
 
         if (engine.input.keyboard.isHeld(Input.Keys.X) && this.shotCoolDown <= 0) {
-            this.scene.add(new Bullet(this.x + width * 0.5, this.y + height * 0.5));
+            this.scene.add(new Bullet(this.pos.add(new Vector(width * 0.5, height * 0.5))));
             resources.laser.play()
                 .then(undefined, reason => console.error("", reason));
             this.shotCoolDown = shotInterval;
@@ -59,35 +58,35 @@ export default class Player extends Actor {
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.Left) && !this.fixedX) {
-            this.x -= speed * delta;
+            this.pos.x -= speed * delta;
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.Right) && !this.fixedX) {
-            this.x += speed * delta;
+            this.pos.x += speed * delta;
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.Up)) {
-            this.y -= speed * delta;
+            this.pos.y -= speed * delta;
         }
 
         if (engine.input.keyboard.isHeld(Input.Keys.Down)) {
-            this.y += speed * delta;
+            this.pos.y += speed * delta;
         }
 
-        if (this.x < 0) {
-            this.x = 0;
+        if (this.pos.x < 0) {
+            this.pos.x = 0;
         }
 
-        if (this.x + width > this.game.width) {
-            this.x = this.game.width - width;
+        if (this.pos.x + width > this.game.width) {
+            this.pos.x = this.game.width - width;
         }
 
-        if (this.y < 0) {
-            this.y = 0;
+        if (this.pos.y < 0) {
+            this.pos.y = 0;
         }
 
-        if (this.y + height > this.game.height) {
-            this.y = this.game.height - height;
+        if (this.pos.y + height > this.game.height) {
+            this.pos.y = this.game.height - height;
         }
 
         const collider = this.scene.actors

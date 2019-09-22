@@ -16,16 +16,15 @@ const spriteSheet = new SpriteSheet({
 
 export default class GetReady extends Scene {
     private readonly getReady = new Actor({
-        x: (this.game.width - this.game.playWidth) * .5 + 96,
-        y: (this.game.height - this.game.playHeight) * .5 + 64,
+        pos: new Vector((this.game.width - this.game.playWidth) * .5 + 96,
+            (this.game.height - this.game.playHeight) * .5 + 64),
         width: spriteSheetWidth,
         height: spriteSheetHeight,
         anchor: Vector.Zero
     });
 
     private readonly stageText = new Actor({
-        x: this.getReady.x,
-        y: this.getReady.y + 16,
+        pos: this.getReady.pos.add(new Vector(0, 16)),
         width: spriteSheetWidth,
         height: spriteSheetHeight,
         anchor: Vector.Zero

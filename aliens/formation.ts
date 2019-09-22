@@ -65,8 +65,8 @@ export default class Formation extends Actor {
             for (let j = 0; j < columns; ++j) {
                 const alien = this.aliens[i * columns + j];
                 alien.reset();
-                alien.x = this.game.playLeft + j * separationX + leftMargin;
-                alien.y = this.game.playTop + this.game.playHeight - alienHeight
+                alien.pos.x = this.game.playLeft + j * separationX + leftMargin;
+                alien.pos.y = this.game.playTop + this.game.playHeight - alienHeight
                     - bottomMargin - i * separationY + offsetY;
                 group.add(alien);
             }
@@ -90,16 +90,16 @@ export default class Formation extends Actor {
                 if (!alien.behaviour) {
                     ++nonBrokenFormationSize;
 
-                    if (alien.x < leftMost) {
-                        leftMost = alien.x;
+                    if (alien.pos.x < leftMost) {
+                        leftMost = alien.pos.x;
                     }
 
-                    if (alien.x > rightMost) {
-                        rightMost = alien.x;
+                    if (alien.pos.x > rightMost) {
+                        rightMost = alien.pos.x;
                     }
 
-                    if (alien.y < this.topMost) {
-                        this.topMost = alien.y;
+                    if (alien.pos.y < this.topMost) {
+                        this.topMost = alien.pos.y;
                     }
                 }
             }
@@ -135,7 +135,7 @@ export default class Formation extends Actor {
             let moveY = 0;
 
             if (this.moveVertically) {
-                if (this.player.y < this.topMost) {
+                if (this.player.pos.y < this.topMost) {
                     moveY = -moveAmount;
                 } else {
                     moveY = moveAmount;
@@ -148,8 +148,8 @@ export default class Formation extends Actor {
 
             for (const alien of this.aliens) {
                 if (!alien.isKilled() && !alien.behaviour) {
-                    alien.x += moveX;
-                    alien.y += moveY;
+                    alien.pos.x += moveX;
+                    alien.pos.y += moveY;
                 }
             }
 
@@ -175,8 +175,8 @@ export default class Formation extends Actor {
                             alien.behaviour = new BrokenFormationBehaviour(this.game, alien);
                         } else if (shooting) {
                             if (this.game.stage >= 5 && (
-                                this.player.x > this.game.playLeft + this.game.playWidth
-                                || this.player.x - this.player.getWidth() < this.game.playLeft
+                                this.player.pos.x > this.game.playLeft + this.game.playWidth
+                                || this.player.pos.x - this.player.getWidth() < this.game.playLeft
                             )) {
                                 this.shootTowardsPlayer(alien);
                             } else {
@@ -212,7 +212,7 @@ export default class Formation extends Actor {
     }
 
     private shootVertically(alien: Alien): void {
-        const direction = this.player.y < this.topMost
+        const direction = this.player.pos.y < this.topMost
             ? Vector.Up
             : Vector.Down;
         this.shoot(alien, direction.scale(bulletMinSpeed + bulletSpeedIncrement * (this.game.stage - 1)));

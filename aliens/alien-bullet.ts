@@ -10,8 +10,7 @@ const anchor = new Vector(0.5, 0.5);
 export default class AlienBullet extends Actor {
     constructor(private game: Game, position: Vector, velocity: Vector) {
         super({
-            x: position.x,
-            y: position.y,
+            pos: position,
             width,
             height,
             anchor,
@@ -25,7 +24,12 @@ export default class AlienBullet extends Actor {
     public update(engine: Engine, delta: number): void {
         super.update(engine, delta);
 
-        if (this.x < 0 || this.x > this.game.width || this.y < 0 || this.y > this.game.height) {
+        if (
+            this.pos.x < 0
+            || this.pos.x > this.game.width
+            || this.pos.y < 0
+            || this.pos.y > this.game.height
+        ) {
             this.scene.remove(this);
         }
     }

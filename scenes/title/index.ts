@@ -16,8 +16,8 @@ export default class Title extends Scene {
         super(game.engine);
 
         this.titleImage = new Actor({
-            x: (game.width - backgroundImageWidth) * .5,
-            y: (game.height - backgroundImageHeight) * .5,
+            pos: new Vector((game.width - backgroundImageWidth) * .5,
+                (game.height - backgroundImageHeight) * .5),
             width: backgroundImageWidth,
             height: backgroundImageHeight,
             anchor: Vector.Zero,
@@ -34,8 +34,7 @@ export default class Title extends Scene {
         this.add(this.titleImage);
 
         const title = new Actor({
-            x: this.titleImage.x + 8,
-            y: this.titleImage.y + 8,
+            pos: this.titleImage.pos.add(new Vector(8, 8)),
             width: titleWidth,
             height: titleHeight,
             anchor: Vector.Zero

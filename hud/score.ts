@@ -16,8 +16,8 @@ const spriteSheet = new SpriteSheet({
 export default class Score extends Actor {
     constructor(private readonly game: Game) {
         super({
-            x: (game.width - game.playWidth) * .5,
-            y: (game.height - game.playHeight) * .5 + 200 + 10,
+            pos: new Vector((game.width - game.playWidth) * .5,
+                (game.height - game.playHeight) * .5 + 200 + 10),
             width: game.playWidth,
             height,
             anchor: Vector.Zero
@@ -34,7 +34,7 @@ export default class Score extends Actor {
             .map(n => parseInt(n, 10))
             .forEach((n, i) => {
                 spriteSheet.getSprite(n)
-                    .draw(context, this.x + i * width, this.y);
+                    .draw(context, this.pos.x + i * width, this.pos.y);
             });
     }
 }
