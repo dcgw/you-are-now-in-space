@@ -55,6 +55,8 @@ export default class Formation extends Actor {
     }
 
     public reset(): void {
+        this.unkill();
+
         this.moveTimer = 0;
         this.moveInterval = 32 / 60 * 1000;
         this.shootTimer = shootInterval / this.game.stage;
