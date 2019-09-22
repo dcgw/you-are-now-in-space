@@ -24,9 +24,9 @@ export type AlienColour = "red" | "green" | "brown" | "grey";
 
 export default class Alien extends Actor {
     public behaviour: Behaviour | null = null;
-    private readonly explodingAnimation: Animation | null;
+    private readonly explodingAnimation: Animation;
 
-    constructor(game: Game, colour: AlienColour) {
+    constructor(game: Game, private readonly colour: AlienColour) {
         super({width, height, anchor});
 
         this.addDrawing("red", spriteSheet.getAnimationBetween(game.engine, 0, 5, 4 * 1000 / 60));
@@ -39,12 +39,13 @@ export default class Alien extends Actor {
         this.explodingAnimation.loop = false;
         this.addDrawing("asplode", this.explodingAnimation);
 
-        this.setDrawing(colour);
         this.collisionType = CollisionType.Fixed;
     }
 
     public reset(): void {
         this.unkill();
+        this.setDrawing(this.colour);
+        this.explodingAnimation.reset();
         this.behaviour = null;
     }
 
@@ -64,8 +65,8 @@ export default class Alien extends Actor {
             this.scene.remove(collider);
         }
 
-        if (this.explodingAnimation && this.explodingAnimation.isDone()) {
-            this.scene.remove(this);
+        if (this.explodingAnimation.isDone()) {
+            this.kill();
         }
     }
 }

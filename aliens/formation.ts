@@ -106,7 +106,6 @@ export default class Formation extends Actor {
         }
 
         if (formationSize === 0) {
-            this.kill();
             return;
         }
 
