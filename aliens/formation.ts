@@ -22,9 +22,9 @@ const bulletSpeedIncrement = 0.5 * 60;
 
 export default class Formation extends Actor {
     private moveTimer = 0;
-    private moveInterval = 32 / 60 * 1000;
+    private moveInterval = 0;
 
-    private shootTimer: number;
+    private shootTimer = 0;
 
     private readonly aliens: Alien[] = [];
 
@@ -43,17 +43,34 @@ export default class Formation extends Actor {
             const colour = colours[i];
             for (let j = 0; j < columns; ++j) {
                 const alien = new Alien(game, colour);
-                alien.x = game.playLeft + j * separationX + leftMargin;
-                alien.y = game.playTop + game.playHeight - alienHeight - bottomMargin - i * separationY;
                 this.aliens.push(alien);
             }
         }
 
-        this.shootTimer = shootInterval / game.stage;
+        this.reset();
     }
 
     public getAliens(): ReadonlyArray<Alien> {
         return this.aliens;
+    }
+
+    public reset(): void {
+        this.moveTimer = 0;
+        this.moveInterval = 32 / 60 * 1000;
+        this.shootTimer = shootInterval / this.game.stage;
+        this.topMost = 0;
+        this.directionLeft = true;
+        this.moveVertically = false;
+        this.breakaway = false;
+
+        for (let i = 0; i < colours.length; ++i) {
+            for (let j = 0; j < columns; ++j) {
+                const alien = this.aliens[i * columns + j];
+                alien.reset();
+                alien.x = this.game.playLeft + j * separationX + leftMargin;
+                alien.y = this.game.playTop + this.game.playHeight - alienHeight - bottomMargin - i * separationY;
+            }
+        }
     }
 
     public update(engine: Engine, delta: number): void {
@@ -110,7 +127,7 @@ export default class Formation extends Actor {
                     this.moveVertically = false;
                 } else {
                     this.directionLeft = !this.directionLeft;
-                    this.moveVertically = false;
+                    this.moveVertically = true;
                 }
             }
 

@@ -6,6 +6,8 @@ import Score from "../../hud/score";
 import Player from "../../player/player";
 
 export default class Level1 extends Scene {
+    private readonly formation: Formation;
+
     private scoreTime = 0;
 
     constructor(private readonly game: Game) {
@@ -17,16 +19,17 @@ export default class Level1 extends Scene {
         this.add(new Score(game));
         this.add(new Border(game));
 
-        const formation = new Formation(game, player);
-        this.add(formation);
+        this.formation = new Formation(game, player);
+        this.add(this.formation);
 
-        for (const alien of formation.getAliens()) {
+        for (const alien of this.formation.getAliens()) {
             this.add(alien);
         }
     }
 
     public onActivate(): void {
         this.game.engine.backgroundColor = Color.fromHex("000000");
+        this.formation.reset();
         this.scoreTime = 1200 * 1000 / 60;
     }
 

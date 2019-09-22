@@ -37,6 +37,10 @@ export default class Alien extends Actor {
         this.setDrawing(colour);
     }
 
+    public reset(): void {
+        this.behaviour = null;
+    }
+
     public update(engine: Engine, delta: number): void {
         super.update(engine, delta);
 
