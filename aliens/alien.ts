@@ -40,6 +40,7 @@ export default class Alien extends Actor {
     }
 
     public reset(): void {
+        this.unkill();
         this.behaviour = null;
     }
 
