@@ -12,6 +12,10 @@
     {
       "name": "George Weller",
       "email": "george.weller@gmail.com"
+    },
+    {
+      "name": "Ian Johnson",
+      "email": "git@simplyian.net"
     }
   ],
   "license": "UNLICENSED",
