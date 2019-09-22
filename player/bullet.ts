@@ -1,4 +1,4 @@
-import {Actor, Vector} from "excalibur";
+import {Actor, Vector, CollisionType} from "excalibur";
 import resources from "../resources";
 
 const width = 5;
@@ -10,5 +10,7 @@ export default class Bullet extends Actor {
     constructor(x: number, y: number) {
         super({x, y, width, height, vel: new Vector(0, speed)});
         this.addDrawing(resources.bullet);
+        this.collisionType = CollisionType.Active;
+        this.addCollisionGroup("player");
     }
 }

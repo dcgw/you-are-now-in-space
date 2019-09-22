@@ -1,4 +1,4 @@
-import {Actor, Engine, Vector} from "excalibur";
+import {Actor, Engine, Vector, CollisionType} from "excalibur";
 import Game from "../game";
 import resources from "../resources";
 
@@ -18,6 +18,8 @@ export default class AlienBullet extends Actor {
             vel: velocity,
         });
         this.addDrawing(resources.alienBullet);
+        this.addCollisionGroup("aliens");
+        this.collisionType = CollisionType.Active;
     }
 
 

@@ -1,4 +1,4 @@
-import {Actor, Engine, SpriteSheet, Vector} from "excalibur";
+import {Actor, Engine, SpriteSheet, Vector, CollisionType} from "excalibur";
 import Game from "../game";
 import resources from "../resources";
 import {Behaviour} from "./behaviours";
@@ -26,7 +26,6 @@ export default class Alien extends Actor {
 
     constructor(game: Game, colour: AlienColour) {
         super({width, height, anchor});
-
         this.addDrawing("red", spriteSheet.getAnimationBetween(game.engine, 0, 5, 4 * 1000 / 60));
         this.addDrawing("green", spriteSheet.getAnimationBetween(game.engine, 7, 12, 4 * 1000 / 60));
         this.addDrawing("brown", spriteSheet.getAnimationBetween(game.engine,
@@ -35,6 +34,14 @@ export default class Alien extends Actor {
         this.addDrawing("asplode", spriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60));
 
         this.setDrawing(colour);
+        this.collisionType = CollisionType.Active;
+        this.addCollisionGroup("aliens");
+        this.on("collision", collisionEvent => {
+            this.kill();
+            if (collisionEvent.other) {
+                collisionEvent.other.kill();
+            }
+        });
     }
 
     public update(engine: Engine, delta: number): void {
