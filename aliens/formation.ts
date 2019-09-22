@@ -71,7 +71,8 @@ export default class Formation extends Actor {
                 const alien = this.aliens[i * columns + j];
                 alien.reset();
                 alien.x = this.game.playLeft + j * separationX + leftMargin;
-                alien.y = this.game.playTop + this.game.playHeight - alienHeight - bottomMargin - i * separationY + offsetY;
+                alien.y = this.game.playTop + this.game.playHeight - alienHeight
+                    - bottomMargin - i * separationY + offsetY;
             }
         }
     }
