@@ -30,6 +30,24 @@ export default class GetReady extends Scene {
         anchor: Vector.Zero
     });
 
+    private readonly glowTimer = new Timer(() => {
+        this.getReady.setDrawing("glow");
+        if (this.game.stage === 1) {
+            this.stageText.setDrawing("one-glow");
+        } else if (this.game.stage === 2) {
+            this.stageText.setDrawing("three-glow");
+        }
+    }, 2 * 1000 / 60);
+
+    private readonly failTimer = new Timer(() => {
+        this.getReady.setDrawing("fail");
+        if (this.game.stage === 1) {
+            this.stageText.setDrawing("one-fail");
+        } else if (this.game.stage === 2) {
+            this.stageText.setDrawing("three-fail");
+        }
+    }, 180 * 1000 / 60);
+
     constructor(private readonly game: Game) {
         super(game.engine);
 
@@ -50,6 +68,9 @@ export default class GetReady extends Scene {
         this.add(this.stageText);
 
         this.add(new Score(game));
+
+        this.add(this.glowTimer);
+        this.add(this.failTimer);
     }
 
     public onActivate(): void {
@@ -65,23 +86,8 @@ export default class GetReady extends Scene {
             this.stageText.visible = false;
         }
 
-        this.add(new Timer(() => {
-            this.getReady.setDrawing("glow");
-            if (this.game.stage === 1) {
-                this.stageText.setDrawing("one-glow");
-            } else if (this.game.stage === 2) {
-                this.stageText.setDrawing("three-glow");
-            }
-        }, 2 * 1000 / 60));
-
-        this.add(new Timer(() => {
-            this.getReady.setDrawing("fail");
-            if (this.game.stage === 1) {
-                this.stageText.setDrawing("one-fail");
-            } else if (this.game.stage === 2) {
-                this.stageText.setDrawing("three-fail");
-            }
-        }, 180 * 1000 / 60));
+        this.glowTimer.reset();
+        this.failTimer.reset();
     }
 
     public onDeactivate(): void {
