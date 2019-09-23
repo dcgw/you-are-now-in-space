@@ -24,6 +24,9 @@ import player from "./player/player.png";
 import getReadyMusicMp3 from "./scenes/get-ready/get-ready.mp3";
 import getReadyMusicOgg from "./scenes/get-ready/get-ready.ogg";
 import getReady from "./scenes/get-ready/get-ready.png";
+import intermissionMusicMp3 from "./scenes/intermission/intermission.mp3";
+import intermissionMusicOgg from "./scenes/intermission/intermission.ogg";
+import intermission from "./scenes/intermission/intermission.png";
 import titleBackground from "./scenes/title/background.png";
 import titleMusicMp3 from "./scenes/title/title.mp3";
 import titleMusicOgg from "./scenes/title/title.ogg";
@@ -38,6 +41,8 @@ const resources = {
     bullet: new Texture(bullet),
     getReady: new Texture(getReady),
     getReadyMusic: new Sound(getReadyMusicOgg, getReadyMusicMp3),
+    intermission: new Texture(intermission),
+    intermissionMusic: new Sound(intermissionMusicOgg, intermissionMusicMp3),
     laser: new Sound(laserOgg, laserMp3),
     move1: new Sound(move1Ogg, move1Mp3),
     move2: new Sound(move2Ogg, move2Mp3),

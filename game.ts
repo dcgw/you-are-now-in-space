@@ -4,6 +4,7 @@ import resources from "./resources";
 import GetReady from "./scenes/get-ready";
 import Level1 from "./scenes/level-1";
 import Title from "./scenes/title";
+import Intermission from "./scenes/intermission/intermission";
 
 export default class Game {
     public readonly width = 384;
@@ -49,6 +50,7 @@ export default class Game {
             .then(() => {
                 this.engine.add("title", new Title(this));
                 this.engine.add("get-ready", new GetReady(this));
+                this.engine.add("intermission", new Intermission(this));
                 this.engine.add("level-1", new Level1(this));
                 this.engine.goToScene("title");
             }, reason => console.error("", reason));

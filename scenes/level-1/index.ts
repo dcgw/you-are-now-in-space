@@ -15,6 +15,7 @@ export default class Level1 extends Scene {
         super(game.engine);
 
         this.player = new Player(game);
+        this.player.on("kill", () => this.killed());
 
         this.add(new Score(game));
         this.add(new Border(game));
@@ -37,12 +38,20 @@ export default class Level1 extends Scene {
         this.scoreTime -= delta;
 
         if (this.scoreTime <= 0) {
-            this.finish();
+            this.complete();
         }
     }
 
-    private finish(scene = "get-ready"): void {
+    private killed(): void {
+        this.end("intermission");
+    }
+
+    private complete(): void {
         ++this.game.stage;
+        this.end();
+    }
+
+    private end(scene = "get-ready"): void {
         this.game.engine.goToScene(scene);
     }
 }

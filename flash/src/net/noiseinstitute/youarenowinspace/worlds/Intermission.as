@@ -15,7 +15,7 @@ package net.noiseinstitute.youarenowinspace.worlds {
         [Embed(source="Intermission.mp3")]
         private static const MUSIC:Class;
 
-        [Embed(source="Intermission.png")]
+        [Embed(source="intermission.png")]
         private static const SPRITEMAP:Class;
 
         private static const SPRITEMAP_WIDTH:int = 128;
