@@ -33,7 +33,6 @@ export default class Player extends Actor {
 
     constructor(private game: Game) {
         super({
-            pos: new Vector((game.width - width) * 0.5, game.playTop),
             width,
             height,
             anchor: Vector.Zero
@@ -43,6 +42,14 @@ export default class Player extends Actor {
         this.explodingAnimation = asplodeSpriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60);
         this.explodingAnimation.loop = false;
         this.addDrawing("asploding", this.explodingAnimation);
+    }
+
+    public reset(): void {
+        this.unkill();
+        this.explodingAnimation.reset();
+        this.setDrawing("spinning");
+        this.pos.x = (this.game.width - width) * 0.5;
+        this.pos.y = this.game.playTop;
     }
 
     public update(engine: Engine, delta: number): void {

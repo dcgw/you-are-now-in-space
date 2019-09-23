@@ -6,6 +6,7 @@ import Score from "../../hud/score";
 import Player from "../../player/player";
 
 export default class Level1 extends Scene {
+    private readonly player: Player;
     private readonly formation: Formation;
 
     private scoreTime = 0;
@@ -13,17 +14,18 @@ export default class Level1 extends Scene {
     constructor(private readonly game: Game) {
         super(game.engine);
 
-        const player = new Player(game);
-        this.add(player);
+        this.player = new Player(game);
 
         this.add(new Score(game));
         this.add(new Border(game));
 
-        this.formation = new Formation(game, player);
+        this.formation = new Formation(game, this.player);
         this.add(this.formation);
     }
 
     public onActivate(): void {
+        this.add(this.player);
+        this.player.reset();
         this.game.engine.backgroundColor = Color.fromHex("000000");
         this.formation.reset();
         this.scoreTime = 1200 * 1000 / 60;
