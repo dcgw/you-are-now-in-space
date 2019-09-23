@@ -20,8 +20,8 @@ const spriteSheet = new SpriteSheet({
 
 const asplodeSpriteSheet = new SpriteSheet({
     image: resources.alien,
-    spWidth: width,
-    spHeight: height,
+    spWidth: 24,
+    spHeight: 21,
     rows: 5,
     columns: 7
 });
