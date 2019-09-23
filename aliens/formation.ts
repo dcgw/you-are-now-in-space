@@ -207,7 +207,7 @@ export default class Formation extends Actor {
 
     private shootTowardsPlayer(alien: Alien): void {
         const direction = this.player.getCenter().sub(alien.getCenter()).normalize();
-        this.shoot(alien, direction.scale(this.game.stage));
+        this.shoot(alien, direction.scale(this.game.stage * 60));
     }
 
     private shootVertically(alien: Alien): void {
