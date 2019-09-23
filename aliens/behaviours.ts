@@ -15,26 +15,26 @@ export class BrokenFormationBehaviour implements Behaviour {
     }
 
     public update(delta: number): void {
-        this.alien.y -= speed * this.layer;
+        this.alien.pos.y -= speed * this.layer;
 
         if (this.game.engine.input.keyboard.isHeld(Input.Keys.Left)) {
-            this.alien.x -= speed * this.layer;
+            this.alien.pos.x -= speed * this.layer;
         }
 
         if (this.game.engine.input.keyboard.isHeld(Input.Keys.Right)) {
-            this.alien.x += speed * this.layer;
+            this.alien.pos.x += speed * this.layer;
         }
 
-        if (this.alien.y <= -height) {
-            this.alien.y += this.game.height;
+        if (this.alien.pos.y <= -height) {
+            this.alien.pos.y += this.game.height;
         }
 
-        if (this.alien.x <= -width) {
-            this.alien.x += this.game.width;
+        if (this.alien.pos.x <= -width) {
+            this.alien.pos.x += this.game.width;
         }
 
-        if (this.alien.x >= this.game.width) {
-            this.alien.x -= this.game.width;
+        if (this.alien.pos.x >= this.game.width) {
+            this.alien.pos.x -= this.game.width;
         }
     }
 }
