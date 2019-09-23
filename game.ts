@@ -2,9 +2,9 @@ import {Dictionary} from "dictionary-types";
 import {DisplayMode, Engine, Loader, Sound, Texture} from "excalibur";
 import resources from "./resources";
 import GetReady from "./scenes/get-ready";
+import Intermission from "./scenes/intermission/intermission";
 import Level1 from "./scenes/level-1";
 import Title from "./scenes/title";
-import Intermission from "./scenes/intermission/intermission";
 
 export default class Game {
     public readonly width = 384;

@@ -1,4 +1,4 @@
-import {Actor, Scene, SpriteSheet, Vector, Timer} from "excalibur";
+import {Actor, Scene, SpriteSheet, Timer, Vector} from "excalibur";
 import Game from "../../game";
 import resources from "../../resources";
 
@@ -44,7 +44,8 @@ export default class Intermission extends Scene {
 
     public onActivate(): void {
         resources.intermissionMusic.play()
-            .then(() => this.game.engine.goToScene("level-1"));
+            .then(() => this.game.engine.goToScene("level-1"),
+                reason => console.error("", reason));
 
         this.message.setDrawing("3");
 
