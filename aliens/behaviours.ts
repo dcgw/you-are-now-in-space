@@ -6,7 +6,7 @@ export interface Behaviour {
     update(delta: number): void;
 }
 
-const speed = 1 / 60 * 1000;
+const speed = 60 / 1000;
 
 export class BrokenFormationBehaviour implements Behaviour {
     private layer = Math.random() * 3 + 2;
@@ -15,14 +15,14 @@ export class BrokenFormationBehaviour implements Behaviour {
     }
 
     public update(delta: number): void {
-        this.alien.pos.y -= speed * this.layer;
+        this.alien.pos.y -= speed * this.layer * delta;
 
         if (this.game.engine.input.keyboard.isHeld(Input.Keys.Left)) {
-            this.alien.pos.x -= speed * this.layer;
+            this.alien.pos.x -= speed * this.layer * delta;
         }
 
         if (this.game.engine.input.keyboard.isHeld(Input.Keys.Right)) {
-            this.alien.pos.x += speed * this.layer;
+            this.alien.pos.x += speed * this.layer * delta;
         }
 
         if (this.alien.pos.y <= -height) {
