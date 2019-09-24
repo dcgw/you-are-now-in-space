@@ -49,6 +49,10 @@ export default class Formation extends Actor {
         }
     }
 
+    public isBreakaway(): boolean {
+        return this.breakaway;
+    }
+
     public reset(): void {
         this.moveTimer = 0;
         this.moveInterval = 32 / 60 * 1000;

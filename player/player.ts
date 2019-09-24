@@ -96,17 +96,17 @@ export default class Player extends Actor {
             this.pos.y = this.game.height - height;
         }
 
-        const collider = this.scene.actors
-            .find(a => a instanceof AlienBullet
-                && a.collides(this));
-
-        if (collider) {
-            this.setDrawing("asploding");
-            this.scene.remove(collider);
-        }
-
-        if (this.explodingAnimation.isDone()) {
-            this.kill();
-        }
+        // const collider = this.scene.actors
+        //     .find(a => a instanceof AlienBullet
+        //         && a.collides(this));
+        //
+        // if (collider) {
+        //     this.setDrawing("asploding");
+        //     this.scene.remove(collider);
+        // }
+        //
+        // if (this.explodingAnimation.isDone()) {
+        //     this.kill();
+        // }
     }
 }

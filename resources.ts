@@ -27,12 +27,15 @@ import getReady from "./scenes/get-ready/get-ready.png";
 import intermissionMusicMp3 from "./scenes/intermission/intermission.mp3";
 import intermissionMusicOgg from "./scenes/intermission/intermission.ogg";
 import intermission from "./scenes/intermission/intermission.png";
+import alertMp3 from "./scenes/level-1/alert.mp3";
+import alertOgg from "./scenes/level-1/alert.ogg";
 import titleBackground from "./scenes/title/background.png";
 import titleMusicMp3 from "./scenes/title/title.mp3";
 import titleMusicOgg from "./scenes/title/title.ogg";
 import title from "./scenes/title/title.png";
 
 const resources = {
+    alert: new Sound(alertOgg, alertMp3),
     alien: new Texture(alien),
     alienBullet: new Texture(alienBullet),
     alienShot: new Sound(alienShotOgg, alienShotMp3),
