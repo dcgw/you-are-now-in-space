@@ -53,6 +53,7 @@ export default class Level1 extends Scene {
                 .then(() => void 0,
                     reason => console.error("", reason));
             this.border.enableAlert();
+            this.player.fixedX = true;
         }
     }
 

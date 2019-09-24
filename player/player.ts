@@ -27,7 +27,7 @@ const asplodeSpriteSheet = new SpriteSheet({
 });
 
 export default class Player extends Actor {
-    private fixedX = false;
+    public fixedX = false;
     private shotCoolDown = 0;
     private readonly explodingAnimation: Animation;
 
@@ -46,6 +46,8 @@ export default class Player extends Actor {
 
     public reset(): void {
         this.unkill();
+        this.fixedX = false;
+        this.shotCoolDown = 0;
         this.explodingAnimation.reset();
         this.setDrawing("spinning");
         this.pos.x = (this.game.width - width) * 0.5;
