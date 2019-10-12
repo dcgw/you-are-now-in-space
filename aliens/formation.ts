@@ -69,6 +69,7 @@ export default class Formation extends Actor {
                 alien.pos.x = this.game.playLeft + j * separationX + leftMargin;
                 alien.pos.y = this.game.playTop + this.game.playHeight - alienHeight
                     - bottomMargin - i * separationY + offsetY;
+                alien.on("asplode", event => this.emit("alienAsploded", event));
                 this.scene.add(alien);
             }
         }

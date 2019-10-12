@@ -1,4 +1,4 @@
-import {Actor, Animation, CollisionType, Engine, SpriteSheet, Vector} from "excalibur";
+import {Actor, Animation, CollisionType, Engine, SpriteSheet, Vector, KillEvent} from "excalibur";
 import Game from "../game";
 import Bullet from "../player/bullet";
 import resources from "../resources";
@@ -61,6 +61,7 @@ export default class Alien extends Actor {
                 && a.collides(this));
 
         if (collider) {
+            this.emit("asplode", new KillEvent(this));
             this.setDrawing("asplode");
             this.scene.remove(collider);
         }

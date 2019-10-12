@@ -24,6 +24,8 @@ export default class Level1 extends Scene {
         this.add(this.border);
 
         this.formation = new Formation(game, this.player);
+        this.formation.on("alienAsploded",
+            () => game.score += Math.round(this.scoreTime / 1000 * 60) * game.stage / 5);
         this.add(this.formation);
     }
 
