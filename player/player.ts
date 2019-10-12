@@ -58,7 +58,7 @@ export default class Player extends Actor {
         super.update(engine, delta);
 
         if (engine.input.keyboard.isHeld(Input.Keys.X) && this.shotCoolDown <= 0) {
-            this.scene.add(new Bullet(this.pos.add(new Vector(width * 0.5, height * 0.5))));
+            this.scene.add(new Bullet(this.game, this.pos.add(new Vector(width * 0.5, height * 0.5))));
             resources.laser.play()
                 .then(undefined, reason => console.error("", reason));
             this.shotCoolDown = shotInterval;

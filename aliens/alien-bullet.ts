@@ -30,7 +30,7 @@ export default class AlienBullet extends Actor {
             || this.pos.y < 0
             || this.pos.y > this.game.height
         ) {
-            this.scene.remove(this);
+            this.kill();
         }
     }
 }
