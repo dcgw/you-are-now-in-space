@@ -24,6 +24,7 @@ export type AlienColour = "red" | "green" | "brown" | "grey";
 
 export default class Alien extends Actor {
     public behaviour: Behaviour | null = null;
+    private asploding: boolean = false;
     private readonly explodingAnimation: Animation;
 
     constructor(game: Game, private readonly colour: AlienColour) {
@@ -45,8 +46,9 @@ export default class Alien extends Actor {
     public reset(): void {
         this.unkill();
         this.setDrawing(this.colour);
-        this.explodingAnimation.reset();
         this.behaviour = null;
+        this.asploding = false;
+        this.explodingAnimation.reset();
     }
 
     public update(engine: Engine, delta: number): void {
@@ -56,18 +58,22 @@ export default class Alien extends Actor {
             this.behaviour.update(delta);
         }
 
-        const collider = this.scene.actors
-            .find(a => a instanceof Bullet
-                && a.collides(this));
+        if (this.asploding) {
+            if (this.explodingAnimation.isDone()) {
+                this.kill();
+            }
+        } else if (!this.asploding) {
+            const bullet = this.scene.actors
+                .find(a => a instanceof Bullet
+                    && a.collides(this)) as Bullet | undefined;
 
-        if (collider) {
-            this.emit("asplode", new KillEvent(this));
-            this.setDrawing("asplode");
-            this.scene.remove(collider);
+            if (bullet) {
+                this.asploding = true;
+                this.emit("asplode", new KillEvent(this));
+                this.setDrawing("asplode");
+                this.scene.remove(bullet);
+            }
         }
 
-        if (this.explodingAnimation.isDone()) {
-            this.kill();
-        }
     }
 }
