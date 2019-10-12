@@ -74,6 +74,5 @@ export default class Alien extends Actor {
                 this.scene.remove(bullet);
             }
         }
-
     }
 }
