@@ -17,6 +17,7 @@ export default class Game {
     public readonly playTop = (this.height - this.playHeight) * 0.5;
 
     public active = false;
+    public lives = 4;
     public stage = 1;
     public score = 0;
 
@@ -57,6 +58,7 @@ export default class Game {
     }
 
     public reset(): void {
+        this.lives = 4;
         this.stage = 1;
         this.score = 0;
     }

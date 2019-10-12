@@ -60,6 +60,7 @@ export default class Level1 extends Scene {
     }
 
     private killed(): void {
+        --this.game.lives;
         this.end("intermission");
     }
 

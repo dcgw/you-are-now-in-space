@@ -23,7 +23,7 @@ export default class Intermission extends Scene {
     });
 
     private readonly failTimer = new Timer(() => {
-        this.message.setDrawing("3fail");
+        this.message.setDrawing(this.game.lives + "fail");
     }, 180 * 1000 / 60);
 
     constructor(private readonly game: Game) {
@@ -44,10 +44,17 @@ export default class Intermission extends Scene {
 
     public onActivate(): void {
         resources.intermissionMusic.play()
-            .then(() => this.game.engine.goToScene("level-1"),
+            .then(
+                () => {
+                    if (this.game.lives > 0) {
+                        this.game.engine.goToScene("level-1");
+                    } else {
+                        this.game.engine.goToScene("title");
+                    }
+                },
                 reason => console.error("", reason));
 
-        this.message.setDrawing("3");
+        this.message.setDrawing(this.game.lives);
 
         this.failTimer.reset();
     }
