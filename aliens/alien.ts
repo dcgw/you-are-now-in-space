@@ -1,4 +1,4 @@
-import {Actor, Animation, CollisionType, Engine, SpriteSheet, Vector, KillEvent} from "excalibur";
+import {Actor, Animation, CollisionType, Engine, KillEvent, SpriteSheet, Vector} from "excalibur";
 import Game from "../game";
 import Bullet from "../player/bullet";
 import resources from "../resources";
