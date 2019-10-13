@@ -1,9 +1,9 @@
 import {Actor, Animation, CollisionType, Engine, GameEvent, Input, SpriteSheet, Vector} from "excalibur";
+import Alien from "../aliens/alien";
 import AlienBullet from "../aliens/alien-bullet";
 import Game from "../game";
 import resources from "../resources";
 import Bullet from "./bullet";
-import Alien from "../aliens/alien";
 
 const width = 21;
 const height = 24;
