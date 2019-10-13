@@ -3,6 +3,7 @@ import AlienBullet from "../aliens/alien-bullet";
 import Game from "../game";
 import resources from "../resources";
 import Bullet from "./bullet";
+import Alien from "../aliens/alien";
 
 const width = 21;
 const height = 24;
@@ -111,11 +112,17 @@ export default class Player extends Actor {
     private onCollisionStart = (event: GameEvent<Actor>) => {
         if (event.other instanceof AlienBullet) {
             this.collideWithAlienBullet(event.other);
+        } else if (event.other instanceof Alien) {
+            this.collideWithAlien(event.other);
         }
     }
 
     private collideWithAlienBullet(bullet: AlienBullet): void {
         this.setDrawing("asploding");
         bullet.kill();
+    }
+
+    private collideWithAlien(alien: Alien): void {
+        this.setDrawing("asploding");
     }
 }
