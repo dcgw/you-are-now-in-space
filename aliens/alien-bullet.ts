@@ -17,7 +17,8 @@ export default class AlienBullet extends Actor {
             vel: velocity,
         });
         this.addDrawing(resources.alienBullet);
-        this.collisionType = CollisionType.Fixed;
+        this.body.collider.group = game.collisionGroups.aliens;
+        this.body.collider.type = CollisionType.Passive;
     }
 
 

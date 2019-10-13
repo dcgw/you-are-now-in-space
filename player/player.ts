@@ -1,4 +1,4 @@
-import {Actor, Animation, Engine, Input, SpriteSheet, Vector} from "excalibur";
+import {Actor, Animation, CollisionType, Engine, GameEvent, Input, SpriteSheet, Vector} from "excalibur";
 import AlienBullet from "../aliens/alien-bullet";
 import Game from "../game";
 import resources from "../resources";
@@ -42,6 +42,11 @@ export default class Player extends Actor {
         this.explodingAnimation = asplodeSpriteSheet.getAnimationBetween(game.engine, 28, 34, 4 * 1000 / 60);
         this.explodingAnimation.loop = false;
         this.addDrawing("asploding", this.explodingAnimation);
+
+        this.body.collider.group = game.collisionGroups.player;
+        this.body.collider.type = CollisionType.Passive;
+
+        this.on("collisionstart", this.onCollisionStart);
     }
 
     public reset(): void {
@@ -98,17 +103,19 @@ export default class Player extends Actor {
             this.pos.y = this.game.height - height;
         }
 
-        const collider = this.scene.actors
-            .find(a => a instanceof AlienBullet
-                && a.collides(this));
-
-        if (collider) {
-            this.setDrawing("asploding");
-            this.scene.remove(collider);
-        }
-
         if (this.explodingAnimation.isDone()) {
             this.kill();
         }
+    }
+
+    private onCollisionStart = (event: GameEvent<Actor>) => {
+        if (event.other instanceof AlienBullet) {
+            this.collideWithAlienBullet(event.other);
+        }
+    }
+
+    private collideWithAlienBullet(bullet: AlienBullet): void {
+        this.setDrawing("asploding");
+        bullet.kill();
     }
 }

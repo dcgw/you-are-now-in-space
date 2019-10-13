@@ -11,7 +11,8 @@ export default class Bullet extends Actor {
     constructor(private readonly game: Game, position: Vector) {
         super({pos: position, width, height, vel: new Vector(0, speed)});
         this.addDrawing(resources.bullet);
-        this.collisionType = CollisionType.Fixed;
+        this.body.collider.group = game.collisionGroups.player;
+        this.body.collider.type = CollisionType.Passive;
     }
 
     public update(engine: Engine, delta: number): void {

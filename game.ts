@@ -1,5 +1,14 @@
 import {Dictionary} from "dictionary-types";
-import {DisplayMode, Engine, Loader, Sound, Texture} from "excalibur";
+import {
+    CollisionGroupManager,
+    CollisionResolutionStrategy,
+    DisplayMode,
+    Engine,
+    Loader,
+    Physics,
+    Sound,
+    Texture
+} from "excalibur";
 import resources from "./resources";
 import GetReady from "./scenes/get-ready";
 import Intermission from "./scenes/intermission/intermission";
@@ -15,6 +24,11 @@ export default class Game {
 
     public readonly playLeft = (this.width - this.playWidth) * 0.5;
     public readonly playTop = (this.height - this.playHeight) * 0.5;
+
+    public readonly collisionGroups = {
+        player: CollisionGroupManager.create("player"),
+        aliens: CollisionGroupManager.create("aliens")
+    };
 
     public active = false;
     public lives = 4;
@@ -44,6 +58,8 @@ export default class Game {
         this.engine.input.pointers.primary.on("up", this.onClick);
         this.engine.input.keyboard.on("press", this.onClick);
         window.addEventListener("blur", this.onBlur);
+
+        Physics.collisionResolutionStrategy = CollisionResolutionStrategy.Box;
 
         this.reset();
 

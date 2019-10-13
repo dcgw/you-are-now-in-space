@@ -1,4 +1,13 @@
-import {Actor, Animation, CollisionType, Engine, KillEvent, SpriteSheet, Vector} from "excalibur";
+import {
+    Actor,
+    Animation,
+    CollisionType,
+    Engine,
+    GameEvent,
+    KillEvent,
+    SpriteSheet,
+    Vector
+} from "excalibur";
 import Game from "../game";
 import Bullet from "../player/bullet";
 import resources from "../resources";
@@ -40,7 +49,10 @@ export default class Alien extends Actor {
         this.explodingAnimation.loop = false;
         this.addDrawing("asplode", this.explodingAnimation);
 
-        this.collisionType = CollisionType.Fixed;
+        this.body.collider.group = game.collisionGroups.aliens;
+        this.body.collider.type = CollisionType.Passive;
+
+        this.on("collisionstart", this.onCollisionStart);
     }
 
     public reset(): void {
@@ -62,20 +74,24 @@ export default class Alien extends Actor {
             if (this.explodingAnimation.isDone()) {
                 this.kill();
             }
-        } else if (!this.asploding) {
-            const bullet = this.scene.actors
-                .find(a => a instanceof Bullet
-                    && a.collides(this)) as Bullet | undefined;
+        }
+    }
 
-            if (bullet) {
-                this.asploding = true;
-                this.emit("asplode", new KillEvent(this));
-                this.setDrawing("asplode");
-                this.scene.remove(bullet);
-                resources.alienSplode.play()
-                    .then(() => void 0,
-                        reason => console.error("", reason));
-            }
+    private readonly onCollisionStart = (event: GameEvent<Actor>) => {
+        if (event.other instanceof Bullet) {
+            this.hitByBullet(event.other);
+        }
+    }
+
+    private hitByBullet(bullet: Bullet): void {
+        if (!this.asploding) {
+            bullet.kill();
+            this.asploding = true;
+            this.emit("asplode", new KillEvent(this));
+            this.setDrawing("asplode");
+            resources.alienSplode.play()
+                .then(() => void 0,
+                    reason => console.error("", reason));
         }
     }
 }
