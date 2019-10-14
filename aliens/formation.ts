@@ -208,7 +208,7 @@ export default class Formation extends Actor {
     }
 
     private shootTowardsPlayer(alien: Alien): void {
-        const direction = this.player.getCenter().sub(alien.getCenter()).normalize();
+        const direction = this.player.center.sub(alien.center).normalize();
         this.shoot(alien, direction.scale(this.game.stage * 60));
     }
 
@@ -222,7 +222,7 @@ export default class Formation extends Actor {
     private shoot(alien: Alien, velocity: Vector): void {
         resources.alienShot.play()
             .then(undefined, reason => console.error("", reason));
-        this.game.engine.currentScene.add(new AlienBullet(this.game, alien.getCenter(), velocity));
+        this.game.engine.currentScene.add(new AlienBullet(this.game, alien.center, velocity));
     }
 }
 
