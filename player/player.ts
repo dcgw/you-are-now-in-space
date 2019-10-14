@@ -29,6 +29,7 @@ const asplodeSpriteSheet = new SpriteSheet({
 
 export default class Player extends Actor {
     public fixedX = false;
+    private dead = false;
     private shotCoolDown = 0;
     private readonly explodingAnimation: Animation;
 
@@ -53,6 +54,7 @@ export default class Player extends Actor {
     public reset(): void {
         this.unkill();
         this.fixedX = false;
+        this.dead = false;
         this.shotCoolDown = 0;
         this.explodingAnimation.reset();
         this.setDrawing("spinning");
@@ -63,29 +65,31 @@ export default class Player extends Actor {
     public update(engine: Engine, delta: number): void {
         super.update(engine, delta);
 
-        if (engine.input.keyboard.isHeld(Input.Keys.X) && this.shotCoolDown <= 0) {
-            this.scene.add(new Bullet(this.game, this.pos.add(new Vector(width * 0.5, height * 0.5))));
-            resources.laser.play()
-                .then(undefined, reason => console.error("", reason));
-            this.shotCoolDown = shotInterval;
-        } else {
-            this.shotCoolDown -= delta;
-        }
+        if (!dead) {
+            if (engine.input.keyboard.isHeld(Input.Keys.X) && this.shotCoolDown <= 0) {
+                this.scene.add(new Bullet(this.game, this.pos.add(new Vector(width * 0.5, height * 0.5))));
+                resources.laser.play()
+                    .then(undefined, reason => console.error("", reason));
+                this.shotCoolDown = shotInterval;
+            } else {
+                this.shotCoolDown -= delta;
+            }
 
-        if (engine.input.keyboard.isHeld(Input.Keys.Left) && !this.fixedX) {
-            this.pos.x -= speed * delta;
-        }
+            if (engine.input.keyboard.isHeld(Input.Keys.Left) && !this.fixedX) {
+                this.pos.x -= speed * delta;
+            }
 
-        if (engine.input.keyboard.isHeld(Input.Keys.Right) && !this.fixedX) {
-            this.pos.x += speed * delta;
-        }
+            if (engine.input.keyboard.isHeld(Input.Keys.Right) && !this.fixedX) {
+                this.pos.x += speed * delta;
+            }
 
-        if (engine.input.keyboard.isHeld(Input.Keys.Up)) {
-            this.pos.y -= speed * delta;
-        }
+            if (engine.input.keyboard.isHeld(Input.Keys.Up)) {
+                this.pos.y -= speed * delta;
+            }
 
-        if (engine.input.keyboard.isHeld(Input.Keys.Down)) {
-            this.pos.y += speed * delta;
+            if (engine.input.keyboard.isHeld(Input.Keys.Down)) {
+                this.pos.y += speed * delta;
+            }
         }
 
         if (this.pos.x < 0) {
@@ -110,7 +114,9 @@ export default class Player extends Actor {
     }
 
     private onCollisionStart = (event: GameEvent<Actor>) => {
-        if (event.other instanceof AlienBullet) {
+        if (this.dead) {
+            return;
+        } else if (event.other instanceof AlienBullet) {
             this.collideWithAlienBullet(event.other);
         } else if (event.other instanceof Alien) {
             this.collideWithAlien(event.other);
