@@ -89,7 +89,7 @@ export default class Formation extends Actor {
                 ++formationSize;
 
                 // If they're in formation
-                if (!alien.behaviour) {
+                if (!alien.behaviour && !alien.asploding) {
                     ++nonBrokenFormationSize;
 
                     if (alien.pos.x < leftMost) {
@@ -148,7 +148,7 @@ export default class Formation extends Actor {
             }
 
             for (const alien of this.aliens) {
-                if (!alien.isKilled() && !alien.behaviour) {
+                if (!alien.isKilled() && !alien.asploding && !alien.behaviour) {
                     alien.pos.x += moveX;
                     alien.pos.y += moveY;
                 }
