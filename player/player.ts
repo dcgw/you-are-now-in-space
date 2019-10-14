@@ -65,7 +65,7 @@ export default class Player extends Actor {
     public update(engine: Engine, delta: number): void {
         super.update(engine, delta);
 
-        if (!dead) {
+        if (!this.dead) {
             if (engine.input.keyboard.isHeld(Input.Keys.X) && this.shotCoolDown <= 0) {
                 this.scene.add(new Bullet(this.game, this.pos.add(new Vector(width * 0.5, height * 0.5))));
                 resources.laser.play()
