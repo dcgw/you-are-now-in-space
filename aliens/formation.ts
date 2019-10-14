@@ -44,6 +44,7 @@ export default class Formation extends Actor {
             const colour = colours[i];
             for (let j = 0; j < columns; ++j) {
                 const alien = new Alien(game, colour);
+                alien.on("asplode", event => this.emit("alienAsploded", event));
                 this.aliens.push(alien);
             }
         }
@@ -69,7 +70,6 @@ export default class Formation extends Actor {
                 alien.pos.x = this.game.playLeft + j * separationX + leftMargin;
                 alien.pos.y = this.game.playTop + this.game.playHeight - alienHeight
                     - bottomMargin - i * separationY + offsetY;
-                alien.on("asplode", event => this.emit("alienAsploded", event));
                 this.scene.add(alien);
             }
         }
