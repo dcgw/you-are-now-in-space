@@ -119,16 +119,17 @@ export default class Player extends Actor {
         } else if (event.other instanceof AlienBullet) {
             this.collideWithAlienBullet(event.other);
         } else if (event.other instanceof Alien) {
-            this.collideWithAlien(event.other);
+            this.asplode();
         }
     }
 
     private collideWithAlienBullet(bullet: AlienBullet): void {
-        this.setDrawing("asploding");
+        this.asplode();
         bullet.kill();
     }
 
-    private collideWithAlien(alien: Alien): void {
+    private asplode(): void {
         this.setDrawing("asploding");
+        this.dead = true;
     }
 }
