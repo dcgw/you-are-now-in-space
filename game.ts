@@ -36,14 +36,14 @@ export default class Game {
     public stage = 1;
     public score = 0;
 
-    private pointerTimeout = 0;
-
     public readonly engine = new Engine({
         width: this.width,
         height: this.height,
         displayMode: DisplayMode.Fixed,
         suppressPlayButton: true
     });
+
+    private pointerTimeout = 0;
 
     constructor() {
         this.engine.canvas.style.position = "absolute";
