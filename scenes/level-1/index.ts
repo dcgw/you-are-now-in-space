@@ -2,17 +2,25 @@ import {Color, Engine, Scene} from "excalibur";
 import Formation from "../../aliens/formation";
 import Game from "../../game";
 import Border from "../../hud/border";
+import Goal from "../../hud/goal";
+import KevinToms from "../../hud/kevin-toms";
 import Score from "../../hud/score";
 import Player from "../../player/player";
 import resources from "../../resources";
+
+const yellow: Color = Color.fromHex("b8c76f");
 
 export default class Level1 extends Scene {
     private readonly border = new Border(this.game);
     private readonly player: Player;
     private readonly formation: Formation;
+    private readonly goal: Goal;
+    private readonly kevinToms: KevinToms;
 
     private scoreTime = 0;
+    private goalTime = 0;
     private handledBreakaway = false;
+    private gotKevinTomsBonus = false;
 
     constructor(private readonly game: Game) {
         super(game.engine);
@@ -27,6 +35,12 @@ export default class Level1 extends Scene {
         this.formation.on("alienAsploded",
             () => game.score += Math.floor(Math.round(this.scoreTime / 1000 * 60) * game.stage / 5));
         this.add(this.formation);
+
+        this.goal = new Goal(game);
+        this.add(this.goal);
+
+        this.kevinToms = new KevinToms(game);
+        this.add(this.kevinToms);
     }
 
     public onActivate(): void {
@@ -35,8 +49,12 @@ export default class Level1 extends Scene {
         this.player.reset();
         this.game.engine.backgroundColor = Color.fromHex("000000");
         this.formation.reset();
+        this.goal.visible = false;
+        this.kevinToms.visible = false;
         this.scoreTime = 1200 * 1000 / 60;
+        this.goalTime = 60 * 1000 / 60;
         this.handledBreakaway = false;
+        this.gotKevinTomsBonus = false;
     }
 
     public update(engine: Engine, delta: number): void {
@@ -46,6 +64,29 @@ export default class Level1 extends Scene {
 
         if (this.scoreTime <= 0) {
             this.complete();
+        }
+
+        if (this.formation.allDead) {
+            if (!this.gotKevinTomsBonus) {
+                const bonus = 2000 * this.game.stage;
+                this.goal.bonus = bonus;
+                this.goal.visible = true;
+                this.kevinToms.visible = true;
+                this.game.score += bonus;
+                this.gotKevinTomsBonus = true;
+            }
+
+            this.goalTime -= delta;
+
+            if ((this.goalTime * 15 / 1000) & 1) {
+                this.game.engine.backgroundColor = Color.Black;
+            } else {
+                this.game.engine.backgroundColor = yellow;
+            }
+
+            if (this.goalTime < 0) {
+                this.complete();
+            }
         }
 
         if (this.formation.isBreakaway() && !this.handledBreakaway) {

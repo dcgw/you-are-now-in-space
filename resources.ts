@@ -14,6 +14,8 @@ import move3Ogg from "./aliens/move3.ogg";
 import move4Mp3 from "./aliens/move4.mp3";
 import move4Ogg from "./aliens/move4.ogg";
 import border from "./hud/border.png";
+import goal from "./hud/goal.png";
+import kevinToms from "./hud/kevin-toms.png";
 import score from "./hud/score.png";
 import bullet from "./player/bullet.png";
 import laserMp3 from "./player/laser.mp3";
@@ -44,8 +46,10 @@ const resources = {
     bullet: new Texture(bullet),
     getReady: new Texture(getReady),
     getReadyMusic: new Sound(getReadyMusicOgg, getReadyMusicMp3),
+    goal: new Texture(goal),
     intermission: new Texture(intermission),
     intermissionMusic: new Sound(intermissionMusicOgg, intermissionMusicMp3),
+    kevinToms: new Texture(kevinToms),
     laser: new Sound(laserOgg, laserMp3),
     move1: new Sound(move1Ogg, move1Mp3),
     move2: new Sound(move2Ogg, move2Mp3),

@@ -22,6 +22,8 @@ const bulletMinSpeed = 2 * 60;
 const bulletSpeedIncrement = 0.5 * 60;
 
 export default class Formation extends Actor {
+    public allDead = false;
+
     private moveTimer = 0;
     private moveInterval = 0;
 
@@ -55,6 +57,7 @@ export default class Formation extends Actor {
     }
 
     public reset(): void {
+        this.allDead = false;
         this.moveTimer = 0;
         this.moveInterval = 32 / 60 * 1000;
         this.shootTimer = shootInterval / this.game.stage;
@@ -85,11 +88,11 @@ export default class Formation extends Actor {
         let nonBrokenFormationSize = 0;
 
         for (const alien of this.aliens) {
-            if (!alien.isKilled()) {
+            if (!alien.asploding && !alien.isKilled()) {
                 ++formationSize;
 
                 // If they're in formation
-                if (!alien.behaviour && !alien.asploding) {
+                if (!alien.behaviour) {
                     ++nonBrokenFormationSize;
 
                     if (alien.pos.x < leftMost) {
@@ -108,6 +111,7 @@ export default class Formation extends Actor {
         }
 
         if (formationSize === 0) {
+            this.allDead = true;
             return;
         }
 
