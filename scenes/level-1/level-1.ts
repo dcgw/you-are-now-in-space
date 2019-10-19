@@ -46,9 +46,11 @@ export default class Level1 extends Scene {
         this.border.disableAlert();
         this.add(this.player);
         this.player.reset();
-        this.game.engine.backgroundColor = Color.fromHex("000000");
         this.formation.reset();
         this.goal.visible = false;
+
+        this.game.engine.backgroundColor = Color.fromHex("000000");
+
         this.kevinToms.visible = false;
         this.scoreTime = 1200 * 1000 / 60;
         this.goalTime = 60 * 1000 / 60;
