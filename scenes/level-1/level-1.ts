@@ -8,6 +8,8 @@ import Score from "../../hud/score";
 import {black, yellow} from "../../palette";
 import Player from "../../player/player";
 import resources from "../../resources";
+import Bullet from "../../player/bullet";
+import AlienBullet from "../../aliens/alien-bullet";
 
 export default class Level1 extends Scene {
     private readonly border = new Border(this.game);
@@ -43,6 +45,12 @@ export default class Level1 extends Scene {
     }
 
     public onActivate(): void {
+        [...this.actors].forEach(actor => {
+            if (actor instanceof Bullet || actor instanceof AlienBullet) {
+                actor.kill();
+            }
+        });
+
         this.border.disableAlert();
         this.add(this.player);
         this.player.reset();
