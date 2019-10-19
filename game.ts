@@ -13,6 +13,7 @@ import resources from "./resources";
 import GetReady from "./scenes/get-ready/get-ready";
 import Intermission from "./scenes/intermission/intermission";
 import Level1 from "./scenes/level-1/level-1";
+import Level3 from "./scenes/level-3/level-3";
 import Title from "./scenes/title/title";
 
 export default class Game {
@@ -69,6 +70,7 @@ export default class Game {
                 this.engine.add("get-ready", new GetReady(this));
                 this.engine.add("intermission", new Intermission(this));
                 this.engine.add("level-1", new Level1(this));
+                this.engine.add("level-3", new Level3(this));
                 this.engine.goToScene("title");
             }, reason => console.error("", reason));
     }

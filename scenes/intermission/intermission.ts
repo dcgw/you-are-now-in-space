@@ -47,7 +47,11 @@ export default class Intermission extends Scene {
             .then(
                 () => {
                     if (this.game.lives > 0) {
-                        this.game.engine.goToScene("level-1");
+                        if (this.game.stage & 1) {
+                            this.game.engine.goToScene("level-1");
+                        } else {
+                            this.game.engine.goToScene("level-3");
+                        }
                     } else {
                         this.game.engine.goToScene("title");
                     }
