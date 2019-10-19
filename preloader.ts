@@ -1,10 +1,12 @@
 import {Loader} from "excalibur";
-import {colours} from "./palette";
+import {colours, black, white} from "./palette";
 
 const minColourBarSize = 1152;
 const maxColourBarSize = 4608;
 
 export default class Preloader extends Loader {
+    private progress = 0;
+    private total = 100;
     private colourIndex = 0;
 
     public draw(ctx: CanvasRenderingContext2D): void {
@@ -48,5 +50,34 @@ export default class Preloader extends Loader {
 
             raster = endRaster;
         }
+
+        this.drawProgressBar(ctx);
+    }
+
+    public onprogress = (e: any) => {
+        this.progress = e.progress;
+        this.total = e.total;
+    }
+
+    private drawProgressBar(ctx: CanvasRenderingContext2D): void {
+        const width = Math.floor(ctx.canvas.width * 0.8);
+        const height = 10;
+
+        const x = Math.floor((ctx.canvas.width - width) * 0.5);
+        const y = Math.floor((ctx.canvas.height - height) * 0.5);
+
+        ctx.fillStyle = black.fillStyle();
+        ctx.beginPath();
+        ctx.fillRect(x - 2, y - 2, width + 4, height + 4);
+
+        ctx.fillStyle = white.fillStyle();
+        ctx.beginPath();
+        ctx.fillRect(x - 1, y - 1, width + 2, height + 2);
+
+        const progress = Number((this as any)._numLoaded / (this as any)._resourceCount) || 0;
+
+        ctx.fillStyle = black.fillStyle();
+        ctx.beginPath();
+        ctx.fillRect(x, y, Math.floor(progress * width), height);
     }
 }
