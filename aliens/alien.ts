@@ -55,6 +55,8 @@ export default class Alien extends Actor {
         this.body.collider.type = CollisionType.Passive;
 
         this.on("collisionstart", this.onCollisionStart);
+
+        this.reset();
     }
 
     public reset(): void {
