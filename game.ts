@@ -4,11 +4,11 @@ import {
     CollisionResolutionStrategy,
     DisplayMode,
     Engine,
-    Loader,
     Physics,
     Sound,
     Texture
 } from "excalibur";
+import Preloader from "./preloader";
 import resources from "./resources";
 import GetReady from "./scenes/get-ready/get-ready";
 import Intermission from "./scenes/intermission/intermission";
@@ -51,7 +51,7 @@ export default class Game {
     }
 
     public start(): void {
-        const loader = new Loader();
+        const loader = new Preloader();
         for (const key of Object.keys(resources)) {
             const resource = (resources as Dictionary<Texture | Sound>)[key];
             resource.bustCache = false;

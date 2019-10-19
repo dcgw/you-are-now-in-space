@@ -17,7 +17,7 @@ export const lightGreen = Color.fromHex("9ad284");
 export const lightBlue = Color.fromHex("6c5eb5");
 export const lightGrey = Color.fromHex("959595");
 
-export const colors: ReadonlyArray<Color> = [
+export const colours: ReadonlyArray<Color> = [
     black, white, red, cyan, purple, green, blue, yellow,
     orange, brown, pink, darkGrey, mediumGrey, lightGreen, lightBlue, lightGrey
 ];
