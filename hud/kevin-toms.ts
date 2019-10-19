@@ -5,8 +5,7 @@ import resources from "../resources";
 export default class KevinToms extends Actor {
     constructor(game: Game) {
         super({
-            x: game.playLeft + 32,
-            y: game.playTop + 56,
+            pos: new Vector(game.playLeft + 32, game.playTop + 56),
             anchor: Vector.Zero
         });
         this.addDrawing(resources.kevinToms);
