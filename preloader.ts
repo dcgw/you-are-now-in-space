@@ -52,11 +52,6 @@ export default class Preloader extends Loader {
         this.drawProgressBar(ctx);
     }
 
-    public onprogress = (e: any) => {
-        this.progress = e.progress;
-        this.total = e.total;
-    }
-
     private drawProgressBar(ctx: CanvasRenderingContext2D): void {
         const width = Math.floor(ctx.canvas.width * 0.8);
         const height = 10;
