@@ -3,10 +3,10 @@ import Alien from "../../aliens/alien";
 import Game from "../../game";
 import Border from "../../hud/border";
 import Score from "../../hud/score";
+import Bullet from "../../player/bullet";
 import Player from "../../player/player";
 import resources from "../../resources";
 import AlienSpawner from "./alien-spawner";
-import Bullet from "../../player/bullet";
 
 export default class Level3 extends Scene {
     private readonly border = new Border(this.game);
