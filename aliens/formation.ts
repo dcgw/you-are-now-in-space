@@ -179,7 +179,7 @@ export default class Formation extends Actor {
                         } else if (shooting) {
                             if (this.game.stage >= 5 && (
                                 this.player.pos.x > this.game.playLeft + this.game.playWidth
-                                || this.player.pos.x - this.player.getWidth() < this.game.playLeft
+                                || this.player.pos.x - this.player.width < this.game.playLeft
                             )) {
                                 this.shootTowardsPlayer(alien);
                             } else {
