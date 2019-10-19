@@ -6,6 +6,7 @@ import Score from "../../hud/score";
 import Player from "../../player/player";
 import resources from "../../resources";
 import AlienSpawner from "./alien-spawner";
+import Bullet from "../../player/bullet";
 
 export default class Level3 extends Scene {
     private readonly border = new Border(this.game);
@@ -29,9 +30,9 @@ export default class Level3 extends Scene {
         this.add(this.player);
         this.alienSpawner.reset();
 
-        this.actors.forEach(actor => {
-            if (actor instanceof Alien) {
-                this.remove(actor);
+        [...this.actors].forEach(actor => {
+            if (actor instanceof Alien || actor instanceof Bullet) {
+                actor.kill();
             }
         });
 
