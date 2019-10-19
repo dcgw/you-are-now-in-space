@@ -109,7 +109,7 @@ export default class Game {
             clearTimeout(this.pointerTimeout);
         }
 
-        this.pointerTimeout = setTimeout(() => {
+        this.pointerTimeout = window.setTimeout(() => {
             if (this.active) {
                 this.hidePointer();
             }
