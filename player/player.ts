@@ -130,6 +130,8 @@ export default class Player extends Actor {
 
     private asplode(): void {
         this.setDrawing("asploding");
+        resources.playerSplode.play()
+            .then(() => void 0, reason => console.error("", reason));
         this.dead = true;
     }
 }
