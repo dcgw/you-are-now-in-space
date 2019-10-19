@@ -31,6 +31,8 @@ const anchor = Vector.Zero;
 
 export type AlienColour = "red" | "green" | "brown" | "grey";
 
+export const colours: ReadonlyArray<AlienColour> = ["red", "green", "brown", "grey"];
+
 export default class Alien extends Actor {
     public behaviour: Behaviour | null = null;
     public asploding = false;

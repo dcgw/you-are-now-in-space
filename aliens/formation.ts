@@ -2,11 +2,9 @@ import {Actor, Engine, Sound, Vector} from "excalibur";
 import Game from "../game";
 import Player from "../player/player";
 import resources from "../resources";
-import Alien, {AlienColour, height as alienHeight, width as alienWidth} from "./alien";
+import Alien, {colours, height as alienHeight, width as alienWidth} from "./alien";
 import AlienBullet from "./alien-bullet";
 import {BrokenFormationBehaviour} from "./behaviours";
-
-const colours: ReadonlyArray<AlienColour> = ["red", "brown", "grey", "green"];
 
 const columns = 8;
 
