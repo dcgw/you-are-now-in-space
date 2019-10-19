@@ -10,10 +10,10 @@ import {
     Texture
 } from "excalibur";
 import resources from "./resources";
-import GetReady from "./scenes/get-ready";
+import GetReady from "./scenes/get-ready/get-ready";
 import Intermission from "./scenes/intermission/intermission";
-import Level1 from "./scenes/level-1";
-import Title from "./scenes/title";
+import Level1 from "./scenes/level-1/level-1";
+import Title from "./scenes/title/title";
 
 export default class Game {
     public readonly width = 384;
