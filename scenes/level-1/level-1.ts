@@ -7,8 +7,7 @@ import KevinToms from "../../hud/kevin-toms";
 import Score from "../../hud/score";
 import Player from "../../player/player";
 import resources from "../../resources";
-
-const yellow: Color = Color.fromHex("b8c76f");
+import {yellow, black} from "../../palette";
 
 export default class Level1 extends Scene {
     private readonly border = new Border(this.game);
@@ -79,7 +78,7 @@ export default class Level1 extends Scene {
             this.goalTime -= delta;
 
             if ((this.goalTime * 15 / 1000) & 1) {
-                this.game.engine.backgroundColor = Color.Black;
+                this.game.engine.backgroundColor = black;
             } else {
                 this.game.engine.backgroundColor = yellow;
             }
