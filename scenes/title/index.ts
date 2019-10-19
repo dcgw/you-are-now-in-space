@@ -62,7 +62,6 @@ export default class Title extends Scene {
         this.game.engine.input.keyboard.off("press", this.onKeyPress as any);
     }
 
-
     public update(): void {
         if (this.game.active) {
             if (!resources.titleMusic.isPlaying()) {
