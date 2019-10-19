@@ -1,3 +1,6 @@
 {
-  "extends": "@softwareventures/webpack-config/tsconfig/general"
+  "extends": "@softwareventures/webpack-config/tsconfig/general",
+  "compilerOptions": {
+    "resolveJsonModule": true
+  }
 }

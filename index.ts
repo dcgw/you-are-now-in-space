@@ -1,5 +1,8 @@
 import domready = require("domready");
 import Game from "./game";
+import {version} from "./package.json";
+
+console.log("You Are Now In Space v" + version);
 
 domready(() => {
     const game = new Game();
