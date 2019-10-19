@@ -42,6 +42,7 @@ export class BrokenFormationBehaviour implements Behaviour {
 const level3Speed = 0.2 * 60 / 1000;
 
 export class Level3Behaviour implements Behaviour {
+    private glitchTime = 1000 / 60;
     private pos = Math.random() * Math.PI * 2;
 
     private pathLeft = Math.random() * this.game.playWidth / 2 + this.game.playWidth / 4;
@@ -53,8 +54,15 @@ export class Level3Behaviour implements Behaviour {
     }
 
     public update(delta: number): void {
-        this.pos += level3Speed * this.game.stage;
-        this.alien.pos.x = this.game.playLeft + this.pathLeft + this.pathWidth * Math.cos(this.pos);
-        this.alien.pos.y = this.game.playTop + this.pathTop + this.pathHeight * Math.sin(this.pos);
+        // Deliberately glitch the alien to the top-left for 1/60 second :-)
+        if (this.glitchTime >= 0) {
+            this.glitchTime -= delta;
+            this.alien.pos.x = this.game.playLeft;
+            this.alien.pos.y = this.game.playTop;
+        } else {
+            this.pos += level3Speed * this.game.stage;
+            this.alien.pos.x = this.game.playLeft + this.pathLeft + this.pathWidth * Math.cos(this.pos);
+            this.alien.pos.y = this.game.playTop + this.pathTop + this.pathHeight * Math.sin(this.pos);
+        }
     }
 }
