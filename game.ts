@@ -36,6 +36,8 @@ export default class Game {
     public stage = 1;
     public score = 0;
 
+    private pointerTimeout = 0;
+
     public readonly engine = new Engine({
         width: this.width,
         height: this.height,
@@ -58,6 +60,7 @@ export default class Game {
 
         this.engine.input.pointers.primary.on("up", this.onClick);
         this.engine.input.keyboard.on("press", this.onClick);
+        window.addEventListener("mousemove", this.onMouseMove);
         window.addEventListener("blur", this.onBlur);
 
         Physics.collisionResolutionStrategy = CollisionResolutionStrategy.Box;
@@ -81,7 +84,35 @@ export default class Game {
         this.score = 0;
     }
 
-    private readonly onClick = () => this.active = true;
+    private hidePointer(): void {
+        this.engine.canvas.style.cursor = "none";
+    }
 
-    private readonly onBlur = () => this.active = false;
+    private showPointer(): void {
+        this.engine.canvas.style.cursor = "auto";
+    }
+
+    private readonly onClick = () => {
+        this.hidePointer();
+        this.active = true;
+    }
+
+    private readonly onBlur = () => {
+        this.showPointer();
+        this.active = false;
+    }
+
+    private readonly onMouseMove = () => {
+        this.showPointer();
+
+        if (this.pointerTimeout) {
+            clearTimeout(this.pointerTimeout);
+        }
+
+        this.pointerTimeout = setTimeout(() => {
+            if (this.active) {
+                this.hidePointer();
+            }
+        }, 500);
+    }
 }
