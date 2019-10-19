@@ -18,8 +18,7 @@ export default class Goal extends Actor {
 
     constructor(game: Game) {
         super({
-            x: game.playLeft + 80,
-            y: game.playTop + 32,
+            pos: new Vector(game.playLeft + 80, game.playTop + 32),
             anchor: Vector.Zero
         });
         this.addDrawing(resources.goal);
