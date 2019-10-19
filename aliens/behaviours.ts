@@ -55,6 +55,6 @@ export class Level3Behaviour implements Behaviour {
     public update(delta: number): void {
         this.pos += level3Speed * this.game.stage;
         this.alien.pos.x = this.game.playLeft + this.pathLeft + this.pathWidth * Math.cos(this.pos);
-        this.alien.pos.y = this.game.playTop + this.pathTop + this.pathHeight * math.sin(pos);
+        this.alien.pos.y = this.game.playTop + this.pathTop + this.pathHeight * Math.sin(this.pos);
     }
 }
