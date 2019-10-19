@@ -1,12 +1,10 @@
 import {Loader} from "excalibur";
-import {colours, black, white} from "./palette";
+import {black, colours, white} from "./palette";
 
 const minColourBarSize = 1152;
 const maxColourBarSize = 4608;
 
 export default class Preloader extends Loader {
-    private progress = 0;
-    private total = 100;
     private colourIndex = 0;
 
     public draw(ctx: CanvasRenderingContext2D): void {
