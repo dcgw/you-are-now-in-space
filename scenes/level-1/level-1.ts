@@ -1,4 +1,5 @@
 import {Color, Engine, Scene} from "excalibur";
+import AlienBullet from "../../aliens/alien-bullet";
 import Formation from "../../aliens/formation";
 import Game from "../../game";
 import Border from "../../hud/border";
@@ -6,10 +7,9 @@ import Goal from "../../hud/goal";
 import KevinToms from "../../hud/kevin-toms";
 import Score from "../../hud/score";
 import {black, yellow} from "../../palette";
+import Bullet from "../../player/bullet";
 import Player from "../../player/player";
 import resources from "../../resources";
-import Bullet from "../../player/bullet";
-import AlienBullet from "../../aliens/alien-bullet";
 
 export default class Level1 extends Scene {
     private readonly border = new Border(this.game);
