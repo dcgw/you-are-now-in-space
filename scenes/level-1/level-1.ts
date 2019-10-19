@@ -5,9 +5,9 @@ import Border from "../../hud/border";
 import Goal from "../../hud/goal";
 import KevinToms from "../../hud/kevin-toms";
 import Score from "../../hud/score";
+import {black, yellow} from "../../palette";
 import Player from "../../player/player";
 import resources from "../../resources";
-import {yellow, black} from "../../palette";
 
 export default class Level1 extends Scene {
     private readonly border = new Border(this.game);
