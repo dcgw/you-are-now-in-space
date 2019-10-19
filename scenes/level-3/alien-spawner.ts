@@ -3,7 +3,7 @@ import Alien, {colours} from "../../aliens/alien";
 import {Level3Behaviour} from "../../aliens/behaviours";
 import Game from "../../game";
 
-const spawnInterval = 160 * 60 / 1000;
+const spawnInterval = 160 * 1000 / 60;
 
 export default class AlienSpawner extends Actor {
     private time = 0;
