@@ -4,7 +4,6 @@ import {
     CollisionResolutionStrategy,
     DisplayMode,
     Engine,
-    Input,
     Physics,
     Sound, Texture
 } from "excalibur";
@@ -59,9 +58,10 @@ export default class Game {
         }
 
         this.engine.input.pointers.primary.on("up", this.onClick);
-        this.engine.input.keyboard.on("press", this.onKey);
-        this.engine.input.keyboard.on("release", this.onKey);
-        this.engine.input.keyboard.on("hold", this.onKey);
+        this.engine.input.keyboard.on("press", this.onClick);
+        window.addEventListener("keydown", this.onKey);
+        window.addEventListener("keypress", this.onKey);
+        window.addEventListener("keyup", this.onKey);
         window.addEventListener("mousemove", this.onMouseMove, true);
         window.addEventListener("focus", this.onFocus, true);
         window.addEventListener("blur", this.onBlur, true);
@@ -99,13 +99,16 @@ export default class Game {
         this.engine.canvas.focus();
     }
 
-    private readonly onKey = (event: Input.KeyEvent) => {
-        if (
-            event.key === Input.Keys.Up || event.key === Input.Keys.Down
-            || event.key === Input.Keys.Left || event.key === Input.Keys.Right
-            || event.key === Input.Keys.X
-        ) {
-            event.stopPropagation();
+    private readonly onKey = (event: KeyboardEvent) => {
+        this.engine.canvas.focus();
+
+        switch (event.code) {
+            case "ArrowUp":
+            case "ArrowDown":
+            case "ArrowLeft":
+            case "ArrowRight":
+            case "KeyX":
+                event.preventDefault();
         }
     }
 
