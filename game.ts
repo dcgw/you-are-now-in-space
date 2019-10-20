@@ -60,8 +60,9 @@ export default class Game {
 
         this.engine.input.pointers.primary.on("up", this.onClick);
         this.engine.input.keyboard.on("press", this.onClick);
-        window.addEventListener("mousemove", this.onMouseMove);
-        window.addEventListener("blur", this.onBlur);
+        window.addEventListener("mousemove", this.onMouseMove, true);
+        window.addEventListener("focus", this.onFocus, true);
+        window.addEventListener("blur", this.onBlur, true);
 
         Physics.collisionResolutionStrategy = CollisionResolutionStrategy.Box;
 
@@ -93,6 +94,10 @@ export default class Game {
     }
 
     private readonly onClick = () => {
+        this.engine.canvas.focus();
+    }
+
+    private readonly onFocus = () => {
         this.hidePointer();
         this.active = true;
     }
