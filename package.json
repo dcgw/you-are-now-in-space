@@ -25,11 +25,11 @@
   "scripts": {
     "test": "tslint --project .",
     "build": "webpack --env.production",
-    "prepack": "webpack --env.production",
     "semantic-release": "semantic-release",
     "start": "webpack-dev-server --open"
   },
   "devDependencies": {
+    "@semantic-release/exec": "3.3.8",
     "@softwareventures/tslint-rules": "0.7.1",
     "@softwareventures/webpack-config": "0.18.2",
     "@types/node": "11.13.9",
@@ -63,6 +63,12 @@
         "@semantic-release/npm",
         {
           "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "prepareCmd": "yarn build"
         }
       ],
       [
