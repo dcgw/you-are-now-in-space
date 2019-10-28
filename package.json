@@ -25,6 +25,7 @@
   "scripts": {
     "test": "tslint --project .",
     "build": "webpack --env.production",
+    "prepack": "webpack --env.production",
     "semantic-release": "semantic-release",
     "start": "webpack-dev-server --open"
   },
@@ -58,6 +59,12 @@
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/github",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
       [
         "semantic-release-s3-upload",
         {
