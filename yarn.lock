@@ -7264,10 +7264,10 @@ selfsigned@^1.10.7:
   dependencies:
     node-forge "0.9.0"
 
-semantic-release-s3-upload@0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/semantic-release-s3-upload/-/semantic-release-s3-upload-0.2.6.tgz#ffd0a23ce47c13c472b18ece0b04fcdd37308c2e"
-  integrity sha512-eMComtaLFUpkFxSieqFZfe1WfzdCNWHcpRQkceW23B4J/op0Fd/r2RvEX8+Q1IWj6o9eZXmwPZ4F8FyIG4o4qQ==
+semantic-release-s3-upload@0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/semantic-release-s3-upload/-/semantic-release-s3-upload-0.2.7.tgz#06da4ad8a9824660f3082af59ce5b4f7267d5b67"
+  integrity sha512-tKAbQt0DxL0UwB0ydMwTagts3omA92sDN+hzv+yz3f4s4/9yRqq+FvLgE+o6BMh61VBTRgi3V1furWgPFkySyQ==
   dependencies:
     "@softwareventures/array" "^0.16.1"
     "@softwareventures/chain" "^0.1.2"
