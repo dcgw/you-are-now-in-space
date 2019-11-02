@@ -34,7 +34,7 @@
     "@softwareventures/webpack-config": "0.18.3",
     "@types/node": "11.13.9",
     "cz-conventional-changelog": "3.0.2",
-    "semantic-release": "15.13.28",
+    "semantic-release": "15.13.29",
     "semantic-release-s3-upload": "0.2.11",
     "ts-loader": "6.2.1",
     "tslint": "5.20.0",
