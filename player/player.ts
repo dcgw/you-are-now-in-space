@@ -68,7 +68,7 @@ export default class Player extends Actor {
         if (!this.dead) {
             if (engine.input.keyboard.isHeld(Input.Keys.X) && this.shotCoolDown <= 0) {
                 this.scene.add(new Bullet(this.game, this.pos.add(new Vector(width * 0.5, height * 0.5))));
-                resources.laser.play()
+                resources.laser.play(0.25)
                     .then(undefined, reason => console.error("", reason));
                 this.shotCoolDown = shotInterval;
             } else {
@@ -130,7 +130,7 @@ export default class Player extends Actor {
 
     private asplode(): void {
         this.setDrawing("asploding");
-        resources.playerSplode.play()
+        resources.playerSplode.play(0.25)
             .then(() => void 0, reason => console.error("", reason));
         this.dead = true;
     }

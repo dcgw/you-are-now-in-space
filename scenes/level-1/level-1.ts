@@ -101,7 +101,7 @@ export default class Level1 extends Scene {
         if (this.formation.isBreakaway() && !this.handledBreakaway) {
             this.handledBreakaway = true;
             resources.alert.loop = true;
-            resources.alert.play()
+            resources.alert.play(0.25)
                 .then(() => void 0,
                     reason => console.error("", reason));
             this.border.enableAlert();

@@ -37,7 +37,7 @@ export default class Level3 extends Scene {
         });
 
         resources.alert.loop = true;
-        resources.alert.play()
+        resources.alert.play(0.25)
             .then(() => void 0, reason => console.error("", reason));
 
         this.time = 120 * this.game.stage * 1000 / 60;

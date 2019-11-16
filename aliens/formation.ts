@@ -222,7 +222,7 @@ export default class Formation extends Actor {
     }
 
     private shoot(alien: Alien, velocity: Vector): void {
-        resources.alienShot.play()
+        resources.alienShot.play(0.25)
             .then(undefined, reason => console.error("", reason));
         this.game.engine.currentScene.add(new AlienBullet(this.game, alien.center, velocity));
     }
@@ -239,7 +239,7 @@ class SoundController {
     private position = 0;
 
     public play(): void {
-        this.sounds[this.position].play()
+        this.sounds[this.position].play(0.25 * 0.5)
             .then(undefined, reason => console.error("", reason));
         this.position = (this.position + 1) % this.sounds.length;
     }
