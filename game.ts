@@ -46,7 +46,7 @@ export default class Game {
 
     constructor() {
         this.engine.canvas.style.position = "absolute";
-        (this.engine.canvas.style as any).imageRendering = "pixelated";
+        this.engine.canvas.style.imageRendering = "pixelated";
     }
 
     public start(): void {
