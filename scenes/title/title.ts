@@ -66,7 +66,7 @@ export default class Title extends Scene {
         if (this.game.active) {
             if (!resources.titleMusic.isPlaying()) {
                 resources.titleMusic.loop = true;
-                resources.titleMusic.play()
+                resources.titleMusic.play(0.25)
                     .then(() => void 0,
                         reason => console.error("", reason));
             }

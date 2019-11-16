@@ -43,7 +43,7 @@ export default class Intermission extends Scene {
     }
 
     public onActivate(): void {
-        resources.intermissionMusic.play()
+        resources.intermissionMusic.play(0.25)
             .then(
                 () => {
                     if (this.game.lives > 0) {

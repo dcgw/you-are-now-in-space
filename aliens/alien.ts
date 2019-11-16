@@ -93,7 +93,7 @@ export default class Alien extends Actor {
             this.asploding = true;
             this.emit("asplode", new KillEvent(this));
             this.setDrawing("asplode");
-            resources.alienSplode.play(0.75)
+            resources.alienSplode.play(0.25 * 0.75)
                 .then(() => void 0,
                     reason => console.error("", reason));
         }
