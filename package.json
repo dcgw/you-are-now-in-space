@@ -3,6 +3,12 @@
   "name": "@dcgw/you-are-now-in-space",
   "version": "0.0.0-development",
   "description": "A game for Mini Ludum Dare 25",
+  "keywords": [
+    "game",
+    "typescript",
+    "ludum-dare",
+    "mini-ludum-dare-25"
+  ],
   "contributors": [
     {
       "name": "Daniel Cassidy",
