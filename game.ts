@@ -42,13 +42,6 @@ export default class Game {
         suppressPlayButton: true
     });
 
-    private pointerTimeout = 0;
-
-    constructor() {
-        this.engine.canvas.style.position = "absolute";
-        this.engine.canvas.style.imageRendering = "pixelated";
-    }
-
     public start(): void {
         const loader = new Preloader();
         for (const key of Object.keys(resources)) {
@@ -59,12 +52,6 @@ export default class Game {
 
         this.engine.input.pointers.primary.on("up", this.onClick);
         this.engine.input.keyboard.on("press", this.onClick);
-        window.addEventListener("keydown", this.onKey);
-        window.addEventListener("keypress", this.onKey);
-        window.addEventListener("keyup", this.onKey);
-        window.addEventListener("mousemove", this.onMouseMove, true);
-        window.addEventListener("focus", this.onFocus, true);
-        window.addEventListener("blur", this.onBlur, true);
 
         Physics.collisionResolutionStrategy = CollisionResolutionStrategy.Box;
 
@@ -87,52 +74,7 @@ export default class Game {
         this.score = 0;
     }
 
-    private hidePointer(): void {
-        this.engine.canvas.style.cursor = "none";
-    }
-
-    private showPointer(): void {
-        this.engine.canvas.style.cursor = "auto";
-    }
-
     private readonly onClick = () => {
         this.engine.canvas.focus();
-    }
-
-    private readonly onKey = (event: KeyboardEvent) => {
-        this.engine.canvas.focus();
-
-        switch (event.code) {
-            case "ArrowUp":
-            case "ArrowDown":
-            case "ArrowLeft":
-            case "ArrowRight":
-            case "KeyX":
-                event.preventDefault();
-        }
-    }
-
-    private readonly onFocus = () => {
-        this.hidePointer();
-        this.active = true;
-    }
-
-    private readonly onBlur = () => {
-        this.showPointer();
-        this.active = false;
-    }
-
-    private readonly onMouseMove = () => {
-        this.showPointer();
-
-        if (this.pointerTimeout) {
-            clearTimeout(this.pointerTimeout);
-        }
-
-        this.pointerTimeout = window.setTimeout(() => {
-            if (this.active) {
-                this.hidePointer();
-            }
-        }, 500);
     }
 }
