@@ -36,7 +36,7 @@
     "start": "webpack-dev-server --open"
   },
   "devDependencies": {
-    "@semantic-release/exec": "3.3.8",
+    "@semantic-release/exec": "4.0.0",
     "@softwareventures/tslint-rules": "0.7.1",
     "@softwareventures/webpack-config": "0.20.4",
     "@types/node": "11.13.9",
