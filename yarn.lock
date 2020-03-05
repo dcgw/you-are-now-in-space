@@ -267,10 +267,19 @@
     lodash "^4.17.4"
     read-pkg-up "^7.0.0"
 
-"@softwareventures/array@0.20.0", "@softwareventures/array@^0.20.0":
+"@softwareventures/array@0.20.0":
   version "0.20.0"
   resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-0.20.0.tgz#0a18829805c49701eafbf391069557de74ab96c1"
   integrity sha512-yxfSI49S6sCysk2bI+T+rl1BOrWRao65OHP11rsCjM5H5csFGAOehqjg2Y+PCepAcYoki032Gwe/XatpaGKkwQ==
+  dependencies:
+    "@softwareventures/ordered" "^0.2.0"
+    dictionary-types "1.1.0"
+    tslib "^1.9.3"
+
+"@softwareventures/array@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-0.21.0.tgz#5bce31585442ca18656eb1b6c8b1ebf88943729b"
+  integrity sha512-4Fk3A0/owghqDe5xv6gd7YZ4vTGFTJEorsCAX6cqDP0PObYAH7hBaH/onePmFjFdQV3LjaS2g+w+zqtURBY86w==
   dependencies:
     "@softwareventures/ordered" "^0.2.0"
     dictionary-types "1.1.0"
@@ -7640,18 +7649,18 @@ selfsigned@^1.10.7:
   dependencies:
     node-forge "0.9.0"
 
-semantic-release-s3-upload@0.2.71:
-  version "0.2.71"
-  resolved "https://registry.yarnpkg.com/semantic-release-s3-upload/-/semantic-release-s3-upload-0.2.71.tgz#7eb236e366cc12ee5989f416a286f5eca09af94f"
-  integrity sha512-rP/t11qrlSJQMqTZNm195O681qtCanErdBnYH8OeshijXvgBFrxuOIZiqr/ih826Pt5GcykLPgmBqv47jcpJ7w==
+semantic-release-s3-upload@0.2.72:
+  version "0.2.72"
+  resolved "https://registry.yarnpkg.com/semantic-release-s3-upload/-/semantic-release-s3-upload-0.2.72.tgz#feee401022b76066e4429f37396b57b8d3e0a13f"
+  integrity sha512-WTN7uiYBtgCcWy8Hx4ArlsJOwNnq7Vn8ebsO+eD8AM8CPtPtpp0+DFLdpFqj6WlEbJ2/6rJRs+7h3zNcrxVW1Q==
   dependencies:
-    "@softwareventures/array" "^0.20.0"
+    "@softwareventures/array" "^0.21.0"
     "@softwareventures/chain" "^0.1.2"
     "@types/mime" "^2.0.1"
     aws-sdk "^2.553.0"
     globby "^11.0.0"
     mime "^2.4.4"
-    tslib "1.10.0"
+    tslib "1.11.1"
 
 semantic-release@17.0.4:
   version "17.0.4"
@@ -8631,20 +8640,15 @@ ts-loader@6.2.1:
     micromatch "^4.0.0"
     semver "^6.0.0"
 
-tslib@1.10.0:
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
-  integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
+tslib@1.11.1, tslib@^1.10.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.1.tgz#eb15d128827fbee2841549e171f45ed338ac7e35"
+  integrity sha512-aZW88SY8kQbU7gpV19lN24LtXh/yD4ZZg6qieAJDDg+YBsJcSmLGK9QpnUjAKVG/xefmvJGd1WUmfpT/g6AJGA==
 
 tslib@1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
   integrity sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ==
-
-tslib@^1.10.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.11.0.tgz#f1f3528301621a53220d58373ae510ff747a66bc"
-  integrity sha512-BmndXUtiTn/VDDrJzQE7Mm22Ix3PxgLltW9bSNLoeCY31gnG2OPx0QqJnuc9oMIKioYrz487i6K9o4Pdn0j+Kg==
 
 tslint-eslint-rules@^5.4.0:
   version "5.4.0"
