@@ -22,9 +22,12 @@ export default class Intermission extends Scene {
         anchor: Vector.Zero
     });
 
-    private readonly failTimer = new Timer(() => {
-        this.message.setDrawing(this.game.lives + "fail");
-    }, 180 * 1000 / 60);
+    private readonly failTimer = new Timer({
+        fcn: () => {
+            this.message.setDrawing(this.game.lives + "fail");
+        },
+        interval: 180 * 1000 / 60
+    });
 
     constructor(private readonly game: Game) {
         super(game.engine);
