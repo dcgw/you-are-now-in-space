@@ -30,7 +30,7 @@
   "homepage": "https://github.com/dcgw/you-are-now-in-space-ts",
   "repository": "github:dcgw/you-are-now-in-space-ts",
   "scripts": {
-    "test": "tslint --project .",
+    "test": "tsc && tslint --project .",
     "build": "webpack --env.production",
     "semantic-release": "semantic-release",
     "start": "webpack-dev-server --open"
