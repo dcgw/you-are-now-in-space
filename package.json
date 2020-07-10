@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@semantic-release/exec": "5.0.0",
-    "@softwareventures/tslint-rules": "0.8.1",
+    "@softwareventures/tslint-rules": "0.9.1",
     "@softwareventures/webpack-config": "0.20.13",
     "@types/node": "11.13.9",
     "cz-conventional-changelog": "3.2.0",
