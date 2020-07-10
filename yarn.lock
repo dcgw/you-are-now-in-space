@@ -514,7 +514,7 @@
     tar-stream "^2.1.2"
     tmp "^0.1.0"
 
-"@softwareventures/array@0.33.0":
+"@softwareventures/array@0.33.0", "@softwareventures/array@^0.31.0 || ^0.33.0":
   version "0.33.0"
   resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-0.33.0.tgz#447034897724d30307b631d63af73d29917f5265"
   integrity sha512-gmUV+iBoA1e8pDMJ2awN9g/rNT76OOqA4hjceobrbBTJ4ZTDUpGJ5FnqE3SOc3jORmzPFr7ggnizUVlmL4L+cQ==
@@ -523,16 +523,6 @@
     "@softwareventures/ordered" "^0.2.0"
     dictionary-types "^1.2.0"
     tslib "^1.9.3 || ^2.0.0"
-
-"@softwareventures/array@^0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-0.31.0.tgz#6c2db83d78a8601d0c7172885715b21ba91b5f8a"
-  integrity sha512-PBDOoblFyZlZYDkbOJTfS2zqFoqbiSs0Kyht1lQdHvmmkaSMUvx2H0eCFzNFP7Qks8/dnAZWSmRYutjYsFtwzQ==
-  dependencies:
-    "@softwareventures/dictionary" "^0.6.0"
-    "@softwareventures/ordered" "^0.2.0"
-    dictionary-types "^1.2.0"
-    tslib "^1.9.3"
 
 "@softwareventures/chain@^0.1.2":
   version "0.1.2"
@@ -9043,18 +9033,18 @@ selfsigned@^1.10.7:
   dependencies:
     node-forge "0.9.0"
 
-semantic-release-s3-upload@0.2.76:
-  version "0.2.76"
-  resolved "https://registry.yarnpkg.com/semantic-release-s3-upload/-/semantic-release-s3-upload-0.2.76.tgz#0e7d85604f1575cf982d09f08ea829b1e61e66ba"
-  integrity sha512-3ZoCWGnWeUtUJcL4KPVa+UZVH4v+tc+GdzIKeFqblkCI2a3WDfDPD6TSLJBzskJBRjkJmEVDHvfmoPiM2g2WWw==
+semantic-release-s3-upload@0.2.78:
+  version "0.2.78"
+  resolved "https://registry.yarnpkg.com/semantic-release-s3-upload/-/semantic-release-s3-upload-0.2.78.tgz#44a356e7800fc27d302c0c8a034ace801aae3913"
+  integrity sha512-o4+zupkg30KagswYXugI4h5XT9Upa86gMnLCxLKEq0iPupNIrbby+mYFZDmxi8YBTluI4j2ha43QOob8Onm6Xw==
   dependencies:
-    "@softwareventures/array" "^0.31.0"
+    "@softwareventures/array" "^0.31.0 || ^0.33.0"
     "@softwareventures/chain" "^0.1.2"
     "@types/mime" "^2.0.1"
     aws-sdk "^2.553.0"
     globby "^11.0.0"
     mime "^2.4.4"
-    tslib "1.11.1"
+    tslib "2.0.0"
 
 semantic-release@17.1.1:
   version "17.1.1"
@@ -10506,15 +10496,15 @@ tslib@1.9.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
   integrity sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ==
 
+tslib@2.0.0, "tslib@^1.9.3 || ^2.0.0", tslib@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.0.tgz#18d13fc2dce04051e20f074cc8387fd8089ce4f3"
+  integrity sha512-lTqkx847PI7xEDYJntxZH89L2/aXInsyF2luSafe/+0fHOMjlBNXdH6th7f70qxLDhul7KZK0zC8V5ZIyHl0/g==
+
 tslib@^1, tslib@^1.10.0, tslib@^1.11.1, tslib@^1.11.2, tslib@^1.13.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
-
-"tslib@^1.9.3 || ^2.0.0", tslib@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.0.tgz#18d13fc2dce04051e20f074cc8387fd8089ce4f3"
-  integrity sha512-lTqkx847PI7xEDYJntxZH89L2/aXInsyF2luSafe/+0fHOMjlBNXdH6th7f70qxLDhul7KZK0zC8V5ZIyHl0/g==
 
 tslint-eslint-rules@^5.4.0:
   version "5.4.0"
