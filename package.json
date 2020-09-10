@@ -54,7 +54,7 @@
     "@types/domready": "1.0.0",
     "dictionary-types": "1.2.0",
     "domready": "1.0.8",
-    "excalibur": "0.24.5"
+    "excalibur": "0.24.3"
   },
   "config": {
     "commitizen": {
