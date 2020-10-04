@@ -63,4 +63,6 @@ const resources = {
     titleMusic: new Sound(titleMusicOgg, titleMusicMp3)
 };
 
+Object.values(resources).forEach(resource => resource.bustCache = false);
+
 export default resources;
