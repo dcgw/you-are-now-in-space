@@ -11,6 +11,12 @@ domready(() => {
     engine.canvas.style.position = "absolute";
     engine.canvas.style.imageRendering = "pixelated";
 
+    // Work around Firefox not supporting image-rendering: pixelated
+    // See https://github.com/excaliburjs/Excalibur/issues/1676
+    if (engine.canvas.style.imageRendering === "") {
+        engine.canvas.style.imageRendering = "crisp-edges";
+    }
+
     function scale(): void {
         const scaleFactor = Math.floor(Math.min(
             window.innerWidth / game.width,
