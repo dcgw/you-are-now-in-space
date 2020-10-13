@@ -38,8 +38,7 @@
   "devDependencies": {
     "@semantic-release/exec": "5.0.0",
     "@softwareventures/tslint-rules": "0.9.1",
-    "@softwareventures/webpack-config": "2.0.4",
-    "@types/node": "11.15.31",
+    "@softwareventures/webpack-config": "3.0.1",
     "cz-conventional-changelog": "3.3.0",
     "semantic-release": "17.2.1",
     "semantic-release-s3-upload": "0.2.80",
@@ -52,6 +51,7 @@
   },
   "dependencies": {
     "@types/domready": "1.0.0",
+    "@types/webpack-env": "1.15.3",
     "dictionary-types": "1.2.0",
     "domready": "1.0.8",
     "excalibur": "0.24.3"
