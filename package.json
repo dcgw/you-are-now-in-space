@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "@types/domready": "1.0.0",
-    "@types/webpack-env": "1.15.3",
+    "@types/webpack-env": "1.16.0",
     "dictionary-types": "1.2.0",
     "domready": "1.0.8",
     "excalibur": "0.24.3"
