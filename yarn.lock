@@ -3296,10 +3296,10 @@ eventsource@^1.0.7:
   dependencies:
     original "^1.0.0"
 
-excalibur@0.24.3:
-  version "0.24.3"
-  resolved "https://registry.yarnpkg.com/excalibur/-/excalibur-0.24.3.tgz#46eb170ae9745b1ac379858b365738368310b44a"
-  integrity sha512-dn1LoKmOPK4ZXkMXhFfMakcvCCDYCl+H5TV3szmnFDvlJ72L+J0ocAqhanu3YIQobehjEQjNY+Rz7KQnobI//w==
+excalibur@0.24.4:
+  version "0.24.4"
+  resolved "https://registry.yarnpkg.com/excalibur/-/excalibur-0.24.4.tgz#c05cdf7f4cae103d70685e32dff45546463f296d"
+  integrity sha512-frP4NF1TaSzEPh7algTycMdGbHoATCbzJF5iMlvE8wzGoWO6yz3x3M6NYJDeRZ/sjo/BBACYktSMEVrgRl6Whg==
 
 execa@^0.7.0:
   version "0.7.0"
@@ -6338,7 +6338,6 @@ npm@^6.14.9:
     cmd-shim "^3.0.3"
     columnify "~1.5.4"
     config-chain "^1.1.12"
-    debuglog "*"
     detect-indent "~5.0.0"
     detect-newline "^2.1.0"
     dezalgo "~1.0.3"
@@ -6353,7 +6352,6 @@ npm@^6.14.9:
     has-unicode "~2.0.1"
     hosted-git-info "^2.8.8"
     iferr "^1.0.2"
-    imurmurhash "*"
     infer-owner "^1.0.4"
     inflight "~1.0.6"
     inherits "^2.0.4"
@@ -6372,14 +6370,8 @@ npm@^6.14.9:
     libnpx "^10.2.4"
     lock-verify "^2.1.0"
     lockfile "^1.0.4"
-    lodash._baseindexof "*"
     lodash._baseuniq "~4.6.0"
-    lodash._bindcallback "*"
-    lodash._cacheindexof "*"
-    lodash._createcache "*"
-    lodash._getnative "*"
     lodash.clonedeep "~4.5.0"
-    lodash.restparam "*"
     lodash.union "~4.6.0"
     lodash.uniq "~4.5.0"
     lodash.without "~4.4.0"

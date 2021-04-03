@@ -8,9 +8,6 @@ domready(() => {
     const game = new Game();
     const engine = game.engine;
 
-    engine.canvas.style.position = "absolute";
-    engine.canvas.style.imageRendering = "pixelated";
-
     // Work around Firefox not supporting image-rendering: pixelated
     // See https://github.com/excaliburjs/Excalibur/issues/1676
     if (engine.canvas.style.imageRendering === "") {
@@ -23,16 +20,12 @@ domready(() => {
             window.innerHeight / game.height
         ));
 
-        const scaledWidth = game.width * scaleFactor;
-        const scaledHeight = game.height * scaleFactor;
-
-        engine.canvas.tabIndex = 0;
-        engine.canvas.style.left = Math.floor((window.innerWidth - scaledWidth) * 0.5) + "px";
-        engine.canvas.style.top = Math.floor((window.innerHeight - scaledHeight) * 0.5) + "px";
-        engine.canvas.style.width = scaledWidth + "px";
-        engine.canvas.style.height = scaledHeight + "px";
+        engine.screen.viewport = {
+            width: game.width * scaleFactor,
+            height: game.height * scaleFactor
+        };
+        engine.screen.applyResolutionAndViewport();
     }
-
 
     function onKey(event: KeyboardEvent): void {
         engine.canvas.focus();

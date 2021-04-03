@@ -36,9 +36,11 @@ export default class Game {
     public score = 0;
 
     public readonly engine = new Engine({
-        width: this.width,
-        height: this.height,
+        viewport: {width: this.width, height: this.height},
+        resolution: {width: this.width, height: this.height},
         displayMode: DisplayMode.Fixed,
+        antialiasing: false,
+        suppressHiDPIScaling: true,
         suppressPlayButton: true
     });
 
