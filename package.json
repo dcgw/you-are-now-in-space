@@ -40,7 +40,7 @@
     "@softwareventures/tslint-rules": "0.9.2",
     "@softwareventures/webpack-config": "3.1.1",
     "cz-conventional-changelog": "3.3.0",
-    "semantic-release": "17.4.3",
+    "semantic-release": "17.4.4",
     "semantic-release-s3-upload": "0.2.80",
     "ts-loader": "8.2.0",
     "tslint": "6.1.3",
