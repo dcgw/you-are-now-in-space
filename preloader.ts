@@ -1,6 +1,9 @@
 import {Loader} from "excalibur";
 import {black, colours, white} from "./palette";
 
+const width = 384;
+const height = 288;
+
 const minColourBarSize = 1152;
 const maxColourBarSize = 4608;
 
@@ -8,6 +11,10 @@ export default class Preloader extends Loader {
     private colourIndex = 0;
 
     public draw(ctx: CanvasRenderingContext2D): void {
+        // Hack: Excalibur doesn't set the size of the preloader canvas so we do it here.
+        ctx.canvas.width = width;
+        ctx.canvas.height = height;
+
         let raster = 0;
         const maxRaster = ctx.canvas.width * ctx.canvas.height;
 
