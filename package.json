@@ -33,7 +33,7 @@
     "test": "tsc && tslint --project .",
     "build": "webpack --env production",
     "semantic-release": "semantic-release",
-    "start": "webpack-dev-server --open"
+    "start": "webpack serve --open"
   },
   "engine": {
     "node": ">= 12"
