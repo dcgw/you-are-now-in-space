@@ -25,6 +25,9 @@
     "start": "webpack serve --open",
     "test": "tsc && tslint --project ."
   },
+  "engines": {
+    "node": "^12 || ^14 || >=16"
+  },
   "dependencies": {
     "@types/domready": "1.0.0",
     "@types/webpack-env": "1.16.2",
