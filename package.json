@@ -4,39 +4,33 @@
   "version": "0.0.0-development",
   "description": "A game for Mini Ludum Dare 25",
   "keywords": [
+    "excalibur",
     "game",
-    "typescript",
     "ludum-dare",
     "mini-ludum-dare-25",
-    "excalibur"
+    "typescript"
   ],
   "contributors": [
-    {
-      "name": "Daniel Cassidy",
-      "email": "mail@danielcassidy.me.uk",
-      "url": "https://www.danielcassidy.me.uk/"
-    },
-    {
-      "name": "George Weller",
-      "email": "george.weller@gmail.com"
-    },
-    {
-      "name": "Ian Johnson",
-      "email": "git@simplyian.net"
-    }
+    "Daniel Cassidy <mail@danielcassidy.me.uk> (https://www.danielcassidy.me.uk/)",
+    "George Weller <george.weller@gmail.com>",
+    "Ian Johnson <git@simplyian.net>"
   ],
-  "license": "UNLICENSED",
-  "bugs": "https://github.com/dcgw/you-are-now-in-space-ts/issues",
   "homepage": "https://github.com/dcgw/you-are-now-in-space-ts",
+  "bugs": "https://github.com/dcgw/you-are-now-in-space-ts/issues",
   "repository": "github:dcgw/you-are-now-in-space-ts",
+  "license": "UNLICENSED",
   "scripts": {
-    "test": "tsc && tslint --project .",
     "build": "webpack --env production",
     "semantic-release": "semantic-release",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "test": "tsc && tslint --project ."
   },
-  "engine": {
-    "node": ">= 12"
+  "dependencies": {
+    "@types/domready": "1.0.0",
+    "@types/webpack-env": "1.16.2",
+    "dictionary-types": "1.2.0",
+    "domready": "1.0.8",
+    "excalibur": "0.24.4"
   },
   "devDependencies": {
     "@semantic-release/exec": "5.0.0",
@@ -51,13 +45,6 @@
     "webpack": "5.43.0",
     "webpack-cli": "4.7.2",
     "webpack-dev-server": "3.11.2"
-  },
-  "dependencies": {
-    "@types/domready": "1.0.0",
-    "@types/webpack-env": "1.16.2",
-    "dictionary-types": "1.2.0",
-    "domready": "1.0.8",
-    "excalibur": "0.24.4"
   },
   "config": {
     "commitizen": {
@@ -100,5 +87,8 @@
         }
       ]
     ]
+  },
+  "engine": {
+    "node": ">= 12"
   }
 }
