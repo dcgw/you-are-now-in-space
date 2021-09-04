@@ -2718,10 +2718,10 @@ dezalgo@^1.0.0:
     asap "^2.0.0"
     wrappy "1"
 
-dictionary-types@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/dictionary-types/-/dictionary-types-2.0.0.tgz#d0ad108cc35b8f95bd11143447dd7e7691890265"
-  integrity sha512-xwBAAXOlLkjY3ttIHpJ+kf9w7qB+WavEHYZnIA1sDnJbh2zbFhmXBDbkXUAKEEQ0PT39T7Xn54qe/SP0ETPtcQ==
+dictionary-types@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/dictionary-types/-/dictionary-types-2.0.1.tgz#9f0b9b4bcde6237e241bcd7ea1d255be450f6e22"
+  integrity sha512-oGwLOZSgaS8JDIbe42MCTZ+/IUFLaSxfZ1agSwCojz+9K2MxnnAY/YPoKTGHawxnLKCHHN2bQDrP271Glpf7jA==
 
 dictionary-types@^1.2.0:
   version "1.2.1"
