@@ -14,6 +14,8 @@ domready(() => {
         engine.canvas.style.imageRendering = "crisp-edges";
     }
 
+    engine.canvas.setAttribute("tabindex", "-1");
+
     function scale(): void {
         const scaleFactor = Math.floor(Math.min(
             window.innerWidth / game.width,
