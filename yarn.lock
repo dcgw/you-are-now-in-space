@@ -2538,6 +2538,11 @@ copy-anything@^2.0.1:
   dependencies:
     is-what "^3.14.1"
 
+core-js@3.35.1:
+  version "3.35.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.35.1.tgz#9c28f8b7ccee482796f8590cc8d15739eaaf980c"
+  integrity sha512-IgdsbxNyMskrTFxa9lWHyMwAJU5gXOPP+1yO+K59d50VLVAIDAbs7gIv705KzALModfK3ZrSZTPNpC0PQgIZuw==
+
 core-js@^2.4.0, core-js@^2.5.0:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
@@ -3289,10 +3294,12 @@ events@^3.2.0:
   resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
   integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
 
-excalibur@0.24.4:
-  version "0.24.4"
-  resolved "https://registry.yarnpkg.com/excalibur/-/excalibur-0.24.4.tgz#c05cdf7f4cae103d70685e32dff45546463f296d"
-  integrity sha512-frP4NF1TaSzEPh7algTycMdGbHoATCbzJF5iMlvE8wzGoWO6yz3x3M6NYJDeRZ/sjo/BBACYktSMEVrgRl6Whg==
+excalibur@0.29.1:
+  version "0.29.1"
+  resolved "https://registry.yarnpkg.com/excalibur/-/excalibur-0.29.1.tgz#745b6ac74261cc0ea85c2d3528126a04ad3e666a"
+  integrity sha512-VVgFzuRTBJjn2Za3KtrYPUN0SgkoS+KrRfx7KxjROAO55FwV1N4S6bFBaCb09YC0mG9MbXTZx8WSG2CGvPm/BA==
+  dependencies:
+    core-js "3.35.1"
 
 execa@^4.0.0:
   version "4.1.0"
