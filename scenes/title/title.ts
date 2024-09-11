@@ -11,6 +11,7 @@ const titleHeight = 32;
 
 export default class Title extends Scene {
     private readonly titleImage: Actor;
+    private musicPlaying = false;
 
     constructor(private readonly game: Game) {
         super(game.engine);
@@ -64,11 +65,12 @@ export default class Title extends Scene {
 
     public update(): void {
         if (this.game.active) {
-            if (!resources.titleMusic.isPlaying()) {
+            if (!this.musicPlaying) {
                 resources.titleMusic.loop = true;
                 resources.titleMusic.play(0.25)
                     .then(() => void 0,
                         reason => console.error("", reason));
+                this.musicPlaying = true;
             }
             this.titleImage.setDrawing("press");
         } else {
