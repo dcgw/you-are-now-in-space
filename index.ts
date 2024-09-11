@@ -42,6 +42,14 @@ domready(() => {
         }
     }
 
+    let clicked = false;
+
+    function onClick(): void {
+        clicked = true;
+        hidePointer();
+        game.active = true;
+    }
+
     let pointerTimeout = 0;
 
     function onMouseMove(): void {
@@ -59,8 +67,10 @@ domready(() => {
     }
 
     function onFocus(): void {
-        hidePointer();
-        game.active = true;
+        if (clicked) {
+            hidePointer();
+            game.active = true;
+        }
     }
 
     function onBlur(): void {
@@ -82,6 +92,7 @@ domready(() => {
     window.addEventListener("keydown", onKey);
     window.addEventListener("keypress", onKey);
     window.addEventListener("keyup", onKey);
+    window.addEventListener("click", onClick, true);
     window.addEventListener("mousemove", onMouseMove, true);
     window.addEventListener("focus", onFocus, true);
     window.addEventListener("blur", onBlur, true);
