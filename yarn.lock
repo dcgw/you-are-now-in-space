@@ -519,19 +519,19 @@
     dictionary-types "^1.2.0"
     tslib "^1.9.3 || ^2.0.0"
 
-"@softwareventures/array@^0.31.0 || ^0.33.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-5.2.0.tgz#235a8427378b84f18031a09ede0142d6ec6a8e67"
-  integrity sha512-vVleJME+wOObPdbgYLYwiVN3VV48gzA6I86fOzpNwjk1rFtVtEttVO9lUcGUrXoNaFwYNM+I9VfLaLqaiKdbxA==
+"@softwareventures/array@^0.31.0 || ^0.33.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/array/-/array-6.1.0.tgz#377c9b99a71228dbd58301cc21f69939cfa9ab4e"
+  integrity sha512-ZvN+BAIELx0kVi6U+KAMr89TP8pohl4scPRCslIArkFxwumeR2ZuEgHJLxoIyWyUIkcXH4fYR1LmhUf9Fv9/IQ==
   dependencies:
-    "@softwareventures/nullable" "^1.0.0 || ^1.0.0 || ^1.2.1 || ^2.0.0"
-    "@softwareventures/ordered" "^0.2.0 || ^1.0.0"
+    "@softwareventures/nullable" "^1.0.0 || ^2.0.0 || ^3.0.0"
+    "@softwareventures/ordered" "^1.1.0 || ^2.0.0"
     tslib "^2.0.0"
 
-"@softwareventures/chain@^0.1.2 || ^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@softwareventures/chain/-/chain-1.0.1.tgz#79099066f5274e1cccf447a935f0b50372c1a673"
-  integrity sha512-1nJZ88aGuadOVQtUDf5ja1PNeSXWtstkfJ9uqwPi5Xepm4n2zss6toiTC4DLsY8bKROTrdnxlTgG+8M4nCnigg==
+"@softwareventures/chain@^2.0.0 || ^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/chain/-/chain-3.0.0.tgz#f9f84a1a28f20ff2dd9b048b179646faec0114c8"
+  integrity sha512-W5qOFTvn4kgmO58hRbcT5xX/1JtzIyJPY8OYsx6tkQSgzcgP+nlI+JMp2E6I7c7wXtkR0TcWEL1qQ06ByBfGHA==
 
 "@softwareventures/dictionary@^0.6.0 || ^0.7.0 || ^0.8.0", "@softwareventures/dictionary@^0.7.1 || ^0.8.0":
   version "0.8.1"
@@ -541,19 +541,19 @@
     dictionary-types "^1.2.0"
     tslib "2.1.0"
 
-"@softwareventures/nullable@^1.0.0 || ^1.0.0 || ^1.2.1 || ^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@softwareventures/nullable/-/nullable-2.0.0.tgz#d11498c5fe71bb0b94ba85a40e774c19c721c5d3"
-  integrity sha512-zx+FMgB4MqmqIiCglgP8GZIYPw57yFBuz/jh0kXNAoEtSRl3LkwhaGG0b/y5yae2RsYSaVkNotQaSmJRt5GahA==
-  dependencies:
-    tslib "2.3.0"
-
 "@softwareventures/nullable@^1.0.0 || ^1.2.1":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@softwareventures/nullable/-/nullable-1.4.0.tgz#00d51ae9082ce3f338e394e8263a72a12ae3acfa"
   integrity sha512-hds7X6hRqgUQz9L850FCaRFxW/whMc4eOCbJtekeZIiAoczhaw2xQrq5sT+8KZV5MkX8ZddtfMkARwYxFmYwDA==
   dependencies:
     tslib "2.2.0"
+
+"@softwareventures/nullable@^1.0.0 || ^2.0.0 || ^3.0.0", "@softwareventures/nullable@^3.0.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/nullable/-/nullable-3.2.0.tgz#b4e1b570ba0086eeeb9350ebd25db2533e3dfe88"
+  integrity sha512-xPtUK3GJkrqvOyy14ds5KAJgnB0bbd549ztx6kDpIqk27U0W2Vg1gUBMagmdcRQE+PGFFRimd1C8RVCCizF6Ww==
+  dependencies:
+    tslib "2.6.2"
 
 "@softwareventures/ordered@^0.2.0":
   version "0.2.4"
@@ -562,10 +562,10 @@
   dependencies:
     tslib "^1.9.3 || ^2.0.0 || ^2.1.0"
 
-"@softwareventures/ordered@^0.2.0 || ^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@softwareventures/ordered/-/ordered-1.0.0.tgz#d803eef43bb0b4ccfcd78d2928fe38b5109ad99e"
-  integrity sha512-SUFUYDWEPAS54LpGH+mRHwkGuTINPDt4OOS3h/Zr9f12JPFz2cqh6Xxwg75BZqwaeONuUwmklJVMRmgvxSSkPA==
+"@softwareventures/ordered@^1.1.0 || ^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@softwareventures/ordered/-/ordered-2.0.0.tgz#feaee7148f6a447f96adaa169d27fd4962b4e3d4"
+  integrity sha512-NSNuBWZ8yoNwN3tBD24E+rCHktLdJFnkrVoVy0S5C6OsKZ55viy9+IsMyMnHju2mPoB/iCmzQOPgFj/eu9WpQA==
   dependencies:
     tslib "^1.9.3 || ^2.0.0 || ^2.1.0"
 
@@ -7755,18 +7755,19 @@ selfsigned@^1.10.8:
   dependencies:
     node-forge "^0.10.0"
 
-semantic-release-s3-upload@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/semantic-release-s3-upload/-/semantic-release-s3-upload-1.0.7.tgz#7aa4acbca3457cc2f24d4f1af883910790683064"
-  integrity sha512-1FIAlS2M90bYl8jap8vYCwxwoQcX60B8e1HtvRlzusAuNn5HAl+o2PVZJvqC4NqNbCADiTe8Q7Y/3ZWivMCgLA==
+semantic-release-s3-upload@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/semantic-release-s3-upload/-/semantic-release-s3-upload-2.1.1.tgz#0b4f5005a37758822bb7093ed7bcfa8607329976"
+  integrity sha512-YVqg4n3lcSYsYPWLJk4mGxDkEujnzSUvqqZ9M5g6OUEiGR/72wMnhKXkvVnJQnNcO243vHU7mPVJi8FYaUFq6w==
   dependencies:
-    "@softwareventures/array" "^0.31.0 || ^0.33.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0"
-    "@softwareventures/chain" "^0.1.2 || ^1.0.0"
+    "@softwareventures/array" "^0.31.0 || ^0.33.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0"
+    "@softwareventures/chain" "^2.0.0 || ^3.0.0"
+    "@softwareventures/nullable" "^3.0.0"
     "@types/mime" "^2.0.1 || ^3.0.0"
     aws-sdk "^2.553.0 || ^2.884.0"
     globby "^11.0.0"
     mime "^2.4.4 || ^3.0.0"
-    tslib "2.4.0"
+    tslib "2.4.1"
 
 semantic-release@17.4.7:
   version "17.4.7"
@@ -8765,15 +8766,15 @@ tslib@2.2.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
   integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
 
-tslib@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
-  integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
+tslib@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
+  integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
 
-tslib@2.4.0, "tslib@^1.9.3 || ^2.0.0", "tslib@^1.9.3 || ^2.0.0 || ^2.1.0", tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
-  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
+tslib@2.6.2, "tslib@^1.9.3 || ^2.0.0", "tslib@^1.9.3 || ^2.0.0 || ^2.1.0", tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
+  integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
 
 tslib@^1.10.0, tslib@^1.13.0, tslib@^1.8.1:
   version "1.14.1"
