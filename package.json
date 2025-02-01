@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@types/domready": "1.0.2",
-    "@types/webpack-env": "1.18.5",
+    "@types/webpack-env": "1.18.8",
     "dictionary-types": "2.0.1",
     "domready": "1.0.8",
     "excalibur": "0.24.4"
