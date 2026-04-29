@@ -3495,10 +3495,10 @@ eventsource@^2.0.2:
   resolved "https://registry.yarnpkg.com/eventsource/-/eventsource-2.0.2.tgz#76dfcc02930fb2ff339520b6d290da573a9e8508"
   integrity sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==
 
-excalibur@0.24.4:
-  version "0.24.4"
-  resolved "https://registry.yarnpkg.com/excalibur/-/excalibur-0.24.4.tgz#c05cdf7f4cae103d70685e32dff45546463f296d"
-  integrity sha512-frP4NF1TaSzEPh7algTycMdGbHoATCbzJF5iMlvE8wzGoWO6yz3x3M6NYJDeRZ/sjo/BBACYktSMEVrgRl6Whg==
+excalibur@0.32.0:
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/excalibur/-/excalibur-0.32.0.tgz#0ff830277898d7f1e06a2dfd93bad10e0d6279bb"
+  integrity sha512-anCvsZK2Dh3BTlw/ERHr3fvfqF2vdJHw88soCs3r6EIwxbhibNRILMZw3Ae6GMTY8FkzRfkGLyk7DlEZVesUaw==
 
 execa@^1.0.0:
   version "1.0.0"
